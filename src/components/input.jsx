@@ -9,18 +9,25 @@ const InputVariants = cva(
       sm: "text-sm",         
       lg: "text-lg",
     },
+    width: {
+      default: "size-5",  
+      sm: "w-48",         
+      md: "w-64",         
+      lg: "w-96",        
+    },
   }
 );
 
 const Input = ({
   size = "default",
+  width = "default",
   placeholder = "Enter text",
   additionalClass,
   ...props
 }) => {
   return (
     <input
-      className={cn(InputVariants({ size }), additionalClass)}
+      className={cn(InputVariants({ size, width }), additionalClass)}
       placeholder={placeholder}
       {...props}
     />
