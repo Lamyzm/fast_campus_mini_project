@@ -1,36 +1,34 @@
 "use client";
 import { MainContainer } from "@/components/MainContainer";
-import * as Icons from "@/components/icons";
-import Icon2 from "@/components/icons2";
-
+import Icons from "@/components/icons";
 import Buttons from "@/components/button/Buttons";
+
 export default function styleguide() {
   return (
     <>
       <MainContainer>
         <Buttons></Buttons>
-        {/* 하드코딩으로 그냥 아이콘 쓸 때 */}
         <div>
+          {/* size option : small, large
+          color option : primary, secondary (상황에 맞게 색상 수정) */}
           <h1> 아이콘 </h1>
-          <Icons.ArrowBackIcon />
-          <Icons.LogoutIcon />
-          <Icons.ShoppingCartIcon />
-          <Icons.LoginIcon />
-          <Icons.SearchIcon />
-          <Icons.ArrowForwardIosIcon />
-          <Icons.AddIcon />
-          <Icons.HomeIcon />
-          <Icons.PermIdentityOutlinedIcon />
-          <Icons.LocationOnIcon />
-          <Icons.AccessTimeIcon />
-          <Icons.CheckIcon />
-          <Icons.HelpOutlineIcon />
-          <Icons.CloseIcon />
-          <Icons.ExpandMoreIcon />
-          <Icons.ScheduleIcon />
+          <Icons type="ArrowBackIcon" size="large" color="primary" />
+          <Icons type="LogoutIcon" size="large" color="primary" />
+          <Icons type="LoginIcon" size="large" color="primary" />
+          <Icons type="SearchIcon" size="large" color="primary" />
+          <Icons type="ArrowForwardIosIcon" size="large" color="primary" />
+          <Icons type="AddIcon" size="large" color="primary" />
+          <Icons type="PermIdentityOutlinedIcon" size="large" color="primary" />
+          <Icons type="AccessTimeIcon" size="large" color="primary" />
+          <Icons type="CheckIcon" size="large" color="primary" />
+          <Icons type="HelpOutlineIcon" size="large" color="primary" />
+          <Icons type="CloseIcon" size="large" color="primary" />
+          <Icons type="ExpandMoreIcon" size="large" color="primary" />
+          <Icons type="ScheduleIcon" size="large" color="primary" />
+          <Icons type="ShoppingCartOutlinedIcon" size="large" color="primary" />
+          <Icons type="HomeOutlinedIcon" size="large" color="primary" />
+          <Icons type="LocationOnOutlinedIcon" size="large" color="primary" />
         </div>
-        {/* 어떤 아이콘 쓸건지, size, color 동기적으로 받을때  */}
-        <Icon2 type="AddIcon" size="large" color="primary" />
       </MainContainer>
     </>
   );
