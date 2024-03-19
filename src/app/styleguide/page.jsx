@@ -2,6 +2,7 @@
 import { MainContainer } from "@/components/MainContainer";
 import Buttons from "@/components/button/Buttons";
 import IconsList from "@/components/icons";
+import MainSlideContainer from "@/components/mainSlide/MainSlideContainer";
 
 
 export default function styleguide() {
@@ -15,6 +16,7 @@ export default function styleguide() {
           <h1> 아이콘 </h1>
           <IconsList />
         </div>
+        <MainSlideContainer />
       </MainContainer>
     </>
   );

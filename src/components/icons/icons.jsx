@@ -17,6 +17,7 @@ import ScheduleIcon from "@mui/icons-material/Schedule";
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 const iconVariants = cva({
     size: {
@@ -47,7 +48,8 @@ const Icons = ({ type, size, color, additionalClass, ...props }) => {
         ScheduleIcon,
         ShoppingCartOutlinedIcon,
         HomeOutlinedIcon,
-        LocationOnOutlinedIcon
+        LocationOnOutlinedIcon,
+        ArrowForwardIcon
 
     }[type];
 
