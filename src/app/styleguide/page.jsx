@@ -8,6 +8,7 @@ import { GlobalLayout } from "@/components/GlobalLayout";
 import PopularLocationSlideContainer from "@/components/popularLoactionSlide/PopularLocationSlideContainer";
 import CouponSlideContainer from "@/components/couponSlide/CouponSlideContainer";
 import AccommodationSwiper from "@/components/accommodationSwipers/AccommodationSwiper";
+import LocationCategory from "@/components/locationCategory/LocationCategory";
 
 export default function styleguide() {
   return (
@@ -52,6 +53,7 @@ export default function styleguide() {
         <Calendar />
         <NewCalendar />
         <CouponSlideContainer />
+        <LocationCategory/>
       </GlobalLayout>
     </>
   );
