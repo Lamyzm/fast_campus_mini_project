@@ -5,7 +5,6 @@ import IconsList from "@/components/icons";
 import MainSlideContainer from "@/components/mainSlide/MainSlideContainer";
 import { Input } from "@/components/input";
 import Calendar from "@/components/calendar/Calendar";
-import NewCalendar from "@/components/calendar/Calendar2";
 import { GlobalLayout } from "@/components/GlobalLayout";
 
 export default function styleguide() {
@@ -36,7 +35,6 @@ export default function styleguide() {
         </div>
         <MainSlideContainer />
         <Calendar />
-        <NewCalendar />
       </GlobalLayout>
     </>
   );
