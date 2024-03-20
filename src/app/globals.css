@@ -7,16 +7,20 @@
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
   --navigation-button-size: 40px;
+  --main-section-padding: 20px;
 }
 
 body {
   font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
   font-size: 14px;
-  color: #000;
   margin: 0;
   padding: 0;
+  background-color: #f2f2f2;
 }
 
+.main-section-padding {
+  padding: var(--main-section-padding);
+}
 .swiper-button-prev_v,
 .swiper-button-next_v {
   background-color: #ffffffb7;
