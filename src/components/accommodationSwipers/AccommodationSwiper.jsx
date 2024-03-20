@@ -24,7 +24,7 @@ export default function AccommodationSwiper({ title }) {
 
   return (
     <>
-      <article className="w-full flex flex-col gap-1">
+      <article className="w-full flex flex-col gap-1 main-section-padding">
         <h3 className="flex justify-start font-bold text-lg mb-3">{title}</h3>
         <div className="flex gap-2 flex-row mb-2">
           {buttons.map((button, index) => {

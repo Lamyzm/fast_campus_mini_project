@@ -7,7 +7,7 @@ import NewCalendar from "@/components/calendar/Calendar2";
 import { GlobalLayout } from "@/components/GlobalLayout";
 import PopularLocationSlideContainer from "@/components/popularLoactionSlide/PopularLocationSlideContainer";
 import CouponSlideContainer from "@/components/couponSlide/CouponSlideContainer";
-import AccommodationSwiper from "@/components/accommodationSwipers/accommodationSwiper";
+import AccommodationSwiper from "@/components/accommodationSwipers/AccommodationSwiper";
 
 export default function styleguide() {
   return (
