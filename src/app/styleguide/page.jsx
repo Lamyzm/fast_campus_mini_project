@@ -1,22 +1,34 @@
 "use client";
 import { MainContainer } from "@/components/MainContainer";
-import Buttons from "@/components/button/Buttons";
+import Buttons from "@/components/buttons/Buttons";
+import AccommodationSwiper from "@/components/accommodationSwipers/AccommodationSwiper";
+import Showcase from "@/components/accommodationSwipers/AccommodationSwiper";
 import IconsList from "@/components/icons";
 import MainSlideContainer from "@/components/mainSlide/MainSlideContainer";
 import { Input } from "@/components/input";
 import Calendar from "@/components/calendar/Calendar";
 import NewCalendar from "@/components/calendar/Calendar2";
 
-
 export default function styleguide() {
   return (
     <>
       <MainContainer>
+        <Showcase></Showcase>
         <Buttons></Buttons>
         <div className="m-10">
           <h1> 인풋 </h1>
-          <Input id="username" size="default" width="sm" placeholder="Enter your username" />
-          <Input id="password" size="default" type="password" placeholder="Enter your password" />
+          <Input
+            id="username"
+            size="default"
+            width="sm"
+            placeholder="Enter your username"
+          />
+          <Input
+            id="password"
+            size="default"
+            type="password"
+            placeholder="Enter your password"
+          />
         </div>
         <div>
           {/* size option : small, large

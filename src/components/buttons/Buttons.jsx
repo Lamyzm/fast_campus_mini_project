@@ -1,5 +1,5 @@
 "use client";
-import { Button } from "@/components/button/Button";
+import { Button } from "@/components/buttons/Button";
 import { ButtonVariants } from "./button";
 
 export default function Buttons() {
@@ -8,7 +8,7 @@ export default function Buttons() {
       {/* padding은 addtionalClass에 padding값을줘서 조정 */}
       <div>버튼</div>
       rounded full, width-full
-      <div>
+      <div className="w-full">
         <Button size="lg" type="rounded" color="black" additionalClass="w-full">
           로그인
         </Button>
