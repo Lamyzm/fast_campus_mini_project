@@ -3,10 +3,11 @@ import { MainContainer } from "@/components/MainContainer";
 import Buttons from "@/components/buttons/Buttons";
 import Showcase from "@/components/accommodationSwipers/AccommodationSwiper";
 import IconsList from "@/components/icons";
-import MainSlideContainer from "@/components/mainSlide/MainSlideContainer";
 import { Input } from "@/components/input";
 import Calendar from "@/components/calendar/Calendar";
 import NewCalendar from "@/components/calendar/Calendar2";
+import PopularLocationSlideContainer from "@/components/popularLoactionSlide/popularLocationSlideContainer";
+import CouponSlideContainer from "@/components/couponSlide/CouponSlideContainer";
 
 export default function styleguide() {
   return (
@@ -35,9 +36,10 @@ export default function styleguide() {
           <h1> 아이콘 </h1>
           <IconsList />
         </div>
-        <MainSlideContainer />
+        <PopularLocationSlideContainer />
         <Calendar />
         <NewCalendar />
+        <CouponSlideContainer/>
       </MainContainer>
     </>
   );
