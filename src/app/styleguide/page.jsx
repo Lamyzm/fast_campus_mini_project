@@ -13,7 +13,6 @@ export default function styleguide() {
   return (
     <>
       <GlobalLayout>
-        <AccommodationSwiper title="인기여행"></AccommodationSwiper>
         <Buttons></Buttons>
         <div className="m-10">
           <h1> 인풋 </h1>
@@ -49,6 +48,11 @@ export default function styleguide() {
           <IconsList />
         </div>
         <PopularLocationSlideContainer />
+        <div className="h-12 w-full">--</div>
+        <AccommodationSwiper title="인기여행"></AccommodationSwiper>
+        <AccommodationSwiper
+          title="강릉 풀펜션"
+          isButton={true}></AccommodationSwiper>
         <Calendar />
         <NewCalendar />
         <CouponSlideContainer />

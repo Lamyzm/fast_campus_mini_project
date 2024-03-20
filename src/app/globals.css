@@ -28,7 +28,7 @@ body {
   width: var(--navigation-button-size) !important;
   border-radius: 50px;
   position: absolute;
-  top: calc(50% - var(--navigation-button-size) / 2);
+  top: calc(30% - var(--navigation-button-size) / 2);
   z-index: 10;
 }
 .swiper-button-prev_v {

@@ -5,7 +5,7 @@ import axios from "axios";
 import SwiperSlideComponent from "./SwiperComponent";
 import { Button } from "@/components/buttons/Button";
 
-export default function AccommodationSwiper({ title }) {
+export default function AccommodationSwiper({ title, isButton }) {
   const [data, setData] = useState("");
   const [buttonState, setButtonState] = useState("전체");
   const buttons = ["전체", "모텔", "호텔리조트", "펜션풀빌라", "프리미엄블랙"];
@@ -27,22 +27,24 @@ export default function AccommodationSwiper({ title }) {
       <article className="w-full flex flex-col gap-1 main-section-padding">
         <h3 className="flex justify-start font-bold text-lg mb-3">{title}</h3>
         <div className="flex gap-2 flex-row mb-2">
-          {buttons.map((button, index) => {
-            const isActive = buttonState === button;
+          {isButton
+            ? buttons.map((button, index) => {
+                const isActive = buttonState === button;
 
-            return (
-              <Button
-                key={index}
-                size="sm"
-                type="rounded"
-                color={isActive ? "primary" : ""}
-                outline={!isActive ? "outlineSemi" : ""}
-                additionalClass="font-bold"
-                onClick={() => setButtonState(button)}>
-                {button}
-              </Button>
-            );
-          })}
+                return (
+                  <Button
+                    key={index}
+                    size="sm"
+                    type="rounded"
+                    color={isActive ? "primary" : ""}
+                    outline={!isActive ? "outlineSemi" : ""}
+                    additionalClass="font-bold"
+                    onClick={() => setButtonState(button)}>
+                    {button}
+                  </Button>
+                );
+              })
+            : ""}
         </div>
 
         <SwiperSlideComponent content={data} />
