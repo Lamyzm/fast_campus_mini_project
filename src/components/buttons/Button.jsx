@@ -18,8 +18,8 @@ const ButtonVariants = cva(
       },
       size: {
         default: "h-10 px-4 py-2 ",
-        sm: "h-9  px-3 text-sm",
-        lg: "h-11  px-5 text-lg",
+        sm: "h-7  px-4 text-sm",
+        lg: "h-10  px-5 text-lg",
         xl: "h-14  px-8 text-xl ",
       },
       color: {
@@ -27,7 +27,7 @@ const ButtonVariants = cva(
         black: "bg-black text-white ",
         white: "bg-white text-black ",
         red: "bg-red-300",
-        primary: "bg-blue-300",
+        primary: "bg-blue-500 text-white",
       },
     },
     defaultVariants: {
