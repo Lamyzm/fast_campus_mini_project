@@ -19,11 +19,10 @@ body {
 
 .swiper-button-prev_v,
 .swiper-button-next_v {
-  background-color: #fff;
+  background-color: #ffffffb7;
   height: var(--navigation-button-size) !important;
   width: var(--navigation-button-size) !important;
   border-radius: 50px;
-  color: black !important;
   position: absolute;
   top: calc(50% - var(--navigation-button-size) / 2);
   z-index: 10;
@@ -37,7 +36,6 @@ body {
 .my-swiper {
   width: 100%;
   height: 350px;
-  margin: 20px auto;
 }
 .my-swiper-slide {
   width: 320px !important;

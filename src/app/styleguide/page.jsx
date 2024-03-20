@@ -13,7 +13,7 @@ export default function styleguide() {
   return (
     <>
       <MainContainer>
-        <Showcase></Showcase>
+        <Showcase title="인기여행"></Showcase>
         <Buttons></Buttons>
         <div className="m-10">
           <h1> 인풋 </h1>
