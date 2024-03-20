@@ -2,8 +2,8 @@
 import React, { useEffect, useState } from "react";
 import "swiper/css/navigation";
 import axios from "axios";
-import SwiperSlideComponent from "./SwiperSlideComponent";
-import { Button } from "../buttons/Button";
+import SwiperSlideComponent from "./SwiperComponent";
+import { Button } from "@/components/buttons/Button";
 
 export default function AccommodationSwiper({ title }) {
   const [data, setData] = useState("");

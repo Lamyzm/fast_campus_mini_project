@@ -1,7 +1,6 @@
 "use client";
 import { MainContainer } from "@/components/MainContainer";
 import Buttons from "@/components/buttons/Buttons";
-import AccommodationSwiper from "@/components/accommodationSwipers/AccommodationSwiper";
 import Showcase from "@/components/accommodationSwipers/AccommodationSwiper";
 import IconsList from "@/components/icons";
 import MainSlideContainer from "@/components/mainSlide/MainSlideContainer";
