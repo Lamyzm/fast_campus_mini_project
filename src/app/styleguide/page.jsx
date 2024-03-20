@@ -4,6 +4,8 @@ import Buttons from "@/components/button/Buttons";
 import IconsList from "@/components/icons";
 import MainSlideContainer from "@/components/mainSlide/MainSlideContainer";
 import { Input } from "@/components/input";
+import Calendar from "@/components/calendar/Calendar";
+import NewCalendar from "@/components/calendar/Calendar2";
 
 
 export default function styleguide() {
@@ -23,6 +25,8 @@ export default function styleguide() {
           <IconsList />
         </div>
         <MainSlideContainer />
+        <Calendar />
+        <NewCalendar />
       </MainContainer>
     </>
   );
