@@ -41,17 +41,19 @@ export default function SwiperSlideComponent({ content }) {
                           alt="ran"
                         />
                       </div>
-                      <div className="text-start overflow-ellipsis flex flex-col gap-y-1">
-                        <div></div>
-                        <div></div>
-                        <p className="text-xs">{item.category}</p>
-                        <h4 className="text-base overflow-ellipsis whitespace-nowrap overflow-hidden block w-[80%] font-bold ">
-                          {item.productName}
-                        </h4>
-                        <p className="text-stone-600">{item.area}</p>
-                        <p className="font-bold">
-                          {item.minPrice.toLocaleString()} 원
-                        </p>
+                      <div className="text-start overflow-ellipsis flex flex-col gap-y-1 justify-between flex-col w-full h-[40%]">
+                        <div>
+                          <p className="text-xs">{item.category}</p>
+                          <h4 className="text-base overflow-ellipsis whitespace-nowrap overflow-hidden block w-[80%] font-bold ">
+                            {item.productName}
+                          </h4>
+                          <p className="text-stone-600">{item.area}</p>
+                        </div>
+                        <div>
+                          <p className="font-bold">
+                            {item.minPrice.toLocaleString()} 원
+                          </p>
+                        </div>
                       </div>
                     </div>
                   </SwiperSlide>
@@ -64,7 +66,7 @@ export default function SwiperSlideComponent({ content }) {
         </Swiper>
         <div
           ref={navigationPrevRef}
-          className="swiper-button-prev_v flex justify-center justify-items-center items-center bg-white">
+          className="swiper-button-prev_v flex justify-center justify-items-center items-center ">
           <Icons
             type="ArrowBackIosNewIcon"
             size="large"
@@ -74,7 +76,7 @@ export default function SwiperSlideComponent({ content }) {
         </div>
         <div
           ref={navigationNextRef}
-          className="swiper-button-next_v flex justify-center justify-items-center items-center bg-black">
+          className="swiper-button-next_v flex justify-center justify-items-center items-center">
           <Icons
             type="ArrowForwardIosIcon"
             size="large"
