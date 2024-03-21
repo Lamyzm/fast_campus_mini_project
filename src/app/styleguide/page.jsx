@@ -8,11 +8,13 @@ import { GlobalLayout } from "@/components/GlobalLayout";
 import PopularLocationSlideContainer from "@/components/popularLoactionSlide/PopularLocationSlideContainer";
 import CouponSlideContainer from "@/components/couponSlide/CouponSlideContainer";
 import AccommodationSwiper from "@/components/accommodationSwipers/AccommodationSwiper";
+import SelectPeople from "@/components/SelectPeople/SelectPeople";
 
 export default function styleguide() {
   return (
     <>
       <GlobalLayout>
+        <SelectPeople></SelectPeople>
         <Buttons></Buttons>
         <div className="m-10">
           <h1> 인풋 </h1>
