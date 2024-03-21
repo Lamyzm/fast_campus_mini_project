@@ -11,6 +11,7 @@ import AccommodationSwiper from "@/components/accommodationSwipers/Accommodation
 import SelectPeople from "@/components/SelectPeople/SelectPeople";
 import LocationCategory from "@/components/locationCategory/LocationCategory";
 import MainSearchBox from "@/components/MainSearchBox/MainSearchBox";
+import SearchButtons from "@/components/searchButtons/searchButtons";
 
 export default function styleguide() {
   return (
@@ -60,6 +61,7 @@ export default function styleguide() {
         <OldCalendar />
         <CouponSlideContainer />
         <LocationCategory />
+        <SearchButtons />
         <SelectPeople />
       </GlobalLayout>
       <MainSearchBox destination="서울" headCount={3} />

@@ -20,6 +20,7 @@ import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import RemoveIcon from "@mui/icons-material/Remove";
+import DateRangeIcon from "@mui/icons-material/DateRange";
 import InsertInvitationIcon from "@mui/icons-material/InsertInvitation";
 
 const iconVariants = cva({
@@ -55,6 +56,7 @@ const Icons = ({ type, size, color, additionalClass, ...props }) => {
     LocationOnOutlinedIcon,
     ArrowForwardIcon,
     ArrowBackIosNewIcon,
+    DateRangeIcon,
     InsertInvitationIcon,
   }[type];
 
