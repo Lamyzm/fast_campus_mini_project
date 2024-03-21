@@ -10,6 +10,8 @@ import CouponSlideContainer from "@/components/couponSlide/CouponSlideContainer"
 import AccommodationSwiper from "@/components/accommodationSwipers/AccommodationSwiper";
 import SelectPeople from "@/components/SelectPeople/SelectPeople";
 import LocationCategory from "@/components/locationCategory/LocationCategory";
+import MainSearchBox from "@/components/MainSearchBox/MainSearchBox";
+import SearchButtons from "@/components/searchButtons/searchButtons";
 import MainNav from "@/components/mainNav/MainNav";
 import RoomCategory from "@/components/roomCategory/RoomCategory";
 import RoomOutline from "@/components/roomOutline/RoomOutline";
@@ -81,6 +83,8 @@ export default function styleguide() {
           <RoomOutline />
         </SelectedRoomDetailLayout>
       </GlobalLayout>
+      <MainSearchBox destination="서울" headCount={3} />
+      <MainSearchBox />
     </>
   );
 }

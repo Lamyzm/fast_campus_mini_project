@@ -28,6 +28,7 @@ const ButtonVariants = cva(
         black: "bg-black text-white ",
         white: "bg-white text-black ",
         red: "bg-red-300",
+        gray: "bg-gray-100 hover:bg-gray-200",
         primary: "bg-blue-500 text-white",
       },
     },
