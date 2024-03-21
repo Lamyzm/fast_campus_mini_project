@@ -19,6 +19,7 @@ import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
+import RemoveIcon from "@mui/icons-material/Remove";
 
 const iconVariants = cva({
   size: {
@@ -40,6 +41,7 @@ const Icons = ({ type, size, color, additionalClass, ...props }) => {
     SearchIcon,
     ArrowForwardIosIcon,
     AddIcon,
+    RemoveIcon,
     PermIdentityOutlinedIcon,
     AccessTimeIcon,
     CheckIcon,
