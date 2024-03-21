@@ -10,6 +10,9 @@ import CouponSlideContainer from "@/components/couponSlide/CouponSlideContainer"
 import AccommodationSwiper from "@/components/accommodationSwipers/AccommodationSwiper";
 import SelectPeople from "@/components/SelectPeople/SelectPeople";
 import LocationCategory from "@/components/locationCategory/LocationCategory";
+import MainNav from "@/components/mainNav/MainNav";
+import RoomCategory from "@/components/roomCategory/RoomCategory";
+import RoomOutline from "@/components/roomOutline/RoomOutline";
 
 export default function styleguide() {
   return (
@@ -59,7 +62,10 @@ export default function styleguide() {
         <Calendar />
         <OldCalendar />
         <CouponSlideContainer />
-        <LocationCategory/>
+        <LocationCategory />
+        <MainNav />
+        <RoomCategory />
+        <RoomOutline />
       </GlobalLayout>
     </>
   );
