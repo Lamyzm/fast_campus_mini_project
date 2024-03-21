@@ -19,29 +19,30 @@ const SelectItem = ({ label, description, formId }) => {
   return (
     <div className="flex justify-center flex-row justify-between p-5">
       <div className="flex flex-col gap-2">
-        <p className="block">{label}</p>
-        <p className="block">{description}</p>
+        <p className="block font-bold text-xl">{label}</p>
+        <p className="block text-gray-400">{description}</p>
       </div>
       <div className="flex flex-row justify-center justify-items-center gap-3">
         <div className="bg-white rounded-full flex border-solid justify-center justify-items-center">
           <Button
             size="sm"
             outline="outlineSemi"
-            additionalClass="rounded-full px-0 h-auto p-2"
+            additionalClass="rounded-full px-0 h-12 w-12 p-2"
             onClick={() => checkPeopleCount(peopleCount - 1)}
             type="button">
             <Icons type="RemoveIcon" size="large" color="primary" />
           </Button>
         </div>
         <div className="flex justify-center justify-items-center text-center items-center">
+          {/* 폼요청 보내기 위한 hidden input */}
           <input type="hidden" name={formId} value={peopleCount} />
-          <p className="min-w-11">{peopleCount}</p>
+          <p className="min-w-10 font-semibold text-xl">{peopleCount}</p>
         </div>
         <div className="bg-white rounded-full flex border-solid justify-center justify-items-center">
           <Button
             size="sm"
             outline="outlineSemi"
-            additionalClass="rounded-full px-0 h-auto p-2"
+            additionalClass="rounded-full px-0 h-12 w-12 p-2"
             onClick={() => checkPeopleCount(peopleCount + 1)}
             type="button">
             <Icons type="AddIcon" size="large" color="primary" />
@@ -73,8 +74,8 @@ export default function SelectPeople() {
   return (
     <>
       <SelectLayoutContainer>
-        <div className="rounded-xl shadow-md p-3">
-          <h3>게스트는 누구인가요?</h3>
+        <div className="rounded-xl shadow-md p-4">
+          <h3 className="font-bold text-2xl p-2">게스트는 누구인가요?</h3>
           <form action="" onSubmit={formAction}>
             <SelectItem
               label="성인"
@@ -91,7 +92,8 @@ export default function SelectPeople() {
               description="2세 이하"
               formId={formIdArray[guestTypes.kid]}
             />
-            <button type="submit">as</button>
+            {/* {submit 버튼으로 요청 보내면됨} */}
+            <button type="submit"></button>
           </form>
         </div>
       </SelectLayoutContainer>
