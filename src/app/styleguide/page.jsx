@@ -16,7 +16,6 @@ export default function styleguide() {
   return (
     <>
       <GlobalLayout>
-        <SelectPeople></SelectPeople>
         <Buttons></Buttons>
         <div className="m-10">
           <h1> 인풋 </h1>
@@ -61,8 +60,8 @@ export default function styleguide() {
         <OldCalendar />
         <CouponSlideContainer />
         <LocationCategory/>
-        Search Page
         <SearchButtons />
+        <SelectPeople />
       </GlobalLayout>
     </>
   );
