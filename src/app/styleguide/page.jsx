@@ -12,6 +12,7 @@ import SelectPeople from "@/components/SelectPeople/SelectPeople";
 import LocationCategory from "@/components/locationCategory/LocationCategory";
 import MainSearchBox from "@/components/MainSearchBox/MainSearchBox";
 import SearchButtons from "@/components/searchButtons/searchButtons";
+import BookingRoomComponent from "@/components/BookingRoomComponent/BookingRoomComponent";
 
 export default function styleguide() {
   return (
@@ -63,6 +64,7 @@ export default function styleguide() {
         <LocationCategory />
         <SearchButtons />
         <SelectPeople />
+        <BookingRoomComponent></BookingRoomComponent>
       </GlobalLayout>
       <MainSearchBox destination="서울" headCount={3} />
       <MainSearchBox />
