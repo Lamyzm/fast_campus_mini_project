@@ -1,20 +1,35 @@
 "use client";
-
-import Buttons from "@/components/button/Buttons";
+import Buttons from "@/components/buttons/Buttons";
 import IconsList from "@/components/icons";
-import MainSlideContainer from "@/components/mainSlide/MainSlideContainer";
 import { Input } from "@/components/input";
 import Calendar from "@/components/calendar/Calendar";
 import { GlobalLayout } from "@/components/GlobalLayout";
 import OldCalendar from "@/components/calendar/OldCalendar";
+import PopularLocationSlideContainer from "@/components/popularLoactionSlide/PopularLocationSlideContainer";
+import CouponSlideContainer from "@/components/couponSlide/CouponSlideContainer";
+import AccommodationSwiper from "@/components/accommodationSwipers/AccommodationSwiper";
+import SelectPeople from "@/components/SelectPeople/SelectPeople";
 
 export default function styleguide() {
   return (
     <>
       <GlobalLayout>
+        <SelectPeople></SelectPeople>
         <Buttons></Buttons>
         <div className="m-10">
           <h1> 인풋 </h1>
+          <Input
+            id="username"
+            size="default"
+            width="sm"
+            placeholder="Enter your username"
+          />
+          <Input
+            id="password"
+            size="default"
+            type="password"
+            placeholder="Enter your password"
+          />
           <Input
             id="username"
             size="default"
@@ -34,9 +49,15 @@ export default function styleguide() {
           <h1> 아이콘 </h1>
           <IconsList />
         </div>
-        <MainSlideContainer />
+        <PopularLocationSlideContainer />
+        <div className="h-12 w-full">--</div>
+        <AccommodationSwiper title="인기여행"></AccommodationSwiper>
+        <AccommodationSwiper
+          title="강릉 풀펜션"
+          isButton={true}></AccommodationSwiper>
         <Calendar />
-        <OldCalendar/>
+        <OldCalendar />
+        <CouponSlideContainer />
       </GlobalLayout>
     </>
   );

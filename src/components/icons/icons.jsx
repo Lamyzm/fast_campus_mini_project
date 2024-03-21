@@ -14,50 +14,53 @@ import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import CloseIcon from "@mui/icons-material/Close";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ScheduleIcon from "@mui/icons-material/Schedule";
-import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
-import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
-import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
+import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
+import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
+import RemoveIcon from "@mui/icons-material/Remove";
 
 const iconVariants = cva({
-    size: {
-        default: "",
-        small: "text-sm",
-        large: "text-lg",
-    },
-    color: {
-        default: "",
-        primary: `text-blue-500`,
-        secondary: `text-gray-500`,
-    },
+  size: {
+    default: "",
+    small: "text-sm",
+    large: "text-lg",
+  },
+  color: {
+    default: "",
+    primary: `text-blue-500`,
+    secondary: `text-gray-500`,
+  },
 });
 const Icons = ({ type, size, color, additionalClass, ...props }) => {
-    const IconComponent = {
-        ArrowBackIcon,
-        LogoutIcon,
-        LoginIcon,
-        SearchIcon,
-        ArrowForwardIosIcon,
-        AddIcon,
-        PermIdentityOutlinedIcon,
-        AccessTimeIcon,
-        CheckIcon,
-        HelpOutlineIcon,
-        CloseIcon,
-        ExpandMoreIcon,
-        ScheduleIcon,
-        ShoppingCartOutlinedIcon,
-        HomeOutlinedIcon,
-        LocationOnOutlinedIcon,
-        ArrowForwardIcon
+  const IconComponent = {
+    ArrowBackIcon,
+    LogoutIcon,
+    LoginIcon,
+    SearchIcon,
+    ArrowForwardIosIcon,
+    AddIcon,
+    RemoveIcon,
+    PermIdentityOutlinedIcon,
+    AccessTimeIcon,
+    CheckIcon,
+    HelpOutlineIcon,
+    CloseIcon,
+    ExpandMoreIcon,
+    ScheduleIcon,
+    ShoppingCartOutlinedIcon,
+    HomeOutlinedIcon,
+    LocationOnOutlinedIcon,
+    ArrowForwardIcon,
+    ArrowBackIosNewIcon,
+  }[type];
 
-    }[type];
-
-    return (
-        <IconComponent
-            className={cn(iconVariants({ size, color }), additionalClass)}
-            {...props}
-        />
-    );
+  return (
+    <IconComponent
+      className={cn(iconVariants({ size, color }), additionalClass)}
+      {...props}
+    />
+  );
 };
 export default Icons;

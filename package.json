@@ -33,6 +33,7 @@
     "tailwind-merge": "^2.2.2"
   },
   "devDependencies": {
+    "@faker-js/faker": "^8.4.1",
     "autoprefixer": "^10.0.1",
     "eslint": "^8",
     "eslint-config-next": "14.1.3",
