@@ -26,8 +26,6 @@ export default function styleguide() {
     return result.data;
   };
 
-  console.log(init());
-
   return (
     <>
       <GlobalLayout>
@@ -81,8 +79,11 @@ export default function styleguide() {
         <DetailMain />
         <SelectedRoomDetailLayout>
           <RoomOutline />
+          <BookingRoomComponent
+            title="[룸UP& 감자빵세트] 슈페리 골저스파셜오션트윈"
+            price={1000450}
+          />
         </SelectedRoomDetailLayout>
-        <BookingRoomComponent></BookingRoomComponent>
       </GlobalLayout>
       <MainSearchBox destination="서울" headCount={3} />
       <MainSearchBox />
