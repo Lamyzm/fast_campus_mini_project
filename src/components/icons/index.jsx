@@ -23,6 +23,7 @@ const IconsList = () => {
       <Icons type="ShoppingCartOutlinedIcon" size="large" color="primary" />
       <Icons type="HomeOutlinedIcon" size="large" color="primary" />
       <Icons type="LocationOnOutlinedIcon" size="large" color="primary" />
+      <Icons type="DateRangeIcon" size="large" color="primary" />
     </>
   );
 };
