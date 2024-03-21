@@ -25,7 +25,7 @@ export default function AccommodationSwiper({ title, isButton }) {
 
   return (
     <>
-      <article className="w-full flex flex-col gap-1 main-section-padding">
+      <article className="w-full flex flex-col gap-1 main-section-padding z-0">
         <h3 className="flex justify-start font-bold text-lg mb-3">{title}</h3>
         <div className="flex gap-2 flex-row mb-2">
           {isButton
