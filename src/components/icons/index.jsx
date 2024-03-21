@@ -1,5 +1,6 @@
 import React from "react";
 import Icons from "./icons";
+import RemoveIcon from "@mui/icons-material/Remove";
 
 const IconsList = () => {
   return (
@@ -11,6 +12,7 @@ const IconsList = () => {
       <Icons type="ArrowBackIosNewIcon" size="large" color="primary" />
       <Icons type="ArrowForwardIosIcon" size="large" color="primary" />
       <Icons type="AddIcon" size="large" color="primary" />
+      <Icons type="RemoveIcon" size="large" color="primary" />
       <Icons type="PermIdentityOutlinedIcon" size="large" color="primary" />
       <Icons type="AccessTimeIcon" size="large" color="primary" />
       <Icons type="CheckIcon" size="large" color="primary" />
