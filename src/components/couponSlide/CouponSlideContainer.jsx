@@ -4,9 +4,9 @@ import CouponSlide from "./CouponSlide";
 
 const CouponSlideContainer = () => {
   return (
-    <section className="w-full relative main-section-padding">
+    <section className="relative main-section-padding box-border m-auto">
       <div>
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between ">
           <h1 style={{ fontWeight: "600", fontSize: "20px" }}>이벤트</h1>
         </div>
       </div>

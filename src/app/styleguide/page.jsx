@@ -9,12 +9,12 @@ import PopularLocationSlideContainer from "@/components/popularLoactionSlide/Pop
 import CouponSlideContainer from "@/components/couponSlide/CouponSlideContainer";
 import AccommodationSwiper from "@/components/accommodationSwipers/AccommodationSwiper";
 import SelectPeople from "@/components/SelectPeople/SelectPeople";
+import LocationCategory from "@/components/locationCategory/LocationCategory";
 
 export default function styleguide() {
   return (
     <>
       <GlobalLayout>
-        <SelectPeople></SelectPeople>
         <Buttons></Buttons>
         <div className="m-10">
           <h1> 인풋 </h1>
@@ -58,6 +58,8 @@ export default function styleguide() {
         <Calendar />
         <OldCalendar />
         <CouponSlideContainer />
+        <LocationCategory />
+        <SelectPeople />
       </GlobalLayout>
     </>
   );
