@@ -1,6 +1,5 @@
 "use client";
 import { Button } from "@/components/buttons/Button";
-import { ButtonVariants } from "./button";
 
 export default function Buttons() {
   return (

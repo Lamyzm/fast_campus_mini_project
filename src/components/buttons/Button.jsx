@@ -1,3 +1,4 @@
+"use client";
 import { cn } from "@/utils/cn";
 import { cva } from "class-variance-authority";
 
@@ -54,11 +55,12 @@ const Button = ({
         ButtonVariants({ type, size, color, outline }),
         additionalClass
       )}
-      {...props}>
+      {...props}
+      type="button">
       {children && children}
       {label && label}
     </button>
   );
 };
 
-export { Button, ButtonVariants };
+export { Button };
