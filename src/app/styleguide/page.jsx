@@ -10,6 +10,7 @@ import CouponSlideContainer from "@/components/couponSlide/CouponSlideContainer"
 import AccommodationSwiper from "@/components/accommodationSwipers/AccommodationSwiper";
 import SelectPeople from "@/components/SelectPeople/SelectPeople";
 import LocationCategory from "@/components/locationCategory/LocationCategory";
+import SearchButtons from "@/components/searchButtons/searchButtons";
 
 export default function styleguide() {
   return (
@@ -60,6 +61,8 @@ export default function styleguide() {
         <OldCalendar />
         <CouponSlideContainer />
         <LocationCategory/>
+        Search Page
+        <SearchButtons />
       </GlobalLayout>
     </>
   );
