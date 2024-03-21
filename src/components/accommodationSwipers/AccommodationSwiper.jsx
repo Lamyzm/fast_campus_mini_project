@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useId, useState } from "react";
 import "swiper/css/navigation";
 import axios from "axios";
 import SwiperSlideComponent from "./SwiperComponent";
@@ -8,6 +8,7 @@ import { Button } from "@/components/buttons/Button";
 export default function AccommodationSwiper({ title, isButton }) {
   const [data, setData] = useState("");
   const [buttonState, setButtonState] = useState("전체");
+  const id = useId();
   const buttons = ["전체", "모텔", "호텔리조트", "펜션풀빌라", "프리미엄블랙"];
 
   const fetchData = async () => {
@@ -33,7 +34,7 @@ export default function AccommodationSwiper({ title, isButton }) {
 
                 return (
                   <Button
-                    key={index}
+                    key={`${id}${index}`}
                     size="sm"
                     type="rounded"
                     color={isActive ? "primary" : ""}
