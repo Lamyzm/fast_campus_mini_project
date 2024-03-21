@@ -18,15 +18,13 @@ import RoomOutline from "@/components/roomOutline/RoomOutline";
 import DetailMain from "@/components/detailMain/DetailMain";
 import axios from "axios";
 import SelectedRoomDetailLayout from "@/components/SelectedRoomDetailLayout";
+import BookingRoomComponent from "@/components/BookingRoomComponent/BookingRoomComponent";
 
 export default function styleguide() {
-
   const init = async () => {
     const result = await axios.get("/api");
-    return result.data
-  }
-
-  console.log(init())
+    return result.data;
+  };
 
   return (
     <>
@@ -75,12 +73,16 @@ export default function styleguide() {
         <OldCalendar />
         <CouponSlideContainer />
         <LocationCategory />
-        <SelectPeople  />
+        <SelectPeople />
         <MainNav />
         <RoomCategory />
         <DetailMain />
         <SelectedRoomDetailLayout>
           <RoomOutline />
+          <BookingRoomComponent
+            title="[룸UP& 감자빵세트] 슈페리 골저스파셜오션트윈"
+            price={1000450}
+          />
         </SelectedRoomDetailLayout>
       </GlobalLayout>
       <MainSearchBox destination="서울" headCount={3} />
