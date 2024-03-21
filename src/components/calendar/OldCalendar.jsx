@@ -9,17 +9,24 @@ import { ArrowBackIos, ArrowForwardIos } from "@mui/icons-material";
 const Calendar = () => {
   const days = ["일", "월", "화", "수", "목", "금", "토"];
   const currentDate = dayjs();
-  const [selectedDates, setSelectedDates] = useState([currentDate, currentDate.add(1, "month")]);
+  const initialDates = [currentDate, currentDate.add(1, "month")];
+  const [selectedDates, setSelectedDates] = useState(initialDates);
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
   const calendarRef = useRef(null);
 
   const handlePrevMonth = () => {
-    setSelectedDates(prevDates => [prevDates[0].subtract(1, "month"), prevDates[1].subtract(1, "month")]);
+    const newSelectedDates = [...selectedDates];
+    const lastSelectedDate = newSelectedDates[newSelectedDates.length - 1];
+    newSelectedDates.push(lastSelectedDate.subtract(1, "month"));
+    setSelectedDates(newSelectedDates);
   };
 
   const handleNextMonth = () => {
-    setSelectedDates(prevDates => [prevDates[0].add(1, "month"), prevDates[1].add(1, "month")]);
+    const newSelectedDates = [...selectedDates];
+    const lastSelectedDate = newSelectedDates[newSelectedDates.length - 1];
+    newSelectedDates.push(lastSelectedDate.add(1, "month"));
+    setSelectedDates(newSelectedDates);
   };
 
   const handleToday = () => {
@@ -69,7 +76,7 @@ const Calendar = () => {
               <h1>
                 {selectedDate.year()}년 {months[selectedDate.month()]}
               </h1>
-              {idx === 0 && (
+              {/* {idx === 0 && (
                 <div className="flex items-center gap-3">
                   <ArrowBackIos
                     className="w-4 h-4 cursor-pointer text-gray-500 hover:text-black"
@@ -86,7 +93,7 @@ const Calendar = () => {
                     onClick={handleNextMonth}
                   />
                 </div>
-              )}
+              )} */}
             </div>
             <div className="grid grid-cols-7 font-semibold">
               {days.map((day, index) => (
@@ -96,48 +103,55 @@ const Calendar = () => {
               ))}
             </div>
             <div className="grid grid-cols-7">
-              {generateDate(selectedDate.month(), selectedDate.year()).map(
-                ({ date, currentMonth, today, visible }, index) => (
-                  <div
-                    key={index}
-                    onClick={() => handleDateClick(date)}
-                    className={cn(
-                      "h-14 border-t grid place-content-center text-sm",
-                      calendarCn(
-                        visible ? "" : "invisible",
-                        today && currentMonth ? "bg-gray-400 text-white" : "",
-                        isDateSelected(date) ? "bg-gray-200 text-gray-600" : "",
-                        startDate && date.isSame(startDate, "day") ? "bg-red-300 text-white" : "", 
-                        endDate && date.isSame(endDate, "day") ? "bg-blue-300 text-white" : "" 
-                      )
-                    )}
-                  >
-                    <h1
-                      className={cn(
-                        calendarCn(
-                          !currentMonth ? "text-gray-400" : "",
-                          "h-10 w-10 grid place-content-center rounded-full hover:bg-black hover:text-white transition-all cursor-pointer"
-                        )
-                      )}
-                    >
-                      {visible ? date.date() : ""}
-                    </h1>
-                  </div>
-                )
-              )}
-            </div>
+  {generateDate(selectedDate.month(), selectedDate.year()).map(
+    ({ date, currentMonth, today, visible }, index) => (
+      <div
+        key={index}
+        onClick={() => handleDateClick(date)}
+        className={cn(
+          'h-14 border-t grid place-content-center text-sm',
+          calendarCn(
+            visible ? '' : 'invisible', 
+            today && currentMonth ? 'bg-gray-400 text-white' : '',
+            isDateSelected(date) ? 'bg-gray-200 text-gray-600' : '', 
+            startDate && date.isSame(startDate, 'day') ? 'bg-red-300 text-white' : '', // Darker color for start date
+            endDate && date.isSame(endDate, 'day') ? 'bg-blue-300 text-white' : '' // Darker color for end date
+          ),
+        )}
+      >
+        <h1
+          className={cn(
+            calendarCn(
+              !currentMonth ? 'text-gray-400' : '',
+              'h-10 w-10 grid place-content-center rounded-full hover:bg-black hover:text-white transition-all cursor-pointer'
+            )
+          )}
+        >
+          {visible ? date.date() : ''}
+        </h1>
+      </div>
+    )
+  )}
+</div>
           </div>
         ))}
-        <div className="flex mx-3 justify-end">
+        <div className="flex m-3 justify-center">
           <Button
-            size="sm"
-            type="default"
-            color="black"
-            additionalClass="w-20"
-            onClick={handleConfirm}
+            size="lg"
+            color="white"
+            outline="outlineSemi"
+            additionalClass="flex w-96"
+            onClick={handleNextMonth}
           >
-            확인
+            날짜 더 보기
           </Button>
+        </div>
+        <div className="flex mx-3 justify-end">
+        <Button size="sm" type="default" color="black"
+        additionalClass="w-20"
+        onClick={handleConfirm}>
+          확인
+        </Button>
         </div>
       </div>
     </div>

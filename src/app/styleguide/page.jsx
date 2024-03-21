@@ -3,8 +3,8 @@ import Buttons from "@/components/buttons/Buttons";
 import IconsList from "@/components/icons";
 import { Input } from "@/components/input";
 import Calendar from "@/components/calendar/Calendar";
-import NewCalendar from "@/components/calendar/Calendar2";
 import { GlobalLayout } from "@/components/GlobalLayout";
+import OldCalendar from "@/components/calendar/OldCalendar";
 import PopularLocationSlideContainer from "@/components/popularLoactionSlide/PopularLocationSlideContainer";
 import CouponSlideContainer from "@/components/couponSlide/CouponSlideContainer";
 import AccommodationSwiper from "@/components/accommodationSwipers/AccommodationSwiper";
@@ -56,7 +56,7 @@ export default function styleguide() {
           title="강릉 풀펜션"
           isButton={true}></AccommodationSwiper>
         <Calendar />
-        <NewCalendar />
+        <OldCalendar />
         <CouponSlideContainer />
       </GlobalLayout>
     </>
