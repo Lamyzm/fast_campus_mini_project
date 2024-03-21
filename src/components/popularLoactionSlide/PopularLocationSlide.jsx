@@ -26,7 +26,7 @@ const PopularLocationSlide = () => {
     };
     return (
         <>
-            <div className="w-full relative h-[260px]">
+            <div className="w-full relative h-[260px] mt-4 mb-4 ">
                 <Swiper {...swiperConfig} className="my-swiper h-[260px]">
                     <SwiperSlide className="my-swiper-slide h-[260px]">
                         <Link href='/'>
