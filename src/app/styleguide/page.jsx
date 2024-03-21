@@ -13,8 +13,19 @@ import LocationCategory from "@/components/locationCategory/LocationCategory";
 import MainNav from "@/components/mainNav/MainNav";
 import RoomCategory from "@/components/roomCategory/RoomCategory";
 import RoomOutline from "@/components/roomOutline/RoomOutline";
+import DetailMain from "@/components/detailMain/DetailMain";
+import axios from "axios";
+import SelectedRoomDetailLayout from "@/components/SelectedRoomDetailLayout";
 
 export default function styleguide() {
+
+  const init = async () => {
+    const result = await axios.get("/api");
+    return result.data
+  }
+
+  console.log(init())
+
   return (
     <>
       <GlobalLayout>
@@ -65,7 +76,10 @@ export default function styleguide() {
         <LocationCategory />
         <MainNav />
         <RoomCategory />
-        <RoomOutline />
+        <DetailMain />
+        <SelectedRoomDetailLayout>
+          <RoomOutline />
+        </SelectedRoomDetailLayout>
       </GlobalLayout>
     </>
   );
