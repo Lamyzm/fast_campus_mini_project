@@ -29,18 +29,9 @@ export const generateDate = (month = dayjs().month(), year = dayjs().year()) => 
     });
   }
 
-  // Calculate the remaining days to fill the grid
-  const remaining = 42 - arrayOfDate.length;
-  for (let i = 1; i <= remaining; i++) {
-    const date = lastDateOfMonth.add(i, "day");
-    arrayOfDate.push({
-      visible: false,
-      date,
-    });
-  }
-
   return arrayOfDate;
 };
+
 
 
 export const months = [
