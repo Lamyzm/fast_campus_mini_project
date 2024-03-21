@@ -9,7 +9,7 @@ import Link from "next/link";
 export default function SwiperSlideComponent({ content }) {
   const navigationPrevRef = React.useRef(null);
   const navigationNextRef = React.useRef(null);
-  console.log("contnet: ", content);
+
   const swiperConfig = {
     slidesPerView: "auto",
     centeredSlides: false,
