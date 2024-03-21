@@ -32,7 +32,7 @@ export default function SwiperSlideComponent({ content }) {
         <Swiper {...swiperConfig} className="my-swiper">
           {content ? (
             content.map((item, index) => {
-              return (
+              return (   
                 <SwiperSlide
                   className="my-swiper-slide"
                   key={`${index}${index}`}>
