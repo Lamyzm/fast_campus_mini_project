@@ -20,6 +20,7 @@ import axios from "axios";
 import SelectedRoomDetailLayout from "@/components/SelectedRoomDetailLayout";
 import BookingRoomComponent from "@/components/BookingRoomComponent/BookingRoomComponent";
 import AccommodationList from "@/components/accommodationList/AccommodationList";
+import CartPrice from "@/components/cartPrice/CartPrice";
 
 export default function styleguide() {
   const init = async () => {
@@ -86,6 +87,7 @@ export default function styleguide() {
           />
         </SelectedRoomDetailLayout>
         <AccommodationList />
+        <CartPrice />
       </GlobalLayout>
       <MainSearchBox destination="서울" headCount={3} />
       <MainSearchBox />
