@@ -18,13 +18,13 @@ const AccommodationList = () => {
   }, []);
 
   return (
-    <div className="w-full">
+    <div className="w-full flex flex-wrap justify-center">
       {data.map((item) => (
-        <div key={item.id} className="m-4 p-[20px] flex shadow-xl min-h-[300px] max-w-[500px] border-black border-solid border-2">
-          <div className="rounded-md h-[260px] bg-gray-100 w-[220px]"> 
+        <div key={item.id} className="m-6 p-[20px] flex shadow-xl min-h-[230px] min-w-[450px] w-full md:w-[45%]">
+          <div className="rounded-md h-[200px] bg-gray-100 min-w-[170px]"> 
             <img src={item.image} alt={item.productName} className="w-full h-full object-cover rounded-md" />
           </div>
-          <div className="flex-col p-3 ml-3 flex space-y-3 justify-between">
+          <div className="flex-col p-3 ml-3 flex space-y-3 justify-between w-full">
             <div>
               <h1 className="font-bold text-2xl mb-2">
                 {item.productName}
