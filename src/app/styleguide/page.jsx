@@ -25,6 +25,7 @@ import DetailNav from "@/components/detailNav/DetailNav";
 import ShoppingCartNav from "@/components/shoppingCartNav/ShoppingCartNav";
 import PayCompleteNav from "@/components/payCompleteNav/PayCompleteNav";
 import CartPrice from "@/components/cartPrice/CartPrice";
+import CartPrice from "@/components/cartPrice/CartPrice";
 
 export default function styleguide() {
   const init = async () => {
@@ -91,12 +92,6 @@ export default function styleguide() {
           />
         </SelectedRoomDetailLayout>
         <AccommodationList />
-        <SelectedRoomPay />
-        <SelectNav />
-        <DetailNav />
-        <ShoppingCartNav />
-        <PayCompleteNav />
-        <CartPrice />
       </GlobalLayout>
       <MainSearchBox destination="서울" headCount={3} />
       <MainSearchBox />
