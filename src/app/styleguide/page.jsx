@@ -19,6 +19,7 @@ import DetailMain from "@/components/detailMain/DetailMain";
 import axios from "axios";
 import SelectedRoomDetailLayout from "@/components/SelectedRoomDetailLayout";
 import BookingRoomComponent from "@/components/BookingRoomComponent/BookingRoomComponent";
+import AccommodationList from "@/components/accommodationList/AccommodationList";
 
 export default function styleguide() {
   const init = async () => {
@@ -84,6 +85,7 @@ export default function styleguide() {
             price={1000450}
           />
         </SelectedRoomDetailLayout>
+        <AccommodationList />
       </GlobalLayout>
       <MainSearchBox destination="서울" headCount={3} />
       <MainSearchBox />
