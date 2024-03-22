@@ -4,7 +4,7 @@ import PopularLocationSlide from "./PopularLocationSlide";
 
 const PopularLocationSlideContainer = () => {
   return (
-    <section className="w-full relative main-section-padding box-border">
+    <section className="w-full relative main-section-padding box-border z-0">
       <div>
         <div className="flex items-center justify-between">
           <h1 style={{ fontWeight: "600", fontSize: "20px" }}>
