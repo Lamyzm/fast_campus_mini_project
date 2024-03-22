@@ -45,7 +45,7 @@ const AccommodationList2 = () => {
                 </div>
               </div>
             </div>
-            <div className="flex-col p-3 ml-3 flex space-y-3 justify-between w-full">
+            <div className="flex-col p-3 mt-1 flex space-y-3 justify-between w-full">
               <h1 className="font-bold text-xl mb-2">{item.productName}</h1>
               <p className="text-lg text-gray-500">{item.category}</p>
               <div className="text-right">
