@@ -91,6 +91,12 @@ export default function styleguide() {
           />
         </SelectedRoomDetailLayout>
         <AccommodationList />
+        <SelectedRoomPay/>
+        <CartPrice/>
+        <SelectNav/>
+        <DetailNav/>
+        <ShoppingCartNav/>
+        <PayCompleteNav/>
       </GlobalLayout>
       <MainSearchBox destination="서울" headCount={3} />
       <MainSearchBox />
