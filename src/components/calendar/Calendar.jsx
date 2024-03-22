@@ -92,7 +92,7 @@ const Calendar = () => {
                   </h1>
                   <Icons type="ArrowForwardIosIcon" size="large" color="primary" 
                   additionalClass="w-4 h-4 cursor-pointer text-gray-500 hover:text-black"
-                  onClick={handlePrevMonth}/>
+                  onClick={handleNextMonth}/>
                 </div>
               )}
             </div>
