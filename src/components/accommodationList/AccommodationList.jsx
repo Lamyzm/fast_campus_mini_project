@@ -16,27 +16,26 @@ const AccommodationList = () => {
   useEffect(() => {
     fetchData();
   }, []);
-
   return (
-    <div className="w-full flex flex-wrap justify-center">
-      {data.map((item) => (
-        <div key={item.id} className="m-6 p-[20px] flex shadow-xl min-h-[230px] min-w-[450px] w-full md:w-[45%]">
-          <div className="rounded-md h-[200px] bg-gray-100 min-w-[170px]"> 
-            <img src={item.image} alt={item.productName} className="w-full h-full object-cover rounded-md" />
+    <div className="w-full grid grid-cols-2 ">
+      {data.map((item, index) => (
+        <div
+          key={item.id}
+          className="m-6 p-[20px] flex shadow-xl min-h-[230px] min-w-[450px] w-full md:w-[45%]">
+          <div className="rounded-md h-[200px] bg-gray-100 min-w-[170px]">
+            <img
+              src={item.image}
+              alt={item.productName}
+              className="w-full h-full object-cover rounded-md"
+            />
           </div>
           <div className="flex-col p-3 ml-3 flex space-y-3 justify-between w-full">
             <div>
-              <h1 className="font-bold text-2xl mb-2">
-                {item.productName}
-              </h1>
-              <p className="text-lg text-gray-500">
-                {item.category}
-              </p>
+              <h1 className="font-bold text-2xl mb-2">{item.productName}</h1>
+              <p className="text-lg text-gray-500">{item.category}</p>
             </div>
             <div className="text-right">
-              <p className="text-lg">
-                숙박 15:00 ~
-              </p>
+              <p className="text-lg">숙박 15:00 ~</p>
               <div className="flex justify-end items-center">
                 <h2 className="font-bold text-2xl mr-1">
                   {item.minPrice.toLocaleString()}원~
