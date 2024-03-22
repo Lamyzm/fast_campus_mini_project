@@ -25,7 +25,6 @@ import DetailNav from "@/components/detailNav/DetailNav";
 import ShoppingCartNav from "@/components/shoppingCartNav/ShoppingCartNav";
 import PayCompleteNav from "@/components/payCompleteNav/PayCompleteNav";
 import CartPrice from "@/components/cartPrice/CartPrice";
-import CartPrice from "@/components/cartPrice/CartPrice";
 
 export default function styleguide() {
   const init = async () => {
