@@ -19,6 +19,7 @@ import BookingRoomComponent from "@/components/BookingRoomComponent/BookingRoomC
 import AccommodationList from "@/components/accommodationList/AccommodationList";
 import RoomOutline from "@/components/roomOutline/RoomOutline";
 import SelectedRoomMain from "@/components/selectedRoomMain/SelectedRoomMain";
+import CartPrice from "@/components/cartPrice/CartPrice";
 
 export default function styleguide() {
   const init = async () => {
@@ -85,6 +86,7 @@ export default function styleguide() {
           />
         </SelectedRoomDetailLayout>
         <AccommodationList />
+        <CartPrice />
       </GlobalLayout>
       <MainSearchBox destination="서울" headCount={3} />
       <MainSearchBox />
