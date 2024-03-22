@@ -8,7 +8,7 @@ const RoomOutline = () => {
     return (
         <>
             <div>
-                <div className="bg-gray-50 py-8 px-4 sm:px-6 lg:px-8">
+                <div className="bg-gray-50 py-8 px-4 sm:px-6 lg:px-8 ">
                     {/* 숙소 소개 */}
                     <div className="max-w-md mx-auto ">
                         <h1 className=" py-5 text-2xl font-bold text-gray-800 mb-4">숙소 소개</h1>
@@ -149,7 +149,7 @@ const RoomOutline = () => {
                     )
                         : (<>
                             <div className='max-w-md mx-auto mt-16 flex justify-center items-center px-5'>
-                                <Button size="lg" type="rounded" color="black" additionalClass="w-full" onClick={() => setIsOpen(true)}>
+                                <Button size="lg" type="rounded" color="primary" additionalClass="w-full" onClick={() => setIsOpen(true)}>
                                     전체보기
                                 </Button>
                             </div>

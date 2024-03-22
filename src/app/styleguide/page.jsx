@@ -11,15 +11,20 @@ import AccommodationSwiper from "@/components/accommodationSwipers/Accommodation
 import SelectPeople from "@/components/SelectPeople/SelectPeople";
 import LocationCategory from "@/components/locationCategory/LocationCategory";
 import MainSearchBox from "@/components/MainSearchBox/MainSearchBox";
-import SearchButtons from "@/components/searchButtons/searchButtons";
 import MainNav from "@/components/mainNav/MainNav";
 import RoomCategory from "@/components/roomCategory/RoomCategory";
-import RoomOutline from "@/components/roomOutline/RoomOutline";
-import DetailMain from "@/components/detailMain/DetailMain";
 import axios from "axios";
 import SelectedRoomDetailLayout from "@/components/SelectedRoomDetailLayout";
 import BookingRoomComponent from "@/components/BookingRoomComponent/BookingRoomComponent";
 import AccommodationList from "@/components/accommodationList/AccommodationList";
+import RoomOutline from "@/components/roomOutline/RoomOutline";
+import SelectedRoomMain from "@/components/selectedRoomMain/SelectedRoomMain";
+import SelectedRoomPay from "@/components/selectedRoomPay/SelectedRoomPay";
+import SelectNav from "@/components/selectNav/SelectNav";
+import DetailNav from "@/components/detailNav/DetailNav";
+import ShoppingCartNav from "@/components/shoppingCartNav/ShoppingCartNav";
+import PayCompleteNav from "@/components/payCompleteNav/PayCompleteNav";
+import CartPrice from "@/components/cartPrice/CartPrice";
 import AccommodationList2 from "@/components/accommodationList/AccommodationList2";
 
 export default function styleguide() {
@@ -78,8 +83,8 @@ export default function styleguide() {
         <SelectPeople />
         <MainNav />
         <RoomCategory />
-        <DetailMain />
         <SelectedRoomDetailLayout>
+          <SelectedRoomMain />
           <RoomOutline />
           <BookingRoomComponent
             title="[룸UP& 감자빵세트] 슈페리 골저스파셜오션트윈"
@@ -87,6 +92,12 @@ export default function styleguide() {
           />
         </SelectedRoomDetailLayout>
         <AccommodationList />
+        <SelectedRoomPay/>
+        <CartPrice/>
+        <SelectNav/>
+        <DetailNav/>
+        <ShoppingCartNav/>
+        <PayCompleteNav/>
         <AccommodationList2 />
       </GlobalLayout>
       <MainSearchBox destination="서울" headCount={3} />
