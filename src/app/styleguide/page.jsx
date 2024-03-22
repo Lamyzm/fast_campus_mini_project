@@ -64,10 +64,10 @@ export default function styleguide() {
         <LocationCategory />
         <SearchButtons />
         <SelectPeople />
-        <MainSearchBox destination="서울" headCount={3} />
-        <MainSearchBox />
         <AccommodationList />
       </GlobalLayout>
+      <MainSearchBox destination="서울" headCount={3} />
+      <MainSearchBox />
     </>
   );
 }
