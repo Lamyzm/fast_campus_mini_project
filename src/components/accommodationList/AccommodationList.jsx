@@ -17,11 +17,11 @@ const AccommodationList = () => {
     fetchData();
   }, []);
   return (
-    <div className="w-full grid grid-cols-2 ">
-      {data.map((item, index) => (
+    <div className="w-full lg:grid lg:grid-cols-2 flex flex-col">
+      {data.map((item) => (
         <div
           key={item.id}
-          className="m-6 p-[20px] flex shadow-xl min-h-[230px] min-w-[450px] w-full md:w-[45%]">
+          className="m-6 p-[20px] flex shadow-xl min-h-[230px] min-w-[450px] w-full lg:w-[45%]">
           <div className="rounded-md h-[200px] bg-gray-100 min-w-[170px]">
             <img
               src={item.image}
@@ -31,7 +31,7 @@ const AccommodationList = () => {
           </div>
           <div className="flex-col p-3 ml-3 flex space-y-3 justify-between w-full">
             <div>
-              <h1 className="font-bold text-2xl mb-2">{item.productName}</h1>
+              <h1 className="font-bold text-xl mb-2">{item.productName}</h1>
               <p className="text-lg text-gray-500">{item.category}</p>
             </div>
             <div className="text-right">
