@@ -19,7 +19,7 @@ export async function GET() {
         "image": faker.image.urlPicsumPhotos(),
         "productName": "파라다이스 호텔 부산",
         "minPrice": 338800,
-        "address": "주소",
+        "address": "부산광역시 해운대구 달맞이길 30",
         "maximumPeople": 4,
         "soldOut": true,
         "category": "호텔",

@@ -6,7 +6,7 @@ const MainNav = () => {
     const cartItemCount = 5;
     return (
         <>
-            <div className="flex justify-between items-center fixed w-[1000px] h-[65px] top-0 shadow-md bg-white z-[100];">
+            <div className="flex justify-between items-center fixed w-[1000px] h-[65px] top-0 shadow-md bg-white z-[100] relative;">
                 <Link className="text-blue-800 text-xl font-semibold cursor-pointer px-[18px] py-0" href="/">
                     3조화이팅
                 </Link>
