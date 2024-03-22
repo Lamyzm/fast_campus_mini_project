@@ -24,6 +24,7 @@ import SelectNav from "@/components/selectNav/SelectNav";
 import DetailNav from "@/components/detailNav/DetailNav";
 import ShoppingCartNav from "@/components/shoppingCartNav/ShoppingCartNav";
 import PayCompleteNav from "@/components/payCompleteNav/PayCompleteNav";
+import CartPrice from "@/components/cartPrice/CartPrice";
 
 export default function styleguide() {
   const init = async () => {
@@ -95,6 +96,7 @@ export default function styleguide() {
         <DetailNav />
         <ShoppingCartNav />
         <PayCompleteNav />
+        <CartPrice />
       </GlobalLayout>
       <MainSearchBox destination="서울" headCount={3} />
       <MainSearchBox />
