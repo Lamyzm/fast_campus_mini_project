@@ -12,9 +12,21 @@ import SelectPeople from "@/components/SelectPeople/SelectPeople";
 import LocationCategory from "@/components/locationCategory/LocationCategory";
 import MainSearchBox from "@/components/MainSearchBox/MainSearchBox";
 import SearchButtons from "@/components/searchButtons/searchButtons";
+import MainNav from "@/components/mainNav/MainNav";
+import RoomCategory from "@/components/roomCategory/RoomCategory";
+import RoomOutline from "@/components/roomOutline/RoomOutline";
+import DetailMain from "@/components/detailMain/DetailMain";
+import axios from "axios";
+import SelectedRoomDetailLayout from "@/components/SelectedRoomDetailLayout";
+import BookingRoomComponent from "@/components/BookingRoomComponent/BookingRoomComponent";
 import AccommodationList from "@/components/accommodationList/AccommodationList";
 
 export default function styleguide() {
+  const init = async () => {
+    const result = await axios.get("/api");
+    return result.data;
+  };
+
   return (
     <>
       <GlobalLayout>
@@ -62,8 +74,17 @@ export default function styleguide() {
         <OldCalendar />
         <CouponSlideContainer />
         <LocationCategory />
-        <SearchButtons />
         <SelectPeople />
+        <MainNav />
+        <RoomCategory />
+        <DetailMain />
+        <SelectedRoomDetailLayout>
+          <RoomOutline />
+          <BookingRoomComponent
+            title="[룸UP& 감자빵세트] 슈페리 골저스파셜오션트윈"
+            price={1000450}
+          />
+        </SelectedRoomDetailLayout>
         <AccommodationList />
       </GlobalLayout>
       <MainSearchBox destination="서울" headCount={3} />

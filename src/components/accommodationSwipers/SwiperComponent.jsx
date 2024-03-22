@@ -10,7 +10,7 @@ export default function SwiperSlideComponent({ content }) {
   const id = useId();
   const navigationPrevRef = React.useRef(null);
   const navigationNextRef = React.useRef(null);
-  console.log("contnet: ", content);
+
   const swiperConfig = {
     slidesPerView: "auto",
     centeredSlides: false,

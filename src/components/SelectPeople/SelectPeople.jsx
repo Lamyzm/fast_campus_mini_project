@@ -12,12 +12,12 @@ const guestTypes = {
 
 const SelectItem = ({ label, description, formId }) => {
   const [peopleCount, setPeopleCount] = useState(0);
-  const checkPeopleCount = (pepleCount) => {
-    if (0 > pepleCount) return;
-    setPeopleCount(pepleCount);
+  const checkPeopleCount = (cnt) => {
+    if (0 > cnt) return;
+    setPeopleCount(cnt);
   };
   return (
-    <div className="flex justify-center flex-row justify-between p-5">
+    <div className="flex flex-row justify-between p-5">
       <div className="flex flex-col gap-2">
         <p className="block font-bold text-xl">{label}</p>
         <p className="block text-gray-400">{description}</p>
