@@ -17,13 +17,13 @@ export default function BookingRoomComponent({ title, price }) {
                 size="large"
                 color="primary"
                 additionalClass={
-                  "text-xs absolute -left-4 top-[2px] fill-subtle-gray"
+                  "text-xs absolute -left-4 top-[2px] fill-subtitle-gray"
                 }
               />
-              <p className="text-xs text-subtle-gray font-semibold">
+              <p className="text-xs text-subtitle-gray font-semibold">
                 입실 16:00
               </p>
-              <p className="text-xs text-subtle-gray font-semibold">
+              <p className="text-xs text-subtitle-gray font-semibold">
                 퇴실 11:00
               </p>
             </div>

@@ -27,6 +27,9 @@ import PayCompleteNav from "@/components/payCompleteNav/PayCompleteNav";
 import CartPrice from "@/components/cartPrice/CartPrice";
 import AccommodationList2 from "@/components/accommodationList/AccommodationList2";
 import SearchButtons from "@/components/searchButtons/searchButtons";
+import CartItem from "@/components/CartItem/CartItem";
+import CartIndex from "@/components/CartItem/CartList";
+import PopularSwiper from "@/components/accommodationSwipers/PopularSwiper";
 
 export default function styleguide() {
   const init = async () => {
@@ -72,6 +75,7 @@ export default function styleguide() {
           <IconsList />
         </div>
         <PopularLocationSlideContainer />
+        <PopularSwiper title="국내 인기 여행지"></PopularSwiper>
         <div className="h-12 w-full">--</div>
         <AccommodationSwiper title="인기여행"></AccommodationSwiper>
         <AccommodationSwiper
@@ -92,14 +96,17 @@ export default function styleguide() {
           />
         </SelectedRoomDetailLayout>
         <AccommodationList />
-        <SelectedRoomPay/>
-        <CartPrice/>
-        <SelectNav/>
-        <DetailNav/>
-        <ShoppingCartNav/>
-        <PayCompleteNav/>
+        <SelectedRoomPay />
+        <CartPrice />
+        <SelectNav />
+        <DetailNav />
+        <ShoppingCartNav />
+        <PayCompleteNav />
         <AccommodationList2 />
         <SearchButtons />
+
+        <CartItem></CartItem>
+        <CartIndex></CartIndex>
       </GlobalLayout>
       <MainSearchBox destination="서울" headCount={3} />
       <MainSearchBox />
