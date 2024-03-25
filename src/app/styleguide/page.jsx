@@ -104,7 +104,6 @@ export default function styleguide() {
         <PayCompleteNav />
         <AccommodationList2 />
         <SearchButtons />
-
         <CartItem></CartItem>
         <CartIndex></CartIndex>
       </GlobalLayout>
