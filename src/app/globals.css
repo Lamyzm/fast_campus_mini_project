@@ -49,6 +49,17 @@ body {
   align-items: center;
   flex-shrink: 1;
 }
+
+.my-swiper-slide-locale {
+  width: 180px !important;
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 1;
+}
 .swiper-button-prev_v svg path {
   justify-self: center;
 }

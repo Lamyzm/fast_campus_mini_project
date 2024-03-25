@@ -10,7 +10,10 @@ export default function SwiperSlideComponent({ content }) {
   const id = useId();
   const navigationPrevRef = React.useRef(null);
   const navigationNextRef = React.useRef(null);
-
+  let isLocale = false;
+  if (!content[0]?.productName) {
+    isLocale = true;
+  }
   const swiperConfig = {
     slidesPerView: "auto",
     centeredSlides: false,
@@ -32,30 +35,40 @@ export default function SwiperSlideComponent({ content }) {
         <Swiper {...swiperConfig} className="my-swiper">
           {content ? (
             content.map((item, index) => {
-              return (   
+              return (
                 <SwiperSlide
-                  className="my-swiper-slide"
-                  key={`${index}${index}`}>
+                  className={
+                    isLocale ? "my-swiper-slide-locale" : "my-swiper-slide"
+                  }
+                  key={`${id}${index}`}>
                   <Link href="/main">
-                    <div className="w-full h-full text-black  flex-col justify-center justify-items-center ">
-                      <div className=" overflow-hidden">
+                    <div className="w-full h-full  text-black  flex-col justify-center justify-items-center ">
+                      <div className=" overflow-hidden relative rounded-xl">
                         <img
-                          className="rounded-xl w-full h-[160px] object-cover block mb-4"
+                          className=" w-full h-[160px] object-cover block"
                           src={item.image}
                           alt="ran"
                         />
+                        <div className="w-full h-full absolute top-0  hover:bg-black hover:bg-opacity-30 transition-colors "></div>
                       </div>
-                      <div className="text-start overflow-ellipsis flex flex-col gap-y-1 justify-between flex-col w-full h-[35%]">
+                      <div className="text-start overflow-ellipsis flex gap-y-1 justify-between flex-col w-full h-[35%]">
                         <div>
-                          <p className="text-xs">{item.category}</p>
+                          <p className="text-xs pt-4">{item.category}</p>
                           <h4 className="text-base overflow-ellipsis whitespace-nowrap overflow-hidden block w-[80%] font-bold ">
                             {item.productName}
                           </h4>
-                          <p className="text-stone-600">{item.area}</p>
+                          <p
+                            className={`text-stone-600 pt-4 ${
+                              isLocale ? "text-center" : ""
+                            }`}>
+                            {item.area}
+                          </p>
                         </div>
                         <div>
                           <p className="font-bold">
-                            {item.minPrice.toLocaleString()} 원
+                            {item.minPrice
+                              ? `${item.minPrice.toLocaleString()} 원`
+                              : ""}
                           </p>
                         </div>
                       </div>
