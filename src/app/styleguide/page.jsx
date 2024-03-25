@@ -19,6 +19,14 @@ import BookingRoomComponent from "@/components/BookingRoomComponent/BookingRoomC
 import AccommodationList from "@/components/accommodationList/AccommodationList";
 import RoomOutline from "@/components/roomOutline/RoomOutline";
 import SelectedRoomMain from "@/components/selectedRoomMain/SelectedRoomMain";
+import SelectedRoomPay from "@/components/selectedRoomPay/SelectedRoomPay";
+import SelectNav from "@/components/selectNav/SelectNav";
+import DetailNav from "@/components/detailNav/DetailNav";
+import ShoppingCartNav from "@/components/shoppingCartNav/ShoppingCartNav";
+import PayCompleteNav from "@/components/payCompleteNav/PayCompleteNav";
+import CartPrice from "@/components/cartPrice/CartPrice";
+import AccommodationList2 from "@/components/accommodationList/AccommodationList2";
+import SearchButtons from "@/components/searchButtons/searchButtons";
 
 export default function styleguide() {
   const init = async () => {
@@ -70,7 +78,6 @@ export default function styleguide() {
           title="강릉 풀펜션"
           isButton={true}></AccommodationSwiper>
         <Calendar />
-        <OldCalendar />
         <CouponSlideContainer />
         <LocationCategory />
         <SelectPeople />
@@ -85,6 +92,14 @@ export default function styleguide() {
           />
         </SelectedRoomDetailLayout>
         <AccommodationList />
+        <SelectedRoomPay/>
+        <CartPrice/>
+        <SelectNav/>
+        <DetailNav/>
+        <ShoppingCartNav/>
+        <PayCompleteNav/>
+        <AccommodationList2 />
+        <SearchButtons />
       </GlobalLayout>
       <MainSearchBox destination="서울" headCount={3} />
       <MainSearchBox />

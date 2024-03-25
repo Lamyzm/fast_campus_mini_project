@@ -4,7 +4,7 @@ import dayjs from "dayjs";
 import { useState, useRef } from "react";
 import { cn } from "@/utils/cn";
 import { Button } from "@/components/buttons/Button";
-import { ArrowBackIos, ArrowForwardIos } from "@mui/icons-material";
+import Icons from "../icons/icons";
 
 const Calendar = () => {
   const days = ["일", "월", "화", "수", "목", "금", "토"];
@@ -82,19 +82,17 @@ const Calendar = () => {
               </h1>
               {idx === 0 && (
                 <div className="flex items-center gap-3">
-                  <ArrowBackIos
-                    className="w-4 h-4 cursor-pointer text-gray-500 hover:text-black"
-                    onClick={handlePrevMonth}
-                  />
+                  <Icons type="ArrowBackIosNewIcon" size="large" color="primary" 
+                  additionalClass="w-4 h-4 cursor-pointer text-gray-500 hover:text-black"
+                  onClick={handlePrevMonth}/>
                   <h1
                     className="cursor-pointer text-gray-600 hover:text-black"
                     onClick={handleToday}>
                     Today
                   </h1>
-                  <ArrowForwardIos
-                    className="w-4 h-4 cursor-pointer text-gray-500 hover:text-black"
-                    onClick={handleNextMonth}
-                  />
+                  <Icons type="ArrowForwardIosIcon" size="large" color="primary" 
+                  additionalClass="w-4 h-4 cursor-pointer text-gray-500 hover:text-black"
+                  onClick={handleNextMonth}/>
                 </div>
               )}
             </div>
@@ -146,7 +144,7 @@ const Calendar = () => {
           <Button
             size="sm"
             type="default"
-            color="black"
+            color="primary"
             additionalClass="w-20"
             onClick={handleConfirm}>
             확인

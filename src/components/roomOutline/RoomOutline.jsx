@@ -149,7 +149,7 @@ const RoomOutline = () => {
                     )
                         : (<>
                             <div className='max-w-md mx-auto mt-16 flex justify-center items-center px-5'>
-                                <Button size="lg" type="rounded" color="black" additionalClass="w-full" onClick={() => setIsOpen(true)}>
+                                <Button size="lg" type="rounded" color="primary" additionalClass="w-full" onClick={() => setIsOpen(true)}>
                                     전체보기
                                 </Button>
                             </div>
