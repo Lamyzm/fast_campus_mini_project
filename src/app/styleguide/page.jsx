@@ -19,6 +19,9 @@ import BookingRoomComponent from "@/components/BookingRoomComponent/BookingRoomC
 import AccommodationList from "@/components/accommodationList/AccommodationList";
 import RoomOutline from "@/components/roomOutline/RoomOutline";
 import SelectedRoomMain from "@/components/selectedRoomMain/SelectedRoomMain";
+import CartItem from "@/components/CartItem/CartItem";
+import CartIndex from "@/components/CartItem/CartList";
+import PopularSwiper from "@/components/accommodationSwipers/PopularSwiper";
 
 export default function styleguide() {
   const init = async () => {
@@ -64,6 +67,7 @@ export default function styleguide() {
           <IconsList />
         </div>
         <PopularLocationSlideContainer />
+        <PopularSwiper title="국내 인기 여행지"></PopularSwiper>
         <div className="h-12 w-full">--</div>
         <AccommodationSwiper title="인기여행"></AccommodationSwiper>
         <AccommodationSwiper
@@ -85,6 +89,9 @@ export default function styleguide() {
           />
         </SelectedRoomDetailLayout>
         <AccommodationList />
+
+        <CartItem></CartItem>
+        <CartIndex></CartIndex>
       </GlobalLayout>
       <MainSearchBox destination="서울" headCount={3} />
       <MainSearchBox />
