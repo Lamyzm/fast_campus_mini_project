@@ -1,5 +1,6 @@
 import React from "react";
 import { Button } from "../buttons/Button";
+import { useRouter } from "next/navigation";
 import Icons from "../icons/icons";
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
@@ -15,6 +16,7 @@ export default function MainSearchBox({
 }) {
   let startDateFormatted = "";
   let endDateFormatted = "";
+  const router = useRouter();
   if (startDate && endDate) {
     startDateFormatted = startDate.format("MM.DD ddd");
     endDateFormatted = endDate.format("MM.DD ddd");
@@ -36,7 +38,8 @@ export default function MainSearchBox({
           <Button
             size="lg"
             color="gray"
-            additionalClass="w-full  justify-start item-center overflow-hidden text-ellipsis">
+            additionalClass="w-full  justify-start item-center overflow-hidden text-ellipsis"
+            onClick={() => router.push("/search/place")}>
             <div className="flex flex-row item-center text-ellipsis ">
               <Icons
                 type="LocationOnOutlinedIcon"
@@ -59,7 +62,8 @@ export default function MainSearchBox({
           <Button
             size="lg"
             color="gray"
-            additionalClass="w-full justify-start item-center h-auto min-h-10  lg:h-10">
+            additionalClass="w-full justify-start item-center h-auto min-h-10  lg:h-10"
+            onClick={() => router.push("/search/date")}>
             <div className="flex flex-row item-center ">
               <Icons
                 type="InsertInvitationIcon"
@@ -76,7 +80,8 @@ export default function MainSearchBox({
           <Button
             size="lg"
             color="gray"
-            additionalClass="lg:w-[35%] w-full justify-start item-center">
+            additionalClass="lg:w-[35%] w-full justify-start item-center"
+            onClick={() => router.push("/search/headcount")}>
             <div className="flex flex-row item-center ">
               <Icons
                 type="PermIdentityOutlinedIcon"

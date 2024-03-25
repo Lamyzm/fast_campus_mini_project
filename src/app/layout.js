@@ -1,4 +1,5 @@
 import { Inter } from "next/font/google";
+import { GlobalLayout } from '../components/GlobalLayout';
 import "./globals.css";
 import "./reset.css"
 
@@ -12,7 +13,12 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="ko">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <GlobalLayout>
+          {children}
+        </GlobalLayout>
+      </body>
+
     </html>
   );
 }
