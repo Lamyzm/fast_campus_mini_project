@@ -40,7 +40,6 @@ export default function Home() {
       console.log(verificationResponse.data);
       console.log(verificationResponse.headers);
 
-      // If both login and verification are successful, you can redirect the user to another page or perform other actions
     } catch (error) {
       console.error(error);
       setError("Invalid email or password");
@@ -79,7 +78,7 @@ export default function Home() {
             <Button
               size="lg"
               type="rounded"
-              color="black"
+              color="primary"
               additionalClass="w-full"
               onClick={handleLogin}>
               로그인
