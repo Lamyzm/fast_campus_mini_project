@@ -31,7 +31,7 @@ export default function SwiperSlideComponent({ content }) {
   };
   return (
     <>
-      <div className="w-full relative">
+      <div className={`w-full relative ${isLocale ? "h-[230px]" : ""}`}>
         <Swiper {...swiperConfig} className="my-swiper">
           {content ? (
             content.map((item, index) => {
@@ -59,7 +59,7 @@ export default function SwiperSlideComponent({ content }) {
                           </h4>
                           <p
                             className={`text-stone-600 pt-4 ${
-                              isLocale ? "text-center" : ""
+                              isLocale ? "text-center" : "none"
                             }`}>
                             {item.area}
                           </p>
