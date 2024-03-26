@@ -1,11 +1,15 @@
 "use client";
 import axios from "axios";
+import { Button } from "@/components/buttons/Button";
 import MainSearchBox from "@/components/MainSearchBox/MainSearchBox";
 import MainNav from "@/components/mainNav/MainNav";
+import Calendar from "@/components/calendar/Calendar";
+import PopularLocationSlideContainer from "@/components/popularLoactionSlide/PopularLocationSlideContainer";
 import CouponSlideContainer from "@/components/couponSlide/CouponSlideContainer";
 import AccommodationSwiper from "@/components/accommodationSwipers/AccommodationSwiper";
 import PopularSwiper from "@/components/accommodationSwipers/PopularSwiper";
 import { faker } from "@faker-js/faker";
+import { GlobalLayout } from "@/components/GlobalLayout";
 
 export default function Home() {
   const postData = async () => {
@@ -20,7 +24,7 @@ export default function Home() {
   };
   return (
     <>
-      <div className="w-full h-[450px] relative ">
+      <div className="w-full h-[450px] relative mb-14">
         <img
           src={faker.image.urlPicsumPhotos()}
           alt=""
