@@ -3,20 +3,20 @@ import { SelectLayoutContainer } from '../SelectLayoutContainer'
 import Icons from '../icons/icons'
 import { Button } from '../buttons/Button'
 
-const RoomOutline = () => {
+const RoomOutline = ({data}) => {
     const [isOpen, setIsOpen] = useState(false)
     return (
         <>
             <div>
-                <div className="bg-gray-50 py-8 px-4 sm:px-6 lg:px-8 ">
+                <div className="  py-8 px-4 sm:px-6 lg:px-8 ">
                     {/* 숙소 소개 */}
                     <div className="max-w-md mx-auto ">
                         <h1 className=" py-5 text-2xl font-bold text-gray-800 mb-4">숙소 소개</h1>
                         <div className="text-lg text-gray-700">
-                            <p className='py-2'>안녕하세요 00에 오신 것을 환영합니다. 당신을 놀라게 할 이색적이고 아름다운 휴식처를 찾고 계신가요? 그렇다면 00은 당신을 기다리고 있습니다.</p>
-                            <p className='py-2'>00은 여행객들에게 특별한 경험을 제공합니다. 객실은 현대적인 편의시설과 함께 자연의 아름다움을 최대한 살린 디자인으로 꾸며져 있습니다. 모든 객실에서는 넓은 창문을 통해 멋진 풍경을 감상할 수 있으며, 개인 테라스에서는 아침에 신선한 공기를 마시며 일출을 감상할 수 있습니다.</p>
+                            <p className='py-2'>안녕하세요 {data?.accommodationName}에 오신 것을 환영합니다. 당신을 놀라게 할 이색적이고 아름다운 휴식처를 찾고 계신가요? 그렇다면 {data?.accommodationName}은 당신을 기다리고 있습니다.</p>
+                            <p className='py-2'>{data?.accommodationName}은 여행객들에게 특별한 경험을 제공합니다. 객실은 현대적인 편의시설과 함께 자연의 아름다움을 최대한 살린 디자인으로 꾸며져 있습니다. 모든 객실에서는 넓은 창문을 통해 멋진 풍경을 감상할 수 있으며, 개인 테라스에서는 아침에 신선한 공기를 마시며 일출을 감상할 수 있습니다.</p>
                             <p className='py-2'>우리의 객실은 현대적이고 세련된 디자인으로 꾸며져 있으며, 편안한 침대와 고급 침구로 최상의 휴식을 제공합니다. 또한 무료 Wi-Fi, 미니 바, 커피/차 메이커 등과 같은 편의 시설이 갖춰져 있어 비즈니스 출장객과 여행객들 모두에게 편안한 숙박 환경을 제공합니다.</p>
-                            <p className='py-2'>지금 바로 예약을 하고, 00에서의 특별한 여행을 경험해보세요.</p>
+                            <p className='py-2'>지금 바로 예약을 하고, {data?.accommodationName}에서의 특별한 여행을 경험해보세요.</p>
                         </div>
                     </div>
                     {/* 시설 및 서비스 */}
