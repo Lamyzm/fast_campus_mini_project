@@ -7,7 +7,7 @@ import Icons from "../icons/icons";
 export default function BookingRoomComponent({ title, price }) {
   return (
     <>
-      <div className="bg-body-color rounded-md p-3 pt-8 flex flex-col justify-between">
+      <div className="w-full bg-body-color rounded-md p-3 pt-8 mb-8 flex flex-col justify-between">
         <h3 className="text-2xl font-bold mb-10">{title}</h3>
         <div className="bg-white rounded-md flex flex-row justify-between p-7 ">
           <div className="flex-row flex">

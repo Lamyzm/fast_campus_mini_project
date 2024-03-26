@@ -1,8 +1,10 @@
 import Icons from "@/components/icons/icons";
 import { cn } from "@/utils/cn";
+import { useRouter } from "next/navigation";
 
 
 const AccommodationList = ({ data }) => {
+  const router = useRouter()
 
   return (
     <div className="w-full lg:grid lg:grid-cols-2">
@@ -13,9 +15,11 @@ const AccommodationList = ({ data }) => {
             "flex flex-col",
             index % 2 === 0 ? "border-r border-solid border-gray-300" : "",
             index < data.length - 2 && "border-b border-solid border-gray-300"
-          )}
+          )
+        }
+        onClick={()=>router.push(`/testdetail/${item?.id}`)}
         >
-          <div className="m-6">
+          <div className="m-6 cursor-pointer">
             <div className="rounded-md h-[200px] bg-gray-100 min-w-[170px] relative z-0">
               <img
                 src={item?.image}
