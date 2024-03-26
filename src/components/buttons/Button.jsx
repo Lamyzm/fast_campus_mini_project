@@ -47,17 +47,18 @@ const Button = ({
   children,
   outline,
   label,
+  onSubmit,
   additionalClass,
   ...props
 }) => {
   return (
     <button
       className={cn(
-        ButtonVariants({ type, size, color, outline }),
+        ButtonVariants({ type, size, color, outline, onSubmit }),
         additionalClass
       )}
       {...props}
-      type="button">
+      type={`${onSubmit ? "onSubmit" : "button"}`}>
       {children && children}
       {label && label}
     </button>

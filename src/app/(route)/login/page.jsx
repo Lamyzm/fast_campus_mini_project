@@ -3,6 +3,7 @@ import { useState } from "react";
 import axios from "axios";
 import { Input } from "@/components/input";
 import { Button } from "@/components/buttons/Button";
+import { signIn } from "next-auth/react";
 
 export default function Home() {
   const [email, setEmail] = useState("");
@@ -11,40 +12,11 @@ export default function Home() {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-
-    try {
-      // 로그인
-      const loginResponse = await axios.post(
-        "http://3.35.216.158:8080/api/login",
-        { email, password },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-      console.log(loginResponse.data);
-      console.log(loginResponse.headers);
-
-      const accessToken = loginResponse.data.token;
-
-      // 토큰검증
-      const verificationResponse = await axios.get(
-        "http://3.35.216.158:8080/api/authentication",
-        {
-          headers: {
-            JWTTOKEN: accessToken,
-          },
-        }
-      );
-      console.log(verificationResponse.data);
-      console.log(verificationResponse.headers);
-
-      // If both login and verification are successful, you can redirect the user to another page or perform other actions
-    } catch (error) {
-      console.error(error);
-      setError("Invalid email or password");
-    }
+    const formData = new FormData(e.currentTarget);
+    signIn("credentials", {
+      email: formData.get("email"),
+      password: formData.get("password"),
+    });
   };
 
   return (
@@ -59,6 +31,7 @@ export default function Home() {
           <div className="space-y-6 mt-14 mb-12">
             <Input
               type="email"
+              name="email"
               placeholder="Email address"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -67,6 +40,7 @@ export default function Home() {
             />
             <Input
               type="password"
+              name="password"
               placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
@@ -81,7 +55,7 @@ export default function Home() {
               type="rounded"
               color="black"
               additionalClass="w-full"
-              onClick={handleLogin}>
+              onSubmit={true}>
               로그인
             </Button>
           </div>
