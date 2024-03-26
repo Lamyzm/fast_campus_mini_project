@@ -2,7 +2,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { Input } from "@/components/input";
-import { Button } from "@/components/buttons/Button"; 
+import { Button } from "@/components/buttons/Button";
 
 export default function Home() {
   const [email, setEmail] = useState("");
@@ -10,30 +10,30 @@ export default function Home() {
   const [error, setError] = useState("");
 
   const handleLogin = async (e) => {
-    e.preventDefault(); 
+    e.preventDefault();
 
     try {
-
+      // 로그인
       const loginResponse = await axios.post(
-        "http://183.96.51.234:8080/api/login",
+        "http://3.35.216.158:8080/api/login",
         { email, password },
         {
           headers: {
             "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "*",
           },
         }
       );
       console.log(loginResponse.data);
       console.log(loginResponse.headers);
-      
-      const accessToken = loginResponse.data.token; 
 
+      const accessToken = loginResponse.data.token;
+
+      // 토큰검증
       const verificationResponse = await axios.get(
-        "http://183.96.51.234:8080/api/authentication",
+        "http://3.35.216.158:8080/api/authentication",
         {
           headers: {
-            JWTTOKEN: accessToken, 
+            JWTTOKEN: accessToken,
           },
         }
       );
@@ -43,7 +43,7 @@ export default function Home() {
       // If both login and verification are successful, you can redirect the user to another page or perform other actions
     } catch (error) {
       console.error(error);
-      setError("Invalid email or password"); 
+      setError("Invalid email or password");
     }
   };
 
@@ -63,7 +63,7 @@ export default function Home() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              additionalClass="w-full" 
+              additionalClass="w-full"
             />
             <Input
               type="password"
@@ -71,20 +71,17 @@ export default function Home() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
-              additionalClass="w-full" 
+              additionalClass="w-full"
             />
           </div>
-          {error && (
-            <p className="text-red-500 text-sm">{error}</p>
-          )}
+          {error && <p className="text-red-500 text-sm">{error}</p>}
           <div className="mt-6">
             <Button
               size="lg"
               type="rounded"
               color="black"
               additionalClass="w-full"
-              onClick={handleLogin}
-            >
+              onClick={handleLogin}>
               로그인
             </Button>
           </div>
@@ -93,9 +90,3 @@ export default function Home() {
     </div>
   );
 }
-
-
-
-
-
-
