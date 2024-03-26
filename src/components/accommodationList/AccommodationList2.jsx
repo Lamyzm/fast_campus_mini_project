@@ -3,6 +3,10 @@ import { cn } from "@/utils/cn";
 import Icons from "../icons/icons";
 
 const AccommodationList2 = ({ accommodations }) => {
+  if (!accommodations) {
+    return <div>No accommodations available</div>;
+  }
+
   return (
     <div className="w-full lg:grid lg:grid-cols-2">
       {accommodations.map((item, index) => (
