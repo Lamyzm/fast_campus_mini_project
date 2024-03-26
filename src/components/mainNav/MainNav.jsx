@@ -31,7 +31,7 @@ const MainNav = () => {
             </span>
           </Link>
           <Link
-            href="/"
+            href="/login"
             className="cursor-pointer hover:text-gray-600 transition duration-100 ease-in-out">
             <span>
               <Icons
