@@ -38,16 +38,12 @@ export default function Home() {
       <MainNav />
 
       <PopularSwiper title="국내 인기 여행지"></PopularSwiper>
-      <PopularSwiper title="국내 인기 여행지"></PopularSwiper>
+
       <CouponSlideContainer />
 
       <AccommodationSwiper
         title="강릉 풀펜션"
         isButton={true}></AccommodationSwiper>
-      <AccommodationSwiper title="인기여행"></AccommodationSwiper>
-      <AccommodationSwiper title="인기여행"></AccommodationSwiper>
-      <AccommodationSwiper title="인기여행"></AccommodationSwiper>
-      <AccommodationSwiper title="인기여행"></AccommodationSwiper>
       <AccommodationSwiper title="인기여행"></AccommodationSwiper>
     </>
   );
