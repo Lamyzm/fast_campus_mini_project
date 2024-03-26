@@ -97,7 +97,7 @@ export default function MainSearchBox({
             </div>
           </Button>
         </div>
-        <Button size="lg" color="primary" additionalClass="w-36 flex-grow-0">
+        <Button size="lg" color="primary" additionalClass="w-36 flex-grow-0" onClick={() => router.push("/accommodations")}>
           <p className="font-bold flex-shrink-0">검색</p>
         </Button>
       </div>

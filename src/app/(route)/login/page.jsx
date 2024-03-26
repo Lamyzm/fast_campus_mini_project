@@ -1,17 +1,22 @@
 "use client";
-import { Button } from "@/components/buttons/Button";
+import { useState } from "react";
 import axios from "axios";
+import { Input } from "@/components/input";
+import { Button } from "@/components/buttons/Button"; 
 
 export default function Home() {
-  const postData = async () => {
-    const test = {
-      email: "test11@gmail.com",
-      password: "test123123123",
-    };
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+
+  const handleLogin = async (e) => {
+    e.preventDefault(); 
+
     try {
-      const response = await axios.post(
+
+      const loginResponse = await axios.post(
         "http://183.96.51.234:8080/api/login",
-        test,
+        { email, password },
         {
           headers: {
             "Content-Type": "application/json",
@@ -19,56 +24,78 @@ export default function Home() {
           },
         }
       );
-      // console.log(response.data);
-      console.log(response.headers);
-      // console.log(response.status);
-      // console.log(response.config);
-      // console.log(response);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-  const postData2 = async () => {
-    const test = {};
-    try {
-      const response = await axios.get(
+      console.log(loginResponse.data);
+      console.log(loginResponse.headers);
+      
+      const accessToken = loginResponse.data.token; 
+
+      const verificationResponse = await axios.get(
         "http://183.96.51.234:8080/api/authentication",
         {
           headers: {
-            JWTTOKEN:
-              "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXN0MTFAZ21haWwuY29tIiwiaWF0IjoxNzExMzU1NDY0LCJleHAiOjE3MTEzNTYwNjR9.BAXoWGTMhP2QbzhWJZy8G3FjULLhyaUkz5uO8-SGhRzHCGV4jkzlGbvzAV5bou7Z",
+            JWTTOKEN: accessToken, 
           },
         }
       );
-      // console.log(response.data);
-      console.log(response.headers);
-      // console.log(response.status);
-      // console.log(response.config);
-      // console.log(response);
+      console.log(verificationResponse.data);
+      console.log(verificationResponse.headers);
+
+      // If both login and verification are successful, you can redirect the user to another page or perform other actions
     } catch (error) {
       console.error(error);
+      setError("Invalid email or password"); 
     }
   };
+
   return (
-    <>
-      <Button
-        size="lg"
-        type="rounded"
-        color="white"
-        outline="outlineBold"
-        additionalClass="w-full"
-        onClick={postData}>
-        로그인
-      </Button>
-      <Button
-        size="lg"
-        type="rounded"
-        color="white"
-        outline="outlineBold"
-        additionalClass="w-full"
-        onClick={postData2}>
-        검증2
-      </Button>
-    </>
+    <div className="min-h-screen flex items-center justify-center">
+      <div className="w-[370px] h-[400px] bg-white p-8 rounded-lg shadow-md border border-gray-200">
+        <div>
+          <h2 className="mt-12 text-center text-2xl font-extrabold text-gray-900 mb-6">
+            3조 화이팅
+          </h2>
+        </div>
+        <form onSubmit={handleLogin}>
+          <div className="space-y-6 mt-14 mb-12">
+            <Input
+              type="email"
+              placeholder="Email address"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              additionalClass="w-full" 
+            />
+            <Input
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              additionalClass="w-full" 
+            />
+          </div>
+          {error && (
+            <p className="text-red-500 text-sm">{error}</p>
+          )}
+          <div className="mt-6">
+            <Button
+              size="lg"
+              type="rounded"
+              color="black"
+              additionalClass="w-full"
+              onClick={handleLogin}
+            >
+              로그인
+            </Button>
+          </div>
+        </form>
+      </div>
+    </div>
   );
 }
+
+
+
+
+
+
