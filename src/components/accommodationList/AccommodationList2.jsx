@@ -1,33 +1,21 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React from "react";
 import { cn } from "@/utils/cn";
 import Icons from "../icons/icons";
 
-const AccommodationList2 = () => {
-  const [data, setData] = useState([]);
-
-  const fetchData = async () => {
-    try {
-      const result = await axios.get("/api/accommodations");
-      setData(result.data.content);
-    } catch (error) {
-      console.error("Fetching data failed:", error);
-    }
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
+const AccommodationList2 = ({ accommodations }) => {
+  if (!accommodations) {
+    return <div>No accommodations available</div>;
+  }
 
   return (
     <div className="w-full lg:grid lg:grid-cols-2">
-      {data.map((item, index) => (
+      {accommodations.map((item, index) => (
         <div
           key={item.id}
           className={cn(
             "flex flex-col",
             index % 2 === 0 ? "border-r border-solid border-gray-300" : "",
-            index < data.length - 2 && "border-b border-solid border-gray-300"
+            index < accommodations.length - 2 && "border-b border-solid border-gray-300"
           )}
         >
           <div className="m-6">
