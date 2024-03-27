@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect } from 'react'
 import { useSelector } from 'react-redux';
 
-export default function Marker({ map, lat, lng, data }) {
+export default function Marker({ map, lat, lng, data, setCurrentRoom }) {
 
     const loadKakoMarker = useCallback(() => {
         if (map && lat && lng) {
@@ -51,6 +51,9 @@ export default function Marker({ map, lat, lng, data }) {
             window.kakao.maps.event.addListener(marker, "mouseout", function () {
                 // 마커에 마우스아웃 이벤트가 발생하면 커스텀 오버레이를 제거합니다
                 customOverlay.setMap(null);
+            });
+            window.kakao.maps.event.addListener(marker, 'click', function () {
+                setCurrentRoom(data)
             });
         }
     }, [map, data]);

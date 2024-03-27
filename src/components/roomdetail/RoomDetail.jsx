@@ -4,10 +4,13 @@ import RoomOutline from '../roomOutline/RoomOutline'
 import BookingRoomComponent from '../BookingRoomComponent/BookingRoomComponent'
 import Map from '../Map'
 import Marker from '../Marker'
+import RoomBox from '../RoomBox'
 
 const RoomDetail = ({ data, lng, lat }) => {
     const [activeTap, setActiveTap] = useState('room');
     const [map, setMap] = useState(null)
+    const [currentRoom, setCurrentRoom] = useState(null)
+    console.log(currentRoom)
     return (
         <>
             <div className="flex mb-4">
@@ -52,7 +55,8 @@ const RoomDetail = ({ data, lng, lat }) => {
             {activeTap === 'location' && (
                 <>
                     <Map setMap={setMap} lat={lat} lng={lng} />
-                    <Marker map={map} lat={lat} lng={lng} data={data}/>
+                    <Marker map={map} lat={lat} lng={lng} data={data} setCurrentRoom={setCurrentRoom} />
+                    <RoomBox currentRoom={currentRoom} setCurrentRoom={setCurrentRoom} />
                 </>
             )}
         </>
