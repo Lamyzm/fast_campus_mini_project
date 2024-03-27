@@ -4,19 +4,27 @@ import axios from "axios";
 import { Input } from "@/components/input";
 import { Button } from "@/components/buttons/Button";
 import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-
+  const router = useRouter();
   const handleLogin = async (e) => {
     e.preventDefault();
+
     const formData = new FormData(e.currentTarget);
-    signIn("credentials", {
+    const res = await signIn("credentials", {
       email: formData.get("email"),
       password: formData.get("password"),
+      redirect: false,
     });
+    console.log(res);
+    if (res.status === 200) {
+      router.push("/");
+    }
+    if (res.status === 401) {
+      setError("이메일이나 비밀번호가 잘못되었습니다");
+    }
   };
 
   return (
@@ -33,8 +41,6 @@ export default function Home() {
               type="email"
               name="email"
               placeholder="Email address"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
               required
               additionalClass="w-full"
             />
@@ -42,8 +48,6 @@ export default function Home() {
               type="password"
               name="password"
               placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
               required
               additionalClass="w-full"
             />

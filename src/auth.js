@@ -1,34 +1,32 @@
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
+import axios from "axios";
 
-export const {
-  handlers: { GET, POST },
-  auth,
-  signIn
-} = NextAuth({
+export default NextAuth({
   providers: [
     CredentialsProvider({
-
       name: 'Credentials',
-
-      async authorize(credentials, req) {
-        const res = await fetch("http://3.35.216.158:8080/api/login", {
-          method: 'POST',
-          body: JSON.stringify({
-            id: credentials.username,
+      async authorize(credentials) {
+        try {
+          const res = await axios.post('http://3.35.216.158:8080/api/login', {
+            email: credentials.email,
             password: credentials.password
-          }),
-          headers: { "Content-Type": "application/json" }
-        })
-        const user = await res.json()
+          }, {
+            headers: { "Content-Type": "application/json" }
+          });
 
-        // If no error and we have user data, return it
-        if (res.ok && user) {
-          return user
+          if (res.status === 200 && res.data) {
+            return res.data;
+          }
+          throw new Error('Authentication failed');
+        } catch (error) {
+          console.error('Authentication error:', error);
+          return null;
         }
-        // Return null if user data could not be retrieved
-        return null
       }
     })
-  ]
+  ],
+  pages: {
+    signIn: "/login",
+  },
 });
