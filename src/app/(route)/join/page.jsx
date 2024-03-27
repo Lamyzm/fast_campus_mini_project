@@ -31,7 +31,8 @@ export default function Register() {
       );
       // console.log(registerResponse.data);
       // console.log(registerResponse.headers);
-      
+      // 회원가입 완료 후 추가 작업... 
+
     } catch (error) {
       console.error(error);
       setError("Failed to register. Please try again.");
