@@ -1,9 +1,29 @@
+"use client";
 import React from "react";
 import Link from "next/link";
 import Icons from "../icons/icons";
+import { useSession } from "next-auth/react";
+import { signOut } from "next-auth/react";
+import { useRouter, usePathname } from "next/navigation";
 
 const MainNav = () => {
   const cartItemCount = 5;
+  const { data, status } = useSession();
+  const router = useRouter();
+  const pathName = usePathname();
+  const handleAuthAction = (e) => {
+    e.preventDefault();
+    if (data) {
+      signOut();
+    } else {
+      // 로그인되어 있지 않은 경우, 로그인 페이지로 리디렉션
+      router.push("/login");
+    }
+  };
+  console.log();
+  if (router === "/testdetail") {
+    console.log("test detail");
+  }
   return (
     <>
       <div className="flex justify-between items-center fixed w-[1000px] h-[65px] top-0 shadow-sm bg-white z-[100] relative;">
@@ -32,6 +52,7 @@ const MainNav = () => {
           </Link>
           <Link
             href="/login"
+            onClick={handleAuthAction}
             className="cursor-pointer hover:text-gray-600 transition duration-100 ease-in-out">
             <span>
               <Icons

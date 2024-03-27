@@ -2,48 +2,28 @@
 import { useState } from "react";
 import axios from "axios";
 import { Input } from "@/components/input";
-import { Button } from "@/components/buttons/Button"; 
+import { Button } from "@/components/buttons/Button";
+import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-
+  const router = useRouter();
   const handleLogin = async (e) => {
-    e.preventDefault(); 
+    e.preventDefault();
 
-    try {
-
-      const loginResponse = await axios.post(
-        "http://183.96.51.234:8080/api/login",
-        { email, password },
-        {
-          headers: {
-            "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "*",
-          },
-        }
-      );
-      console.log(loginResponse.data);
-      console.log(loginResponse.headers);
-      
-      const accessToken = loginResponse.data.token; 
-
-      const verificationResponse = await axios.get(
-        "http://183.96.51.234:8080/api/authentication",
-        {
-          headers: {
-            JWTTOKEN: accessToken, 
-          },
-        }
-      );
-      console.log(verificationResponse.data);
-      console.log(verificationResponse.headers);
-
-      // If both login and verification are successful, you can redirect the user to another page or perform other actions
-    } catch (error) {
-      console.error(error);
-      setError("Invalid email or password"); 
+    const formData = new FormData(e.currentTarget);
+    const res = await signIn("credentials", {
+      email: formData.get("email"),
+      password: formData.get("password"),
+      redirect: false,
+    });
+    console.log(res);
+    if (res.status === 200) {
+      router.push("/");
+    }
+    if (res.status === 401) {
+      setError("이메일이나 비밀번호가 잘못되었습니다");
     }
   };
 
@@ -59,32 +39,27 @@ export default function Home() {
           <div className="space-y-6 mt-14 mb-12">
             <Input
               type="email"
+              name="email"
               placeholder="Email address"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
               required
-              additionalClass="w-full" 
+              additionalClass="w-full"
             />
             <Input
               type="password"
+              name="password"
               placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
               required
-              additionalClass="w-full" 
+              additionalClass="w-full"
             />
           </div>
-          {error && (
-            <p className="text-red-500 text-sm">{error}</p>
-          )}
+          {error && <p className="text-red-500 text-sm">{error}</p>}
           <div className="mt-6">
             <Button
               size="lg"
               type="rounded"
               color="black"
               additionalClass="w-full"
-              onClick={handleLogin}
-            >
+              onSubmit={true}>
               로그인
             </Button>
           </div>
@@ -93,9 +68,3 @@ export default function Home() {
     </div>
   );
 }
-
-
-
-
-
-

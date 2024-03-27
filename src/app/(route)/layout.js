@@ -9,6 +9,7 @@ export default function Layout({ children }) {
   return (
     <>
       <QueryClientProvider client={queryClient}>
+        <MainNav />
         {children}
         <ReactQueryDevtools initialIsOpen={false} position='bottom-right' />
       </QueryClientProvider>

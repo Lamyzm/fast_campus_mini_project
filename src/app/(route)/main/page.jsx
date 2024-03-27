@@ -9,8 +9,9 @@ import CouponSlideContainer from "@/components/couponSlide/CouponSlideContainer"
 import AccommodationSwiper from "@/components/accommodationSwipers/AccommodationSwiper";
 import PopularSwiper from "@/components/accommodationSwipers/PopularSwiper";
 import { faker } from "@faker-js/faker";
-import { GlobalLayout } from "@/components/GlobalLayout";
+import { GlobalLayout } from "../../../components/GlobalLayout";
 import Divider from "@/components/Divider";
+import { useSession } from "next-auth/react";
 
 export default function Home() {
   const postData = async () => {
@@ -23,6 +24,8 @@ export default function Home() {
       console.error(error);
     }
   };
+  const { data, status } = useSession();
+  console.log(data, status);
   return (
     <>
       <MainNav />
@@ -41,8 +44,6 @@ export default function Home() {
       <Divider />
 
       <CouponSlideContainer />
-
-      <Divider />
 
       <AccommodationSwiper
         title="강릉 풀펜션"
