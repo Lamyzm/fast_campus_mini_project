@@ -10,7 +10,6 @@ const RoomDetail = ({ data, lng, lat }) => {
     const [activeTap, setActiveTap] = useState('room');
     const [map, setMap] = useState(null)
     const [currentRoom, setCurrentRoom] = useState(null)
-    console.log(currentRoom)
     return (
         <>
             <div className="flex mb-4">

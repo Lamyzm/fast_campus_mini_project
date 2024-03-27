@@ -1,3 +1,4 @@
+'use client'
 import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
 import {
@@ -25,6 +26,17 @@ const RoomBox = ({ currentRoom, setCurrentRoom }) => {
     useEffect(() => {
         checkCategory()
     }, [])
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setCurrentRoom(null);
+        };
+        window.addEventListener('scroll', handleScroll);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
 
     return (
         <div className="fixed transition ease-in-out delay-150 inset-x-0 mx-auto bottom-20 rounded-lg shadow-lg max-w-sm md:max-w-xl z-10 w-full bg-white">

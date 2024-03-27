@@ -1,10 +1,10 @@
 /* global kakao */
+'use client'
 import Script from 'next/script'
 import React from 'react'
 
 
 const Map = ({ lat, lng, setMap }) => {
-
     const loadKakaoMap = () => {
         window.kakao.maps.load(() => {
             const container = document.getElementById('map');

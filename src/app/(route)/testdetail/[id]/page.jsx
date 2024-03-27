@@ -45,16 +45,16 @@ const Page = ({ params }) => {
         onSuccess: (data) => fetchLocation(data.address)
     })
 
-  if (isError) {
-    return (
-      <div className="w-full h-screen mx-auto pt-[10%] text-red-500 text-center font-semibold">
-        다시 시도해주세요
-      </div>
-    );
-  }
-  if (isFetching) {
-    <Loader />;
-  }
+    if (isError) {
+        return (
+            <div className="w-full h-screen mx-auto pt-[10%] text-red-500 text-center font-semibold">
+                다시 시도해주세요
+            </div>
+        );
+    }
+    if (isFetching) {
+        <Loader />;
+    }
 
     return (
         <>

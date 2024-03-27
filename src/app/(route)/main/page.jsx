@@ -40,10 +40,12 @@ export default function Home() {
           <MainSearchBox />
         </div>
       </div>
-      <PopularSwiper title="국내 인기 여행지"/>
+      <Divider />
+      <PopularSwiper title="국내 인기 여행지" />
       <Divider />
 
       <CouponSlideContainer />
+      <Divider />
 
       <AccommodationSwiper
         title="강릉 풀펜션"
