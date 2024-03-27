@@ -10,6 +10,7 @@ import AccommodationSwiper from "@/components/accommodationSwipers/Accommodation
 import PopularSwiper from "@/components/accommodationSwipers/PopularSwiper";
 import { faker } from "@faker-js/faker";
 import { GlobalLayout } from "@/components/GlobalLayout";
+import Divider from "@/components/Divider";
 
 export default function Home() {
   const postData = async () => {
@@ -24,6 +25,7 @@ export default function Home() {
   };
   return (
     <>
+      <MainNav />
       <div className="w-full h-[450px] relative mb-14">
         <img
           src={faker.image.urlPicsumPhotos()}
@@ -35,16 +37,18 @@ export default function Home() {
           <MainSearchBox />
         </div>
       </div>
-      <MainNav />
-
-      <PopularSwiper title="국내 인기 여행지"></PopularSwiper>
+      <PopularSwiper title="국내 인기 여행지"/>
+      <Divider />
 
       <CouponSlideContainer />
 
+      <Divider />
+
       <AccommodationSwiper
         title="강릉 풀펜션"
-        isButton={true}></AccommodationSwiper>
-      <AccommodationSwiper title="인기여행"></AccommodationSwiper>
+        isButton={true} />
+      <Divider />
+      <AccommodationSwiper title="인기여행" />
     </>
   );
 }

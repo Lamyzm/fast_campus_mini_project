@@ -1,3 +1,4 @@
+'use client'
 export default function Loader({ className = "" }) {
   return (
     <div className={`flex gap-4 justify-center mt-10 ${className}`}>

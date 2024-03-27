@@ -1,3 +1,4 @@
+'use client'
 import Icons from "@/components/icons/icons";
 import { cn } from "@/utils/cn";
 import { useRouter } from "next/navigation";

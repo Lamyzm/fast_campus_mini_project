@@ -30,7 +30,7 @@ const SelectNav = () => {
 
   return (
     <>
-      <div className="flex justify-between items-center w-[1000px] h-[65px] shadow-md bg-white z-[100] top-0 fixed">
+      <div className="flex justify-between items-center w-[1000px] h-[65px] shadow-sm bg-white z-[100] top-0 fixed">
         <div className="hover:text-gray-600 transition duration-100 flex items-center py-0 text-lg cursor-pointer font-semibold px-[18px]">
           <Icons
             className="text-3xl"

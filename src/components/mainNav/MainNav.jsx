@@ -6,10 +6,10 @@ const MainNav = () => {
   const cartItemCount = 5;
   return (
     <>
-      <div className="flex justify-between items-center fixed w-[1000px] h-[65px] top-0 shadow-md bg-white z-[100] relative;">
+      <div className="flex justify-between items-center fixed w-[1000px] h-[65px] top-0 shadow-sm bg-white z-[100] relative;">
         <Link
           className="text-blue-800 text-xl font-semibold cursor-pointer px-[18px] py-0"
-          href="/">
+          href="/main">
           3조화이팅
         </Link>
         <div className="flex gap-7 items-center px-[18px] py-0 font-semibold">
@@ -31,7 +31,7 @@ const MainNav = () => {
             </span>
           </Link>
           <Link
-            href="/"
+            href="/login"
             className="cursor-pointer hover:text-gray-600 transition duration-100 ease-in-out">
             <span>
               <Icons
