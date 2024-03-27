@@ -1,13 +1,30 @@
 import Image from 'next/image'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import {
     AiOutlineClose,
     AiOutlinePhone,
 } from "react-icons/ai";
 import { HiOutlineMapPin } from "react-icons/hi2";
 
-
 const RoomBox = ({ currentRoom, setCurrentRoom }) => {
+
+    const [category, setCategory] = useState(currentRoom?.category)
+
+    const checkCategory = () => {
+        if (category === '호텔') {
+            setCategory('호텔')
+        }
+        else if (category === '모텔') {
+            setCategory('모텔')
+        }
+        else {
+            setCategory('default')
+        }
+    }
+
+    useEffect(() => {
+        checkCategory()
+    }, [])
 
     return (
         <div className="fixed transition ease-in-out delay-150 inset-x-0 mx-auto bottom-20 rounded-lg shadow-lg max-w-sm md:max-w-xl z-10 w-full bg-white">
@@ -17,11 +34,7 @@ const RoomBox = ({ currentRoom, setCurrentRoom }) => {
                         <div className="flex justify-between items-start">
                             <div className="flex gap-4 items-center">
                                 <Image
-                                    src={
-                                        currentRoom?.category
-                                            ? `/markerImages/${currentRoom?.category}.png`
-                                            : "/markerImages/default.png"
-                                    }
+                                    src={`/markerImages/${category}.png`}
                                     width={40}
                                     height={40}
                                     alt="아이콘 이미지"
