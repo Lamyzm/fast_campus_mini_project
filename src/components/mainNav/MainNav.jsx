@@ -4,12 +4,13 @@ import Link from "next/link";
 import Icons from "../icons/icons";
 import { useSession } from "next-auth/react";
 import { signOut } from "next-auth/react";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 
 const MainNav = () => {
   const cartItemCount = 5;
   const { data, status } = useSession();
   const router = useRouter();
+  const pathName = usePathname();
   const handleAuthAction = (e) => {
     e.preventDefault();
     if (data) {
@@ -19,6 +20,10 @@ const MainNav = () => {
       router.push("/login");
     }
   };
+  console.log();
+  if (router === "/testdetail") {
+    console.log("test detail");
+  }
   return (
     <>
       <div className="flex justify-between items-center fixed w-[1000px] h-[65px] top-0 shadow-md bg-white z-[100] relative;">
