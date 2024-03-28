@@ -10,7 +10,9 @@ const Accommodations = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://3.35.216.158:8080/api/accommodation?size=10&page=10");
+        const response = await axios.get(
+          "http://3.35.216.158:8080/api/accommodation?size=10&page=10"
+        );
         setAccommodations(response.data.content);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -22,11 +24,9 @@ const Accommodations = () => {
 
   return (
     <>
-      <MainNav />
       <AccommodationList2 accommodations={accommodations} />
     </>
   );
 };
 
 export default Accommodations;
-

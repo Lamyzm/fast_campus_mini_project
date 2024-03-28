@@ -1,33 +1,44 @@
+'use client'
 import React, { useState } from 'react'
 import RoomOutline from '../roomOutline/RoomOutline'
 import BookingRoomComponent from '../BookingRoomComponent/BookingRoomComponent'
+import Map from '../Map'
+import Marker from '../Marker'
+import RoomBox from '../RoomBox'
 
-const RoomDetail = ({ data }) => {
-    const [showOutline, setShowOutline] = useState(true);
+const RoomDetail = ({ data, lng, lat }) => {
+    const [activeTap, setActiveTap] = useState('room');
+    const [map, setMap] = useState(null)
+    const [currentRoom, setCurrentRoom] = useState(null)
     return (
         <>
-            <div className="flex justify-start mb-4">
-                {/* 개요 버튼 */}
+            <div className="flex mb-4">
                 {data && (<div
-                    className={` hover:border-b-2 border-solid border-black text-black font-bold py-4 px-10 rounded-lg ${showOutline ? 'border-b-2 border-solid border-black' : ''}`}
-                    onClick={() => setShowOutline(true)}
+                    className={` cursor-pointer text-black font-bold py-4 px-10 hover:border-b-2 border-solid border-black ${activeTap === 'room' ? 'border-b-2 border-solid border-black' : ''}`}
+                    onClick={() => setActiveTap('room')}
                     style={{ fontSize: '1.3rem', marginTop: '2rem', marginBottom: '2rem' }}
                 >
                     객실
                 </div>)}
-                {/* 객실 버튼 */}
-                {data && (<button
-                    className={`ml-4  hover:border text-black font-bold py-4 px-10 rounded-lg ${!showOutline ? 'border' : ''}`}
-                    onClick={() => setShowOutline(false)}
+
+                {data && (<div
+                    className={`ml-24 cursor-pointer text-black font-bold py-4 px-10 hover:border-b-2 border-solid border-black ${activeTap === 'outline' ? 'border-b-2 border-solid border-black' : ''}`}
+                    onClick={() => setActiveTap('outline')}
                     style={{ fontSize: '1.3rem', marginTop: '2rem', marginBottom: '2rem' }}
                 >
                     개요
-                </button>)}
+                </div>)}
+
+                {data && (<div
+                    className={`ml-24 cursor-pointer text-black font-bold py-4 px-10 hover:border-b-2 border-solid border-black ${activeTap === 'location' ? 'border-b-2 border-solid border-black' : ''}`}
+                    onClick={() => setActiveTap('location')}
+                    style={{ fontSize: '1.3rem', marginTop: '2rem', marginBottom: '2rem' }}
+                >
+                    위치
+                </div>)}
             </div>
             {/* 상태에 따라 해당 컴포넌트를 보여줌 */}
-            {!showOutline ? (
-                <RoomOutline data={data} />
-            ) : (
+            {activeTap === 'room' && (
                 data?.roomList.map((item) => (
                     <BookingRoomComponent
                         key={item.id} // React에서는 map 함수로 생성된 여러 개의 컴포넌트에는 고유한 key prop이 필요합니다.
@@ -36,6 +47,16 @@ const RoomDetail = ({ data }) => {
                         id={item.id}
                     />
                 ))
+            )}
+            {activeTap === 'outline' && (
+                <RoomOutline data={data} />
+            )}
+            {activeTap === 'location' && (
+                <>
+                    <Map setMap={setMap} lat={lat} lng={lng} />
+                    <Marker map={map} lat={lat} lng={lng} data={data} setCurrentRoom={setCurrentRoom} />
+                    <RoomBox currentRoom={currentRoom} setCurrentRoom={setCurrentRoom} />
+                </>
             )}
         </>
     )
