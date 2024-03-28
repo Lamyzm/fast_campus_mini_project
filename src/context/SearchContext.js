@@ -16,11 +16,25 @@ export const SearchProvider = ({ children }) => {
     console.log(sessionStorage.getItem('searchData'));
   }, [searchData]);
 
+
+
+
+
   useEffect(() => {
     const initialState = () => {
       let savedData = null;
       if (typeof window !== "undefined" && window.sessionStorage) {
         savedData = sessionStorage.getItem("searchData");
+        if (!savedData) {
+          const startDate = dayjs();
+          const endDate = dayjs().add(1, "day");
+          savedData = {
+            date: { startDate: startDate, endDate: endDate },
+            headCount: 1,
+            area: ''
+          }
+          return savedData
+        }
       }
       return JSON.parse(savedData);
     };
