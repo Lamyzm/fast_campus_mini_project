@@ -168,7 +168,7 @@ export default function Register() {
                   중복 확인
                 </Button>
               </div>
-              {availabilityMessage && <p className="text-green-500 text-sm">{availabilityMessage}</p>}
+              {availabilityMessage && <p className="ml-2 mt-1 text-green-500 text-sm">{availabilityMessage}</p>}
             </div>
             <div>
               <label htmlFor="password" className="block text-md font-medium text-gray-700 mb-2">
