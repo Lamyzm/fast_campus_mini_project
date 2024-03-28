@@ -5,6 +5,8 @@ import { useState, useRef } from "react";
 import { cn } from "@/utils/cn";
 import { Button } from "@/components/buttons/Button";
 import Icons from "../icons/icons";
+import { useSearch } from "@/context/SearchContext";
+import { useRouter } from "next/navigation";
 
 const Calendar = () => {
   const days = ["일", "월", "화", "수", "목", "금", "토"];
@@ -16,6 +18,8 @@ const Calendar = () => {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
   const calendarRef = useRef(null);
+  const { searchData, setSearchData } = useSearch();
+  const router = useRouter();
 
   const handlePrevMonth = () => {
     setSelectedDates((prevDates) => [
@@ -61,6 +65,14 @@ const Calendar = () => {
       console.log("Selected Date Range:");
       console.log("Start Date:", startDate.format("YYYY-MM-DD"));
       console.log("End Date:", endDate.format("YYYY-MM-DD"));
+      setSearchData({
+        ...searchData,
+        date: {
+          startDate: startDate,
+          endDate: endDate,
+        },
+      });
+      router.push("/");
     } else {
       console.log("Please select both start and end dates.");
     }
@@ -82,17 +94,25 @@ const Calendar = () => {
               </h1>
               {idx === 0 && (
                 <div className="flex items-center gap-3">
-                  <Icons type="ArrowBackIosNewIcon" size="large" color="primary" 
-                  additionalClass="w-4 h-4 cursor-pointer text-gray-500 hover:text-black"
-                  onClick={handlePrevMonth}/>
+                  <Icons
+                    type="ArrowBackIosNewIcon"
+                    size="large"
+                    color="primary"
+                    additionalClass="w-4 h-4 cursor-pointer text-gray-500 hover:text-black"
+                    onClick={handlePrevMonth}
+                  />
                   <h1
                     className="cursor-pointer text-gray-600 hover:text-black"
                     onClick={handleToday}>
                     Today
                   </h1>
-                  <Icons type="ArrowForwardIosIcon" size="large" color="primary" 
-                  additionalClass="w-4 h-4 cursor-pointer text-gray-500 hover:text-black"
-                  onClick={handleNextMonth}/>
+                  <Icons
+                    type="ArrowForwardIosIcon"
+                    size="large"
+                    color="primary"
+                    additionalClass="w-4 h-4 cursor-pointer text-gray-500 hover:text-black"
+                    onClick={handleNextMonth}
+                  />
                 </div>
               )}
             </div>

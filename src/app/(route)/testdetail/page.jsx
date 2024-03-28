@@ -6,12 +6,14 @@ import useIntersectionObserver from './hooks/useIntersectionObserver';
 import Loading from './components/Loading';
 import Loader from './components/Loader';
 import { useInfiniteQuery } from 'react-query';
+import ScrollToTopButton from '@/components/ScrollToTopButton';
 
 export default function Home() {
   const [isEnd, setIsEnd] = useState(false)
   const ref = useRef()
   const pageRef = useIntersectionObserver(ref, {})
   const isPageEnd = !!pageRef?.isIntersecting
+  const [showScrollButton, setShowScrollButton] = useState(false);
 
   const fetchRoom = async ({ page }) => {
     const { data } = await axios.get("http://3.35.216.158:8080/api/accommodation", {
@@ -48,6 +50,19 @@ export default function Home() {
 
   }, [isPageEnd, hasNextPage, fetchNext])
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.pageYOffset > 1200) { // 예시로 300px 스크롤됐을 때 버튼을 보이게 설정
+        setShowScrollButton(true);
+      } else {
+        setShowScrollButton(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <>
       {isLoading && (<Loading />)}
@@ -58,6 +73,7 @@ export default function Home() {
       ))}
       {(isEnd) && <Loader />}
       <div className='w-full touch-none h-10 mb-10' ref={ref} />
+      <ScrollToTopButton show={showScrollButton} />
     </>
   );
 }
