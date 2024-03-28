@@ -20,7 +20,7 @@ export const CheckboxProvider = ({ children }) => {
   );
 };
 
-export default function CartIndex() {
+export default function CartList() {
   const [data, setData] = useState([]);
   const id = useId();
 
