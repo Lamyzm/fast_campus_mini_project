@@ -11,6 +11,7 @@ export default function Layout({ children }) {
     <>
       <QueryClientProvider client={queryClient}>
         <SearchProvider>
+          <MainNav />
           {children}
         </SearchProvider>
         <ReactQueryDevtools initialIsOpen={false} position='bottom-right' />

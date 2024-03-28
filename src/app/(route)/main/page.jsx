@@ -10,6 +10,7 @@ import AccommodationSwiper from "@/components/accommodationSwipers/Accommodation
 import PopularSwiper from "@/components/accommodationSwipers/PopularSwiper";
 import { faker } from "@faker-js/faker";
 import { GlobalLayout } from "../../../components/GlobalLayout";
+import Divider from "@/components/Divider";
 import { useSession } from "next-auth/react";
 import { useSearch } from "@/context/SearchContext";
 import dynamic from "next/dynamic";
@@ -25,6 +26,7 @@ export default function Home() {
   const { data, status } = useSession();
   return (
     <>
+      <MainNav />
       <div className="w-full h-[450px] relative mb-14">
         <img
           src={faker.image.urlPicsumPhotos()}
@@ -43,16 +45,18 @@ export default function Home() {
           ) : null}
         </div>
       </div>
-      <MainNav />
-
-      <PopularSwiper title="국내 인기 여행지"></PopularSwiper>
+      <Divider />
+      <PopularSwiper title="국내 인기 여행지" />
+      <Divider />
 
       <CouponSlideContainer />
+      <Divider />
 
       <AccommodationSwiper
         title="강릉 풀펜션"
-        isButton={true}></AccommodationSwiper>
-      <AccommodationSwiper title="인기여행"></AccommodationSwiper>
+        isButton={true} />
+      <Divider />
+      <AccommodationSwiper title="인기여행" />
     </>
   );
 }
