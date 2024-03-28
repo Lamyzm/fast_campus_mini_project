@@ -29,7 +29,7 @@ const MainNav = () => {
         </Link>
         <div className="flex gap-7 items-center px-[18px] py-0 font-semibold">
           <Link
-            href="/"
+            href="/cart"
             className="cursor-pointer hover:text-gray-600 transition duration-100 ease-in-out relative">
             <span>
               <Icons

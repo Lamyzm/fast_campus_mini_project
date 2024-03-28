@@ -1,8 +1,10 @@
 "use client";
-import React, { useState, useId } from "react";
+import React, { useState, useId, useEffect } from "react";
 import { SelectLayoutContainer } from "../SelectLayoutContainer";
 import Icons from "../icons/icons";
 import { Button } from "@/components/buttons/Button";
+import { useSearch } from "@/context/SearchContext";
+import { useRouter } from "next/navigation";
 
 const guestTypes = {
   adult: "adult",
@@ -10,8 +12,14 @@ const guestTypes = {
   kid: "kid",
 };
 
-const SelectItem = ({ label, description, formId }) => {
+const SelectItem = ({ label, description, formId, type }) => {
   const [peopleCount, setPeopleCount] = useState(0);
+  useEffect(() => {
+    if (type == guestTypes.adult) {
+      setPeopleCount(1);
+    }
+  }, []);
+
   const checkPeopleCount = (cnt) => {
     if (0 > cnt) return;
     setPeopleCount(cnt);
@@ -55,7 +63,8 @@ const SelectItem = ({ label, description, formId }) => {
 
 export default function SelectPeople() {
   const id = useId();
-
+  const { searchData, setSearchData } = useSearch();
+  const router = useRouter();
   const formIdArray = Object.keys(guestTypes)
     .map((val) => {
       return { [val]: `${id}-${val}` };
@@ -67,9 +76,12 @@ export default function SelectPeople() {
   const formAction = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
-    const adultCount = formData.get(formIdArray[guestTypes.adult]);
-    console.log("form feat");
-    console.log(adultCount);
+    let count = 0;
+    for (const guest in guestTypes) {
+      count += parseInt(formData.get(formIdArray[guest]));
+    }
+    setSearchData({ ...searchData, headCount: count });
+    router.push("/");
   };
   return (
     <>
@@ -81,19 +93,31 @@ export default function SelectPeople() {
               label="성인"
               description="13세 이상"
               formId={formIdArray[guestTypes.adult]}
+              type={guestTypes.adult}
             />
             <SelectItem
               label="어린이"
               description="3세 이상 13세 미만"
               formId={formIdArray[guestTypes.child]}
+              type={guestTypes.child}
             />
             <SelectItem
               label="유아"
               description="2세 이하"
               formId={formIdArray[guestTypes.kid]}
+              type={guestTypes.kid}
             />
             {/* {submit 버튼으로 요청 보내면됨} */}
-            <button type="submit"></button>
+            <div className="flex flex-row justify-end">
+              <Button
+                size="lg"
+                type="rounded"
+                color="primary"
+                additionalClass="mt-12"
+                onSubmit={true}>
+                확인
+              </Button>
+            </div>
           </form>
         </div>
       </SelectLayoutContainer>

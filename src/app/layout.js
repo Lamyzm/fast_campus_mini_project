@@ -3,7 +3,7 @@ import { GlobalLayout } from '../components/GlobalLayout';
 import "./globals.css";
 import "./reset.css"
 import AuthProvider from "@/context/AuthProvider";
-
+import { SearchContext } from '@/context/SearchContext';
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -15,13 +15,13 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="ko">
-      <AuthProvider>
-        <body className={inter.className}>
+      <body className={inter.className}>
+        <AuthProvider>
           <GlobalLayout>
             {children}
           </GlobalLayout>
-        </body>
-      </AuthProvider>
+        </AuthProvider>
+      </body>
     </html>
   );
 }
