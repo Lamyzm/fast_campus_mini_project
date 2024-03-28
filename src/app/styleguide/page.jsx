@@ -4,7 +4,6 @@ import IconsList from "@/components/icons";
 import { Input } from "@/components/input";
 import Calendar from "@/components/calendar/Calendar";
 import { GlobalLayout } from "@/components/GlobalLayout";
-import OldCalendar from "@/components/calendar/OldCalendar";
 import PopularLocationSlideContainer from "@/components/popularLoactionSlide/PopularLocationSlideContainer";
 import CouponSlideContainer from "@/components/couponSlide/CouponSlideContainer";
 import AccommodationSwiper from "@/components/accommodationSwipers/AccommodationSwiper";
