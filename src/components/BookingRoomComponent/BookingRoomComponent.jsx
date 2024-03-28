@@ -17,7 +17,7 @@ export default function BookingRoomComponent({ title, price }) {
                 size="large"
                 color="primary"
                 additionalClass={
-                  "text-xs absolute -left-4 top-[2px] fill-subtitle-gray"
+                  "absolute text-sm -left-4 top-0 fill-subtitle-gray"
                 }
               />
               <p className="text-xs text-subtitle-gray font-semibold">
@@ -49,7 +49,7 @@ export default function BookingRoomComponent({ title, price }) {
               <Link href="#">
                 <Button
                   size="lg"
-                  color="black"
+                  color="primary"
                   additionalClass="w-full sm:px-12 font-bold text-sm">
                   예약하기
                 </Button>
