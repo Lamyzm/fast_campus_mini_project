@@ -57,7 +57,7 @@ export default function Home() {
             <Button
               size="lg"
               type="rounded"
-              color="black"
+              color="primary"
               additionalClass="w-full"
               onSubmit={true}>
               로그인
