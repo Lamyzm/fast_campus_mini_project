@@ -42,7 +42,9 @@ export default function Home() {
               endDate={searchData?.date?.endDate}
               headCount={searchData?.headCount}
             />
-          ) : null}
+          ) : (
+            <MainSearchBox />
+          )}
         </div>
       </div>
       <Divider />
@@ -52,9 +54,7 @@ export default function Home() {
       <CouponSlideContainer />
       <Divider />
 
-      <AccommodationSwiper
-        title="강릉 풀펜션"
-        isButton={true} />
+      <AccommodationSwiper title="강릉 풀펜션" isButton={true} />
       <Divider />
       <AccommodationSwiper title="인기여행" />
     </>
