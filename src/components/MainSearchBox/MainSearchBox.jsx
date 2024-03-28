@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { Button } from "../buttons/Button";
 import { useRouter } from "next/navigation";
@@ -18,6 +19,8 @@ export default function MainSearchBox({
   let endDateFormatted = "";
   const router = useRouter();
   if (startDate && endDate) {
+    startDate = dayjs(startDate);
+    endDate = dayjs(endDate);
     startDateFormatted = startDate.format("MM.DD ddd");
     endDateFormatted = endDate.format("MM.DD ddd");
   } else {
@@ -97,7 +100,11 @@ export default function MainSearchBox({
             </div>
           </Button>
         </div>
-        <Button size="lg" color="primary" additionalClass="w-36 flex-grow-0" onClick={() => router.push("/accommodations")}>
+        <Button
+          size="lg"
+          color="primary"
+          additionalClass="w-36 flex-grow-0"
+          onClick={() => router.push("/accommodations")}>
           <p className="font-bold flex-shrink-0">검색</p>
         </Button>
       </div>
