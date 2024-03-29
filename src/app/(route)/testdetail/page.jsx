@@ -17,7 +17,7 @@ export default function Home() {
 
   const fetchRoom = async ({ page }) => {
     const { data } = await axios.get(
-      "http://183.96.51.234:8080/api/accommodation",
+      "https://183.96.51.234:8080/api/accommodation",
       {
         params: {
           page: page,
