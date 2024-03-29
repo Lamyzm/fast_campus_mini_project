@@ -11,7 +11,7 @@ dayjs.extend(utc);
 dayjs.locale("ko");
 const FORMATTER = "MM.DD (ddd)";
 
-export default function CartItem({ data, index }) {
+export default function CartItem({ data, index, hideCheckbox }) {
   if (!data) {
     return null;
   }
@@ -37,7 +37,10 @@ export default function CartItem({ data, index }) {
           <div className="pt-9 flex gap-6 flex-col">
             <h3 className="font-bold text-xl">{accommodation.room.roomName}</h3>
             <div className="flex flex-row h-20 items-start gap-4">
-              <CartCheckBox id={`${index}-checkbox`}></CartCheckBox>
+              {/* 체크박스 조건부 렌더링 */}
+              {!hideCheckbox && (
+                <CartCheckBox id={`${index}-checkbox`} />
+              )}
               <img
                 alt="상품 상세이미지"
                 src={faker.image.urlPicsumPhotos()}

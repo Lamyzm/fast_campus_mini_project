@@ -1,9 +1,9 @@
-"use client";
+'use client'
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import CartList from "@/components/CartItem/CartList";
 
-export default function CartPage() {
+export default function PaymentResult() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -20,7 +20,6 @@ export default function CartPage() {
   }, []);
 
   return (
-    <CartList data={data} hideCheckbox={false} />
+    <CartList data={data} hideCheckbox={true} />
   );
 }
-

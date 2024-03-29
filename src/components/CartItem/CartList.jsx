@@ -1,10 +1,4 @@
-import React, {
-  useState,
-  useEffect,
-  createContext,
-  useId,
-  useContext,
-} from "react";
+import React, { useState, useEffect, createContext, useContext } from "react";
 import axios from "axios";
 import CartItem from "./CartItem";
 
@@ -20,39 +14,22 @@ export const CheckboxProvider = ({ children }) => {
   );
 };
 
-export default function CartList() {
-  const [data, setData] = useState([]);
-  const id = useId();
-
-  useEffect(() => {
-    const init = async () => {
-      try {
-        const result = await axios.get("api/cart");
-        setData(result.data);
-        console.log(result.data);
-      } catch (error) {
-        console.error("데이터 로딩 중 오류 발생:", error);
-      }
-    };
-    init();
-  }, []);
-  console.log(id);
+export default function CartList({ data, hideCheckbox }) {
   return (
-    <>
-      <CheckboxProvider>
-        {data ? (
-          data.map((item, index) => (
-            <CartItem
-              data={item}
-              key={`${index + 1}-${id}`}
-              index={`${index + 1}-${id}`}
-            />
-          ))
-        ) : (
-          <div>로딩중...</div>
-        )}
-      </CheckboxProvider>
-    </>
+    <CheckboxProvider>
+      {data ? (
+        data.map((item, index) => (
+          <CartItem
+            data={item}
+            key={index}
+            hideCheckbox={hideCheckbox} //체크박스 조건부 렌더링
+          />
+        ))
+      ) : (
+        <div>로딩중...</div>
+      )}
+    </CheckboxProvider>
   );
 }
+
 export const useCheckboxContext = () => useContext(CheckboxContext);
