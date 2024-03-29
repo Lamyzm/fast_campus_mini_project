@@ -16,7 +16,7 @@ const Page = ({ params }) => {
 
   const fetchRoom = async () => {
     const { data } = await axios(
-      `http://183.96.51.234:8080/api/accommodation/${id}`
+      `https://183.96.51.234:8080/api/accommodation/${id}`
     );
     return data;
   };
