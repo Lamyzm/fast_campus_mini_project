@@ -5,6 +5,8 @@ import Icons from "../icons/icons";
 import { useSession } from "next-auth/react";
 import { signOut } from "next-auth/react";
 import { useRouter, usePathname } from "next/navigation";
+import Badge from '@mui/material/Badge';
+import MailIcon from '@mui/icons-material/Mail';
 
 const MainNav = () => {
   const cartItemCount = 5;
@@ -33,22 +35,19 @@ const MainNav = () => {
           3조화이팅
         </Link>
         <div className="flex gap-7 items-center px-[18px] py-0 font-semibold">
+
           <Link
             href="/cart"
             className="cursor-pointer hover:text-gray-600 transition duration-100 ease-in-out relative">
-            <span>
-              <Icons
+
+            <Badge badgeContent={cartItemCount} color="primary">
+            <Icons
                 className="mb-[2px] text-3xl"
                 type="ShoppingCartOutlinedIcon"
                 size="large"
                 color="primary"
               />
-              {cartItemCount > 0 && (
-                <span className="absolute top-0 -right-[5px] bg-blue-500 rounded-full text-white text-xs px-1">
-                  {cartItemCount}
-                </span>
-              )}
-            </span>
+          </Badge>
           </Link>
           <Link
             href="/login"

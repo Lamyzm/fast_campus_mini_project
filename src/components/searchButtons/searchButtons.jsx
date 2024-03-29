@@ -1,39 +1,43 @@
+import dayjs from "dayjs";
 import Icons from "../icons/icons";
 
 const { Button } = require("../buttons/Button");
 
-const SearchButtons = () => {
+const SearchButtons = ({ data }) => {
+  const startDate = dayjs(data?.date.startDate);
+  const endDate = dayjs(data?.date.endDate);
+  const nightCount = endDate.diff(startDate, 'day');
 
-return (
-  <div className="w-full flex justify-start gap-3">
-    <Button
-    size="lg"
-    color="white"
-    outline="outlineSemi"
-    additionalClass="w-[270px] justify-start gap-2"
-    disabled>
-      <Icons type="DateRangeIcon" size="large" color="primary" />
-      3/21 - 3/22, 1박
-    </Button>
-    <Button
-    size="lg"
-    color="white"
-    outline="outlineSemi"
-    additionalClass="w-[200px] justify-start gap-2"
-    disabled>
-      <Icons type="PermIdentityOutlinedIcon" size="large" color="primary" />
-      성인 2명
-    </Button>
-    <Button
-    size="lg"
-    color="white"
-    outline="outlineSemi"
-    additionalClass="w-[200px] justify-start gap-2"
-    disabled>
-      <Icons type="LocationOnOutlinedIcon" size="large" color="primary" />
-      제주
-    </Button>
-  </div>
+  return (
+    <div className="w-full flex justify-start gap-2 py-2 ml-2">
+      <Button
+        size="sm"
+        color="white"
+        outline="outlineSemi"
+        additionalClass="pr-6 py-2"
+        disabled>
+        <Icons type="DateRangeIcon" size="large" color="primary" />
+        {startDate.format('M/DD')} - {endDate.format('M/DD')}, {nightCount}박
+      </Button>
+      <Button
+        size="sm"
+        color="white"
+        outline="outlineSemi"
+        additionalClass="pr-6 py-2"
+        disabled>
+        <Icons type="PermIdentityOutlinedIcon" size="large" color="primary" />
+        성인 {data?.headCount}명
+      </Button>
+      <Button
+        size="sm"
+        color="white"
+        outline="outlineSemi"
+        additionalClass="pr-6 py-2"
+        disabled>
+        <Icons type="LocationOnOutlinedIcon" size="large" color="primary" />
+        {data?.area}
+      </Button>
+    </div>
   )
 }
 

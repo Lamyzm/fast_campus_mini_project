@@ -9,19 +9,20 @@ import { HiOutlineMapPin } from "react-icons/hi2";
 
 const RoomBox = ({ currentRoom, setCurrentRoom }) => {
 
-    const [category, setCategory] = useState(currentRoom?.category)
+    const [category, setCategory] = useState(null)
 
     const checkCategory = () => {
-        if (category === '호텔') {
+        if (currentRoom?.category === '호텔') {
             setCategory('호텔')
         }
-        else if (category === '모텔') {
+        else if (currentRoom?.category === '모텔') {
             setCategory('모텔')
         }
         else {
             setCategory('default')
         }
     }
+    
 
     useEffect(() => {
         checkCategory()

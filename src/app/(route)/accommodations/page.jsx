@@ -1,7 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import MainNav from "@/components/mainNav/MainNav";
 import AccommodationList2 from "@/components/accommodationList/AccommodationList2";
 
 const Accommodations = () => {
