@@ -1,10 +1,34 @@
 "use client";
-
-import Link from "next/link";
 import { Button } from "../buttons/Button";
 import Icons from "../icons/icons";
+import authApi from "@/service/axiosConfig";
+import { useSearch } from "@/context/SearchContext";
+import dayjs from "dayjs";
 
-export default function BookingRoomComponent({ title, price }) {
+export default function BookingRoomComponent({ title, price, id, roomId }) {
+  const { searchData } = useSearch();
+  console.log(searchData);
+
+  const cartRequestBody = {
+    checkIn: dayjs(searchData.date.startDate).format("YYYY-MM-DD"),
+    checkOut: dayjs(searchData.date.endDat).format("YYYY-MM-DD"),
+    peoples: searchData.headCount,
+  };
+  const saveCart = () => {
+    authApi
+      .post(`/cart/${id}/${roomId}`, cartRequestBody)
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  };
+  // {
+  //   "checkIn":"2024-03-15",	//NonNull
+  //   "checkOut":"2024-03-16",//NonNull
+  //   "peoples":4//NonNull
+  // }
   return (
     <>
       <div className="w-full bg-body-color rounded-md p-3 pt-8 mb-8 flex flex-col justify-between">
@@ -33,27 +57,27 @@ export default function BookingRoomComponent({ title, price }) {
               {price.toLocaleString()} 원
             </div>
             <div className="flex flex-row w-fit gap-4">
-              <Link href="#">
-                <Button
-                  size="lg"
-                  color="white"
-                  outline="outlineSemi"
-                  additionalClass="px-2">
-                  <Icons
-                    type="ShoppingCartOutlinedIcon"
-                    size="large"
-                    color="primary"
-                  />
-                </Button>
-              </Link>
-              <Link href="#">
-                <Button
-                  size="lg"
+              <Button
+                size="lg"
+                color="white"
+                outline="outlineSemi"
+                additionalClass="px-2"
+                onClick={() => {
+                  saveCart();
+                }}>
+                <Icons
+                  type="ShoppingCartOutlinedIcon"
+                  size="large"
                   color="primary"
-                  additionalClass="w-full sm:px-12 font-bold text-sm">
-                  예약하기
-                </Button>
-              </Link>
+                />
+              </Button>
+
+              <Button
+                size="lg"
+                color="primary"
+                additionalClass="w-full sm:px-12 font-bold text-sm">
+                예약하기
+              </Button>
             </div>
           </div>
         </div>

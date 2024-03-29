@@ -16,7 +16,10 @@ export default NextAuth({
           });
 
           if (res.status === 200 && res.data) {
-            return res.data;
+            console.log("header", res.headers.jwttoken);
+            console.log("data", res.data);
+            console.log("status", { ...res.data, token: res.headers.jwttoken });
+            return { ...res.data, token: res.headers.jwttoken };
           }
           throw new Error('Authentication failed');
         } catch (error) {
@@ -25,8 +28,16 @@ export default NextAuth({
         }
       }
     })
-  ],
-  pages: {
-    signIn: "/login",
+  ], callbacks: { //  =====> Add Below Callbacks <=====
+    jwt: async ({ token, user }) => {
+      return { ...token, ...user };
+    },
+    session: async ({ session, token }) => {
+      session.user = token;
+      return session;
+    },
   },
+  secret: process.env.NEXTAUTH_SECRET,
+
+
 });

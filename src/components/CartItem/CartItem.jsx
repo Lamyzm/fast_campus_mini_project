@@ -24,7 +24,7 @@ export default function CartItem({ data, index }) {
 
   return (
     <>
-      <div className="p-4 w-full bg-white relative">
+      <div className="p-4 w-full bg-white relative shadow-sm mb-4">
         <div className="flex flex-col w-full p-5  divide-solid  divide-y-[1px] divide-subtitle-gray rounded-lg shadow-sm">
           <div className="pb-6">
             <h3 className="block mb-4 font-bold text-3xl">
@@ -40,8 +40,8 @@ export default function CartItem({ data, index }) {
               <CartCheckBox id={`${index}-checkbox`}></CartCheckBox>
               <img
                 alt="상품 상세이미지"
-                src={faker.image.urlPicsumPhotos()}
-                className="h-full block rounded-md bg-cover"
+                src={accommodation?.image}
+                className="h-full w-28 block rounded-md bg-cover"
               />
               <div className=" flex flex-col gap-2">
                 <div className=" flex flex-row gap-3 divide-solid divide-x-[2px] divide-subtitle-gray font-semibold text-sm">
@@ -52,7 +52,7 @@ export default function CartItem({ data, index }) {
                 </div>
                 <div className=" flex flex-row gap-3 divide-solid divide-x-[2px] divide-subtitle-gray">
                   <p className="text-gray-500">체크인 15:00 </p>
-                  <p className=" pl-2 text-gray-500">체크인 15:00 </p>
+                  <p className=" pl-2 text-gray-500">체크아웃 15:00 </p>
                 </div>
 
                 <p className="text-gray-500">{accommodation.peoples}명</p>
