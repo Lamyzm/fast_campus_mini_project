@@ -16,14 +16,6 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="ko">
-
-
-      <head>
-        <script
-          type="text/javascript"
-          src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d683e5649f857f0f8303b8b30652e395&libraries=services,clusterer"
-        ></script>
-      </head>
       <body className={inter.className}>
         <AuthProvider>
           <GlobalLayout>
