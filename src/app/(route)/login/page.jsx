@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import Link from "next/link"; 
 import axios from "axios";
 import { Input } from "@/components/input";
 import { Button } from "@/components/buttons/Button";
@@ -29,14 +30,14 @@ export default function Home() {
 
   return (
     <div className="min-h-screen flex items-center justify-center">
-      <div className="w-[370px] h-[400px] bg-white p-8 rounded-lg shadow-md border border-gray-200">
+      <div className="w-[370px] h-[480px] bg-white p-8 rounded-lg shadow-md border border-gray-200">
         <div>
           <h2 className="mt-12 text-center text-2xl font-extrabold text-gray-900 mb-6">
             3조 화이팅
           </h2>
         </div>
         <form onSubmit={handleLogin}>
-          <div className="space-y-6 mt-14 mb-12">
+          <div className="space-y-6 mt-14 mb-14">
             <Input
               type="email"
               name="email"
@@ -53,7 +54,7 @@ export default function Home() {
             />
           </div>
           {error && <p className="text-red-500 text-sm">{error}</p>}
-          <div className="mt-6">
+          <div>
             <Button
               size="lg"
               type="rounded"
@@ -62,6 +63,12 @@ export default function Home() {
               onSubmit={true}>
               로그인
             </Button>
+            <div className="flex text-[13px] text-gray-600 mt-2 justify-between">
+              <p className="ml-2">처음 오셨나요?</p>
+              <Link href="/join" className="mr-2 cursor-pointer">
+                이메일로 가입하기
+              </Link>
+            </div>
           </div>
         </form>
       </div>
