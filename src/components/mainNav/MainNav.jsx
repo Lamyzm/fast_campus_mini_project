@@ -4,12 +4,13 @@ import Link from "next/link";
 import Icons from "../icons/icons";
 import { useSession } from "next-auth/react";
 import { signOut } from "next-auth/react";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 
 const MainNav = () => {
   const cartItemCount = 5;
   const { data, status } = useSession();
   const router = useRouter();
+  const pathName = usePathname();
   const handleAuthAction = (e) => {
     e.preventDefault();
     if (data) {
@@ -19,17 +20,21 @@ const MainNav = () => {
       router.push("/login");
     }
   };
+  console.log();
+  if (router === "/testdetail") {
+    console.log("test detail");
+  }
   return (
     <>
-      <div className="flex justify-between items-center fixed w-[1000px] h-[65px] top-0 shadow-md bg-white z-[100] relative;">
+      <div className="flex justify-between items-center fixed w-[1000px] h-[65px] top-0 shadow-sm bg-white z-[100] relative;">
         <Link
           className="text-blue-800 text-xl font-semibold cursor-pointer px-[18px] py-0"
-          href="/">
+          href="/main">
           3조화이팅
         </Link>
         <div className="flex gap-7 items-center px-[18px] py-0 font-semibold">
           <Link
-            href="/"
+            href="/cart"
             className="cursor-pointer hover:text-gray-600 transition duration-100 ease-in-out relative">
             <span>
               <Icons

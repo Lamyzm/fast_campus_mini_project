@@ -4,7 +4,7 @@ import React from 'react'
 const PayCompleteNav = () => {
     return (
         <>
-            <div className="flex justify-between items-center w-[1000px] h-[65px] shadow-md bg-white z-[100]">
+            <div className="flex justify-between items-center w-[1000px] h-[65px] shadow-sm bg-white z-[100]">
                 <div>
                     <Link className="text-blue-800 text-xl font-semibold cursor-pointer px-[18px] py-0" href="/">
                         3조화이팅
