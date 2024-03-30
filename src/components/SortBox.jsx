@@ -8,7 +8,7 @@ import Dropdown from '@mui/joy/Dropdown';
 const SortBox = ({ activeSort, handleSelectSort }) => {
     return (
         <Dropdown>
-            <MenuButton variant="plain" className='bg-white border-none text-lg font-bold text-gray-800' startDecorator={<SwapVertIcon />}>
+            <MenuButton variant="plain" className='bg-white border-none text-base font-bold text-gray-800' startDecorator={<SwapVertIcon />}>
                 {activeSort === null ? '추천순' : activeSort === 'minPrice,asc' ? '가격낮은순' : '가격높은순'}
             </MenuButton>
             <Menu variant="plain" className='bg-white'>

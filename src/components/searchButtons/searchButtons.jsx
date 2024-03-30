@@ -9,7 +9,7 @@ const SearchButtons = ({ data }) => {
   const nightCount = endDate.diff(startDate, 'day');
 
   return (
-    <div className="w-full flex justify-start gap-2 py-2 ml-2">
+    <div className="w-full flex justify-start gap-2 py-2 ml-6">
       <Button
         size="sm"
         color="white"

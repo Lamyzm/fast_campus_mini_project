@@ -84,7 +84,7 @@ body {
 }
 
 .MuiMenuItem-root:hover {
-  background-color: transparent !important;
+  background-color: rgb(220, 220, 220) !important;
 }
 
 .MuiMenuItem-root {

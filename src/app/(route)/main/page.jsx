@@ -27,11 +27,11 @@ export default function Home() {
   return (
     <>
       <MainNav />
-      <div className="w-full h-[450px] relative mb-14">
+      <div className="w-full h-[450px] relative">
         <img
-          src={faker.image.urlPicsumPhotos()}
-          alt=""
-          className="w-full h-full"
+          src='/mainsearchbar.png'
+          className="w-full h-[450px] object-cover"
+          style={{ imageRendering: 'pixelated' }}
         />
         <div className="w-full h-full absolute top-0  bg-black bg-opacity-10 "></div>
         <div className={"absolute top-[40%]  w-full px-5"}>

@@ -11,6 +11,8 @@ import ScrollToTopButton from '@/components/ScrollToTopButton';
 import SearchButtons from '@/components/searchButtons/searchButtons';
 import RoomCategory from '@/components/roomCategory/RoomCategory';
 import SortBox from '@/components/SortBox';
+import NoSearchRoom from './components/NoSearchRoom';
+
 
 const Page = () => {
     const { searchData, setSearchData } = useSearch();
@@ -86,9 +88,6 @@ const Page = () => {
         setActiveSort(sort);
     }, []);
 
-    console.log(activeSort)
-
-
     return (
         <>
             <div className="text-2xl font-bold text-gray-800 pt-8 mb-2 w-full flex justify-between" >
@@ -97,7 +96,7 @@ const Page = () => {
             </div>
             <SearchButtons data={searchData} />
             <RoomCategory activeCategory={activeCategory} handleSelectCategory={handleSelectCategory} />
-
+            {room?.pages[0].empty && (<NoSearchRoom area={searchData.area} />)}
             {isLoading && (<Loading />)}
             {room?.pages.map((page, index) => (
                 <React.Fragment key={index}>

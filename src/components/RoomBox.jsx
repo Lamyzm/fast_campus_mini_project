@@ -22,11 +22,15 @@ const RoomBox = ({ currentRoom, setCurrentRoom }) => {
             setCategory('default')
         }
     }
-    
+
+    console.log(category)
+
 
     useEffect(() => {
         checkCategory()
-    }, [])
+    }, [currentRoom])
+
+
 
     useEffect(() => {
         const handleScroll = () => {
