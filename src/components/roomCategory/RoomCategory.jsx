@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 const RoomCategory = ({ activeCategory, handleSelectCategory }) => {
     return (
         <>
-            <div className="flex ml-4 justify-between items-center w-[1000px] h-[70px] bg-white">
+            <div className="flex ml-4 justify-between items-center w-[1000px] h-[70px] box-border bg-white">
                 <div className="flex gap-10 items-center px-[20px] py-0 text-lg font-semibold">
                     <div href="/styleguide" className={`cursor-pointer ${activeCategory === "all" ? "text-black underline" : "text-gray-500"}`} onClick={() => handleSelectCategory("all")}>
                         <span>전체</span>

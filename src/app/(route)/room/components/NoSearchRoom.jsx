@@ -3,8 +3,10 @@ import ErrorOutlineOutlinedIcon from '@mui/icons-material/ErrorOutlineOutlined';
 import { useQuery } from 'react-query';
 import axios from 'axios';
 import RecommendRoom from './RecommendRoom';
+import { useSearchFilterStore } from '@/store/useSearchFilterStore';
 
-const NoSearchRoom = ({ area }) => {
+const NoSearchRoom = () => {
+    const {area} = useSearchFilterStore()
 
     const fetchRecommendRoom = async () => {
         const { data } = await axios.get(`http://3.35.216.158:8080/api/accommodation?area=${area}&page=0`)

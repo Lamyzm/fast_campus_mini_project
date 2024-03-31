@@ -1,14 +1,14 @@
 'use client'
 import axios from 'axios';
-import React, { useState } from 'react'
+import React from 'react'
 import { useQuery } from 'react-query';
-import Loader from '../components/Loader';
 import SelectedRoomMain from '@/components/selectedRoomMain/SelectedRoomMain';
 import DetailNav from '@/components/detailNav/DetailNav';
 import SelectedRoomDetailLayout from '@/components/SelectedRoomDetailLayout';
 import RoomDetail from '@/components/roomdetail/RoomDetail';
-import LoadingDetail from '../components/LoadingDetail';
 import { useLocationStore } from '@/store/useLocationStore';
+import Loader from '../components/Loader';
+import LoadingDetail from '../components/LoadingDetail';
 
 const Page = ({ params }) => {
   const { id } = params
