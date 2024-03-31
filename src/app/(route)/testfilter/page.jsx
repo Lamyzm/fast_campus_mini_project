@@ -13,7 +13,6 @@ import RoomCategory from '@/components/roomCategory/RoomCategory';
 import SortBox from '@/components/SortBox';
 import NoSearchRoom from './components/NoSearchRoom';
 
-
 const Page = () => {
     const { searchData, setSearchData } = useSearch();
 
