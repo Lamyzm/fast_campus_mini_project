@@ -9,7 +9,7 @@ const NoSearchRoom = () => {
     const {area} = useSearchFilterStore()
 
     const fetchRecommendRoom = async () => {
-        const { data } = await axios.get(`http://3.35.216.158:8080/api/accommodation?area=${area}&page=0`)
+        const { data } = await axios.get(`http://3.35.216.158:8080/api/accommodation?area=${area}&page=0&size=5`)
         return data
     }
 

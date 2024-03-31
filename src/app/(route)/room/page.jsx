@@ -113,10 +113,10 @@ const Page = () => {
             {/* 숙소 검색 결과 몇개인지, sort 컴포넌트 */}
             <div className="text-2xl font-bold text-gray-800 pt-8 mb-2 w-full flex justify-between" >
                 {room?.pages[0].totalElements ? (
-                    <div className='ml-4 pt-[4px] flex justify-center'>{area === 'all' ? '전국' : area}숙소 {room?.pages[0].totalElements}개</div>
+                    <div className='ml-4 pt-[4px] flex justify-center'>검색된 {area === 'all' ? '전국' : area}숙소 {room?.pages[0].totalElements}개</div>
                 )
                     : (
-                        <div className='ml-4 pt-[4px] flex justify-center'>{area === 'all' ? '전국' : area}숙소</div>
+                        <div className='ml-4 pt-[4px] flex justify-center'>검색된 {area === 'all' ? '전국' : area}숙소 0개</div>
                     )
                 }
 
