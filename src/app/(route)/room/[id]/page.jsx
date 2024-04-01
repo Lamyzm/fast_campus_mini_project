@@ -15,7 +15,7 @@ const Page = ({ params }) => {
   const { setNewLocation } = useLocationStore()
 
   const fetchRoom = async () => {
-    const { data } = await axios(`http://3.35.216.158:8080/api/accommodation/${id}`)
+    const { data } = await axios(`https://fcbe-mini-project.kro.kr:8080/api/accommodation/${id}`)
     return data
   }
 

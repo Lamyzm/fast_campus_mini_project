@@ -27,9 +27,10 @@ const Page = () => {
     const [activeCategory, setActiveCategory] = useState('all');
     const [activeSort, setActiveSort] = useState(null)
     const { setIsSearched } = useIsSearchedStore()
+    console.log(area, people)
 
     const fetchRoom = async ({ pageParam }) => {
-        const { data } = await axios.get("http://3.35.216.158:8080/api/accommodation", {
+        const { data } = await axios.get("https://fcbe-mini-project.kro.kr:8080/api/accommodation", {
             params: {
                 page: pageParam,
                 maxPeople: people?.adult + people?.kids + people?.baby,
