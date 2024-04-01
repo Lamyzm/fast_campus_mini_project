@@ -29,6 +29,7 @@ import SearchButtons from "@/components/searchButtons/searchButtons";
 import CartItem from "@/components/CartItem/CartItem";
 import CartIndex from "@/components/CartItem/CartList";
 import PopularSwiper from "@/components/accommodationSwipers/PopularSwiper";
+import ZustandSelectPeople from "@/components/SelectPeople/ZustandSelectPeople";
 
 export default function styleguide() {
   const init = async () => {
@@ -105,6 +106,7 @@ export default function styleguide() {
         <SearchButtons />
         <CartItem></CartItem>
         <CartIndex></CartIndex>
+        <ZustandSelectPeople/>
       </GlobalLayout>
       <MainSearchBox destination="서울" headCount={3} />
       <MainSearchBox />

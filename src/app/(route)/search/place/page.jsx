@@ -1,10 +1,10 @@
 import React from "react";
-import LocationCategory from "@/components/locationCategory/LocationCategory";
+import ZustandLocationCategory from "@/components/locationCategory/ZustandLocationCategory";
 
 export default function page() {
   return (
     <>
-      <LocationCategory />
+      <ZustandLocationCategory/>
     </>
   );
 }

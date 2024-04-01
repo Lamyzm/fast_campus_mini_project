@@ -1,19 +1,24 @@
 /* global kakao */
 'use client'
+import { useLocationStore } from '@/store/useLocationStore'
+import { useMapStore } from '@/store/useMapStore'
 import Script from 'next/script'
 import React from 'react'
 
 
-const Map = ({ lat, lng, setMap }) => {
+const Map = () => {
+    const { setNewMap,setIsMap } = useMapStore()
+    const { location } = useLocationStore()
     const loadKakaoMap = () => {
         window.kakao.maps.load(() => {
             const container = document.getElementById('map');
             const options = {
-                center: new window.kakao.maps.LatLng(lat, lng),
+                center: new window.kakao.maps.LatLng(location.lat, location.lng),
                 level: 2
             };
             const map = new window.kakao.maps.Map(container, options)
-            setMap(map)
+            setNewMap(map)
+            setIsMap()
         })
     }
     return (
