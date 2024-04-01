@@ -8,9 +8,9 @@ import AccommodationSwiper from "@/components/accommodationSwipers/Accommodation
 import PopularSwiper from "@/components/accommodationSwipers/PopularSwiper";
 import Divider from "@/components/Divider";
 import MainNav from "@/components/mainNav/MainNav";
-import { useCallback, useEffect } from "react";
+import { useEffect } from "react";
 import { useIsSearchedStore } from "@/store/useIsSearchStore";
-import { useSearchFilterStore } from "@/store/useSearchFilterStore";
+import Image from "next/image";
 
 export default function Home() {
   const { clearIsSearched } = useIsSearchedStore() //현재 페이지가 메인페이지인지, 검색결과 페이지인지
@@ -24,10 +24,13 @@ export default function Home() {
     <>
       <MainNav />
       <div className="w-full h-[450px] relative">
-        <img
+        <Image
           src='/mainsearchbar.png'
-          className="w-full h-[450px] object-cover"
-          style={{ imageRendering: 'pixelated' }}
+          loading="lazy"
+          layout="fill"
+          objectFit="fill"
+          sizes='100vw'
+          quality={100}
         />
         <div className="w-full h-full absolute top-0  bg-black bg-opacity-10 "></div>
         <div className={"absolute top-[40%]  w-full px-5"}>
