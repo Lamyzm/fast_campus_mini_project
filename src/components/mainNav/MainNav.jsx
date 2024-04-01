@@ -22,10 +22,7 @@ const MainNav = () => {
       router.push("/login");
     }
   };
-  console.log();
-  if (router === "/testdetail") {
-    console.log("test detail");
-  }
+
   return (
     <>
       <div className="flex justify-between items-center fixed w-[1000px] h-[65px] top-0 shadow-sm bg-white z-[100] relative;">

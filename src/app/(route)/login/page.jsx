@@ -19,7 +19,6 @@ export default function Home() {
       password: formData.get("password"),
       redirect: false,
     });
-    console.log(res);
     if (res.status === 200) {
       router.push("/");
     }
