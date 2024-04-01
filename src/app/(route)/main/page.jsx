@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable jsx-a11y/alt-text */
 "use client";
@@ -12,22 +13,12 @@ import { useIsSearchedStore } from "@/store/useIsSearchStore";
 import { useSearchFilterStore } from "@/store/useSearchFilterStore";
 
 export default function Home() {
-  const { clearIsSearched } = useIsSearchedStore()
-  const { clearAll } = useSearchFilterStore()
+  const { clearIsSearched } = useIsSearchedStore() //현재 페이지가 메인페이지인지, 검색결과 페이지인지
 
-  const handleBeforeUnload = useCallback(() => {
-    clearAll()
-  }, [])
 
   useEffect(() => {
-    clearIsSearched()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    clearIsSearched() //메인페이지 로드 시 IsSearched false
   }, [])
-
-  //뒤로가기면 검색 필터 그대로, 새로고침이면 초기화
-  useEffect(() => {
-    window.addEventListener("beforeunload", handleBeforeUnload);
-  }, [handleBeforeUnload]);
 
   return (
     <>
