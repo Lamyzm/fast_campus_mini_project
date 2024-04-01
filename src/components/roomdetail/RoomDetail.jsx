@@ -6,10 +6,10 @@ import Map from '../Map'
 import Marker from '../Marker'
 import RoomBox from '../RoomBox'
 
-const RoomDetail = ({ data, lng, lat }) => {
+const RoomDetail = ({ data }) => {
     const [activeTap, setActiveTap] = useState('room');
-    const [map, setMap] = useState(null)
     const [currentRoom, setCurrentRoom] = useState(null)
+
     return (
         <>
             <div className="flex mb-4">
@@ -53,8 +53,8 @@ const RoomDetail = ({ data, lng, lat }) => {
             )}
             {activeTap === 'location' && (
                 <>
-                    <Map setMap={setMap} lat={lat} lng={lng} />
-                    <Marker map={map} lat={lat} lng={lng} data={data} setCurrentRoom={setCurrentRoom} />
+                    <Map />
+                    <Marker data={data} />
                     <RoomBox currentRoom={currentRoom} setCurrentRoom={setCurrentRoom} />
                 </>
             )}

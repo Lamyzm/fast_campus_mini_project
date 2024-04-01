@@ -1,21 +1,21 @@
 'use client'
 import axios from 'axios';
-import React, { useState } from 'react'
+import React from 'react'
 import { useQuery } from 'react-query';
-import Loader from '../components/Loader';
 import SelectedRoomMain from '@/components/selectedRoomMain/SelectedRoomMain';
 import DetailNav from '@/components/detailNav/DetailNav';
 import SelectedRoomDetailLayout from '@/components/SelectedRoomDetailLayout';
 import RoomDetail from '@/components/roomdetail/RoomDetail';
+import { useLocationStore } from '@/store/useLocationStore';
+import Loader from '../components/Loader';
 import LoadingDetail from '../components/LoadingDetail';
 
 const Page = ({ params }) => {
   const { id } = params
-  const [lat, setLat] = useState(null)
-  const [lng, setLng] = useState(null)
+  const { setNewLocation } = useLocationStore()
 
   const fetchRoom = async () => {
-    const { data } = await axios(`http://3.35.216.158:8080/api/accommodation/${id}`)
+    const { data } = await axios(`https://fcbe-mini-project.kro.kr:8080/api/accommodation/${id}`)
     return data
   }
 
@@ -31,8 +31,10 @@ const Page = ({ params }) => {
     };
     axios.request(config)
       .then((response) => {
-        setLng(response.data.documents[0].x)
-        setLat(response.data.documents[0].y)
+        setNewLocation({
+          lat: response.data.documents[0].y,
+          lng: response.data.documents[0].x
+        })
       })
       .catch((error) => {
         console.log(error);
@@ -44,7 +46,6 @@ const Page = ({ params }) => {
     queryFn: fetchRoom,
     onSuccess: (data) => fetchLocation(data.address)
   })
-
 
   if (isError) {
     return (
@@ -63,7 +64,7 @@ const Page = ({ params }) => {
       <DetailNav />
       <SelectedRoomDetailLayout>
         <SelectedRoomMain data={room} />
-        <RoomDetail data={room} lat={lat} lng={lng} />
+        <RoomDetail data={room} />
       </SelectedRoomDetailLayout>
     </>
   )

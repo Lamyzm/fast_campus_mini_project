@@ -1,50 +1,46 @@
+/* eslint-disable @next/next/no-img-element */
+/* eslint-disable jsx-a11y/alt-text */
 "use client";
-import axios from "axios";
-import { Button } from "@/components/buttons/Button";
 import MainSearchBox from "@/components/MainSearchBox/MainSearchBox";
-
-import Calendar from "@/components/calendar/Calendar";
-import PopularLocationSlideContainer from "@/components/popularLoactionSlide/PopularLocationSlideContainer";
 import CouponSlideContainer from "@/components/couponSlide/CouponSlideContainer";
 import AccommodationSwiper from "@/components/accommodationSwipers/AccommodationSwiper";
 import PopularSwiper from "@/components/accommodationSwipers/PopularSwiper";
-import { faker } from "@faker-js/faker";
-import { GlobalLayout } from "../../../components/GlobalLayout";
 import Divider from "@/components/Divider";
-import { useSession } from "next-auth/react";
-import { useSearch } from "@/context/SearchContext";
-import dynamic from "next/dynamic";
-import { useEffect, useState } from "react";
-import dayjs from "dayjs";
 import MainNav from "@/components/mainNav/MainNav";
-// const MainNav = dynamic(() => import("@/components/mainNav/MainNav"), {
-//   ssr: false,
-// });
+import { useCallback, useEffect } from "react";
+import { useIsSearchedStore } from "@/store/useIsSearchStore";
+import { useSearchFilterStore } from "@/store/useSearchFilterStore";
 
 export default function Home() {
-  const { searchData, setSearchData } = useSearch();
-  const { data, status } = useSession();
+  const { clearIsSearched } = useIsSearchedStore()
+  const { clearAll } = useSearchFilterStore()
+
+  const handleBeforeUnload = useCallback(() => {
+    clearAll()
+  }, [])
+
+  useEffect(() => {
+    clearIsSearched()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  //뒤로가기면 검색 필터 그대로, 새로고침이면 초기화
+  useEffect(() => {
+    window.addEventListener("beforeunload", handleBeforeUnload);
+  }, [handleBeforeUnload]);
+
   return (
     <>
       <MainNav />
-      <div className="w-full h-[450px] relative mb-14">
+      <div className="w-full h-[450px] relative">
         <img
-          src={faker.image.urlPicsumPhotos()}
-          alt=""
-          className="w-full h-full"
+          src='/mainsearchbar.png'
+          className="w-full h-[450px] object-cover"
+          style={{ imageRendering: 'pixelated' }}
         />
         <div className="w-full h-full absolute top-0  bg-black bg-opacity-10 "></div>
         <div className={"absolute top-[40%]  w-full px-5"}>
-          {searchData ? (
-            <MainSearchBox
-              destination={searchData?.area}
-              startDate={searchData?.date?.startDate}
-              endDate={searchData?.date?.endDate}
-              headCount={searchData?.headCount}
-            />
-          ) : (
-            <MainSearchBox />
-          )}
+          <MainSearchBox />
         </div>
       </div>
       <Divider />

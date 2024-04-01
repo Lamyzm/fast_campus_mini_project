@@ -1,4 +1,5 @@
 'use client'
+import { useCurrentRoomStore } from '@/store/useCurrentRoomStore';
 import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
 import {
@@ -7,15 +8,16 @@ import {
 } from "react-icons/ai";
 import { HiOutlineMapPin } from "react-icons/hi2";
 
-const RoomBox = ({ currentRoom, setCurrentRoom }) => {
+const RoomBox = () => {
 
-    const [category, setCategory] = useState(currentRoom?.category)
+    const { currentRoom, setNewCurrentRoom } = useCurrentRoomStore()
+    const [category, setCategory] = useState(null)
 
     const checkCategory = () => {
-        if (category === '호텔') {
+        if (currentRoom?.category === '호텔') {
             setCategory('호텔')
         }
-        else if (category === '모텔') {
+        else if (currentRoom?.category === '모텔') {
             setCategory('모텔')
         }
         else {
@@ -25,11 +27,13 @@ const RoomBox = ({ currentRoom, setCurrentRoom }) => {
 
     useEffect(() => {
         checkCategory()
-    }, [])
+    }, [currentRoom])
+
+
 
     useEffect(() => {
         const handleScroll = () => {
-            setCurrentRoom(null);
+            setNewCurrentRoom(null);
         };
         window.addEventListener('scroll', handleScroll);
 
@@ -40,7 +44,7 @@ const RoomBox = ({ currentRoom, setCurrentRoom }) => {
 
     return (
         <div className="fixed transition ease-in-out delay-150 inset-x-0 mx-auto bottom-20 rounded-lg shadow-lg max-w-sm md:max-w-xl z-10 w-full bg-white">
-            {currentRoom && (
+            {currentRoom?.id && (
                 <>
                     <div className="p-8">
                         <div className="flex justify-between items-start">
@@ -56,7 +60,7 @@ const RoomBox = ({ currentRoom, setCurrentRoom }) => {
                                     <div className="text-sm">{currentRoom?.detail}</div>
                                 </div>
                             </div>
-                            <button type="button" onClick={() => setCurrentRoom(null)}>
+                            <button type="button" onClick={() => setNewCurrentRoom(null)}>
                                 <AiOutlineClose />
                             </button>
                         </div>

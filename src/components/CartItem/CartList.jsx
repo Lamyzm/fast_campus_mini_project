@@ -29,14 +29,13 @@ export default function CartList() {
       try {
         const result = await axios.get("api/cart");
         setData(result.data);
-        console.log(result.data);
       } catch (error) {
         console.error("데이터 로딩 중 오류 발생:", error);
       }
     };
     init();
   }, []);
-  console.log(id);
+
   return (
     <>
       <CheckboxProvider>

@@ -5,10 +5,18 @@ import { useState, useRef } from "react";
 import { cn } from "@/utils/cn";
 import { Button } from "@/components/buttons/Button";
 import Icons from "../icons/icons";
-import { useSearch } from "@/context/SearchContext";
 import { useRouter } from "next/navigation";
+import { useSearchFilterStore } from "@/store/useSearchFilterStore";
+import { useIsSearchedStore } from "@/store/useIsSearchStore";
 
 const Calendar = () => {
+  //검색완료 페이지에서 해당 컴포넌트가 불러지면 지역을 누를때 
+  //isSearched에 따라 /main으로 보낼건지, 다시 /room 페이지로 가서 query를 보낼건지 결정
+  const { isSearched } = useIsSearchedStore()
+
+  // useSearchFilterStore에서 setDate를 가져옴
+  const { setDate } = useSearchFilterStore()
+
   const days = ["일", "월", "화", "수", "목", "금", "토"];
   const currentDate = dayjs();
   const [selectedDates, setSelectedDates] = useState([
@@ -18,7 +26,7 @@ const Calendar = () => {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
   const calendarRef = useRef(null);
-  const { searchData, setSearchData } = useSearch();
+
   const router = useRouter();
 
   const handlePrevMonth = () => {
@@ -62,17 +70,17 @@ const Calendar = () => {
 
   const handleConfirm = () => {
     if (startDate && endDate) {
-      console.log("Selected Date Range:");
-      console.log("Start Date:", startDate.format("YYYY-MM-DD"));
-      console.log("End Date:", endDate.format("YYYY-MM-DD"));
-      setSearchData({
-        ...searchData,
-        date: {
-          startDate: startDate,
-          endDate: endDate,
-        },
-      });
-      router.push("/");
+      //시작날짜, 종료날짜가 존재하면 날짜를 format하여 전역 searchStore date에 저장
+      setDate({
+        startDate: startDate.format("YYYY-MM-DD"),
+        endDate: endDate.format("YYYY-MM-DD")
+      })
+      if (isSearched) {
+        router.replace("/room");
+      }
+      else {
+        router.replace("/");
+      }
     } else {
       console.log("Please select both start and end dates.");
     }
