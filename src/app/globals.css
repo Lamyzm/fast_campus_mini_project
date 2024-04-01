@@ -19,6 +19,7 @@ body {
 .main-section-padding {
   padding: var(--main-section-padding);
 }
+
 .swiper-button-prev_v,
 .swiper-button-next_v {
   background-color: #ffffffb7;
@@ -29,16 +30,20 @@ body {
   top: calc(30% - var(--navigation-button-size) / 2);
   z-index: 10;
 }
+
 .swiper-button-prev_v {
   left: -20px;
 }
+
 .swiper-button-next_v {
   right: -20px;
 }
+
 .my-swiper {
   width: 100%;
   height: 350px;
 }
+
 .my-swiper-slide {
   width: 270px !important;
   text-align: center;
@@ -60,11 +65,13 @@ body {
   align-items: center;
   flex-shrink: 1;
 }
+
 .swiper-button-prev_v svg path {
   justify-self: center;
 }
 
 @media (max-width: 1300px) {
+
   .swiper-button-prev_v,
   .swiper-button-next_v {
     display: none;
@@ -74,4 +81,18 @@ body {
 
 .infowindow {
   @apply bg-blue-900 text-white block text-sm text-center h-6 rounded-sm px-2 leading-6;
+}
+
+.MuiMenuItem-root:hover {
+  background-color: rgb(220, 220, 220) !important;
+}
+
+.MuiMenuItem-root {
+  background-color: transparent !important;
+}
+
+.MuiMenuButton-root:hover {
+  background-color: transparent !important;
+  text-decoration: underline;
+  color: rgb(79, 79, 79) !important;
 }

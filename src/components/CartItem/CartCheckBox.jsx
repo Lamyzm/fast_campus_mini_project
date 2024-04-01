@@ -11,7 +11,6 @@ export default function CartCheckBox({ id }) {
   }, []);
 
   const handleChange = (event) => {
-    console.log(id);
     setCheckedItems({
       ...checkedItems,
       [id]: event.target.checked,

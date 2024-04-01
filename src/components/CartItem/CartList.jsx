@@ -14,7 +14,22 @@ export const CheckboxProvider = ({ children }) => {
   );
 };
 
-export default function CartList({ data, hideCheckbox }) {
+export default function CartList() {
+  const [data, setData] = useState([]);
+  const id = useId();
+
+  useEffect(() => {
+    const init = async () => {
+      try {
+        const result = await axios.get("api/cart");
+        setData(result.data);
+      } catch (error) {
+        console.error("데이터 로딩 중 오류 발생:", error);
+      }
+    };
+    init();
+  }, []);
+
   return (
     <CheckboxProvider>
       {data ? (
