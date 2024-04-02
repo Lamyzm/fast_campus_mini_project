@@ -14,9 +14,9 @@ export const CheckboxProvider = ({ children }) => {
   );
 };
 
-export default function CartList() {
+export default function CartList({hideCheckbox, hideCloseButton}) {
   const [data, setData] = useState([]);
-  const id = useId();
+  // const id = useId();
 
   useEffect(() => {
     const init = async () => {
@@ -38,6 +38,7 @@ export default function CartList() {
             data={item}
             key={index}
             hideCheckbox={hideCheckbox} //체크박스 조건부 렌더링
+            hideCloseButton={hideCloseButton} //삭제 버튼 조건부 렌더링
           />
         ))
       ) : (

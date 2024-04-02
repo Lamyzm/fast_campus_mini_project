@@ -2,8 +2,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import CartList from "@/components/CartItem/CartList";
+import ReservationsNav from "@/components/reservationsNav/ReservationsNav";
 
-export default function PaymentResult() {
+export default function Reservations() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -20,6 +21,10 @@ export default function PaymentResult() {
   }, []);
 
   return (
-    <CartList data={data} hideCheckbox={true} />
+    <>
+      <ReservationsNav pageTitle={'결제'}/>
+      <CartList data={data} hideCheckbox={true} hideCloseButton={true} />
+    </>
+   
   );
 }

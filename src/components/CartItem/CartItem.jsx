@@ -11,7 +11,7 @@ dayjs.extend(utc);
 dayjs.locale("ko");
 const FORMATTER = "MM.DD (ddd)";
 
-export default function CartItem({ data, index, hideCheckbox }) {
+export default function CartItem({ data, index, hideCheckbox, hideCloseButton }) {
   if (!data) {
     return null;
   }
@@ -71,16 +71,19 @@ export default function CartItem({ data, index, hideCheckbox }) {
             </div>
           </div>
         </div>
-        <div className="absolute top-10 right-10 ">
-          <button>
-            <Icons
-              type="CloseIcon"
-              size="large"
-              color="primary"
-              additionalClass={"text-3xl"}
-            />
-          </button>
-        </div>
+        {/* 삭제 버튼 조건부 렌더링 */}
+        {!hideCloseButton && (
+          <div className="absolute top-10 right-10 ">
+            <button>
+              <Icons
+                type="CloseIcon"
+                size="large"
+                color="primary"
+                additionalClass={"text-3xl"}
+              />
+            </button>
+          </div>
+        )}
       </div>
     </>
   );

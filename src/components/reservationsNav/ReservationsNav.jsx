@@ -1,11 +1,29 @@
 'use client'
-import React from 'react'
+import React, { useEffect, useState } from "react";
 import Icons from '../icons/icons'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 
-const ShoppingCartNav = () => {
+const ReservationsNav = ({pageTitle}) => {
     const router = useRouter();
+    const pathName = usePathname();
+    const [pageName, setPageName] = useState(null); 
+
+      //페이지 path에 맞게 알아서 변경하기
+    const matchPageName = (pathName) => {
+    if (pathName === "/reservations") {
+        setPageName("예약");
+    }
+    if (pathName === "/paid") {
+        setPageName("예약 완료");
+    }
+};
+
+
+    useEffect(() => {
+    matchPageName(pathName);
+    }, [pathName]);
+
     return (
         <>
             {/* top-0 fixed추가하기 */}
@@ -14,7 +32,7 @@ const ShoppingCartNav = () => {
                     <Icons className='text-3xl' type="ArrowBackIcon" size="small" color="primary" onClick={() => router.back()} />
                 </div>
                 <div className="flex items-center py-0 text-xl font-semibold justify-center">
-                    장바구니
+                    {pageName}
                 </div>
                 <div className="hover:text-gray-600 transition duration-100 text-xl font-semibold cursor-pointer px-[18px] py-0">
                     <Link href="/" className="cursor-pointer hover:text-gray-600 transition duration-100 ease-in-out">
@@ -26,4 +44,4 @@ const ShoppingCartNav = () => {
     )
 }
 
-export default ShoppingCartNav
+export default ReservationsNav
