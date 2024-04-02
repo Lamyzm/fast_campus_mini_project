@@ -8,10 +8,12 @@ import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
 import "dayjs/locale/ko";
 import { useIsSearchedStore } from "@/store/useIsSearchStore";
+import Link from "next/link";
 dayjs.extend(utc);
 dayjs.locale("ko");
 
 export default function MainSearchBox() {
+  //router -> Link로 바꾸기
 
   const { setIsSearched } = useIsSearchedStore()
   // 기존 코드 area, date, people를 가져오는동안 기본값이 표시됨.
@@ -32,8 +34,6 @@ export default function MainSearchBox() {
       setLoading(false);
     }
   }, [initialArea, initialDate, initialPeople]);
-
-  const router = useRouter();
   const tailwindClass = "flex flex-row gap-2";
 
   // 날짜 계산
@@ -61,7 +61,6 @@ export default function MainSearchBox() {
 
   const handleClick = () => {
     setIsSearched()
-    router.push("/room")
   }
 
   if (loading) {
@@ -76,76 +75,86 @@ export default function MainSearchBox() {
           className={`flex-col w-full ${tailwindClass} flex-grow lg:flex-row `}>
 
           {/* 지역 표시 */}
-          <Button
-            size="lg"
-            color="gray"
-            additionalClass="w-full  justify-start item-center overflow-hidden text-ellipsis"
-            onClick={() => router.push("/search/place")}>
-            <div className="flex flex-row item-center text-ellipsis ">
-              <Icons
-                type="LocationOnOutlinedIcon"
-                size="large"
-                color="primary"
-                additionalClass="mr-2 fill-gray-400"
-              />
-              {/* area 기본값일시 분기처리 */}
-              {area === 'all' ? (
-                <p className="text-gray-400 overflow-hidden text-nowrap text-ellipsis">
-                  여행지나 숙소를 검색해보세요
-                </p>
-              ) : (
-                <p className="font-semibold overflow-hidden text-nowrap text-ellipsis ">
-                  {area}
-                </p>
-              )}
-            </div>
-          </Button>
+          <Link href='/search/place' prefetch={true} className="sm:w-full">
+            <Button
+              size="lg"
+              color="gray"
+              additionalClass="w-[300px] justify-start item-center overflow-hidden text-ellipsis "
+            >
+              <div className="flex flex-row item-center text-ellipsis ">
+                <Icons
+                  type="LocationOnOutlinedIcon"
+                  size="large"
+                  color="primary"
+                  additionalClass="mr-2 fill-gray-400"
+                />
+                {/* area 기본값일시 분기처리 */}
+                {area === 'all' ? (
+                  <p className="text-gray-400 overflow-hidden text-nowrap text-ellipsis">
+                    여행지나 숙소를 검색해보세요
+                  </p>
+                ) : (
+                  <p className="font-semibold overflow-hidden text-nowrap text-ellipsis ">
+                    {area}
+                  </p>
+                )}
+              </div>
+            </Button>
+          </Link>
 
           {/* 날짜표시 */}
-          <Button
-            size="lg"
-            color="gray"
-            additionalClass="w-full justify-start item-center h-auto min-h-10  lg:h-10"
-            onClick={() => router.push("/search/date")}>
-            <div className="flex flex-row item-center ">
-              <Icons
-                type="InsertInvitationIcon"
-                size="large"
-                color="primary"
-                additionalClass="mr-2 fill-gray-400"
-              />
-              {
-                <p className="font-semibold">{`${startDate.format("MM-DD ddd")} - ${endDate.format("MM-DD ddd")} (${diffDay}박)`}</p>
-              }
-            </div>
-          </Button>
+          <Link href='/search/date' prefetch={true}>
+            <Button
+              size="lg"
+              color="gray"
+              additionalClass="w-[300px] justify-start item-center h-auto min-h-10  lg:h-10"
+            >
+              <div className="flex flex-row item-center ">
+                <Icons
+                  type="InsertInvitationIcon"
+                  size="large"
+                  color="primary"
+                  additionalClass="mr-2 fill-gray-400"
+                />
+                {
+                  <p className="font-semibold">{`${startDate.format("MM-DD ddd")} - ${endDate.format("MM-DD ddd")} (${diffDay}박)`}</p>
+                }
+              </div>
+            </Button>
+          </Link>
 
           {/* 인원표시 */}
-          <Button
-            size="lg"
-            color="gray"
-            additionalClass="lg:w-[35%] w-full justify-start item-center"
-            onClick={() => router.push("/search/headcount")}>
-            <div className="flex flex-row item-center ">
-              <Icons
-                type="PermIdentityOutlinedIcon"
-                size="large"
-                color="primary"
-                additionalClass="mr-2 fill-gray-400"
-              />
-              <p className="font-semibold  w-full">인원 {totalPeople}</p>
-            </div>
-          </Button>
+          <Link href='/search/headcount' prefetch={true}>
+            <Button
+              size="lg"
+              color="gray"
+              additionalClass="w-[160px] justify-start item-center h-auto min-h-10  lg:h-10"
+            >
+              <div className="flex flex-row item-center justify-center">
+                <Icons
+                  type="PermIdentityOutlinedIcon"
+                  size="large"
+                  color="primary"
+                  additionalClass="mr-2 fill-gray-400"
+                />
+                <p className="font-semibold  w-full">인원 {totalPeople}</p>
+              </div>
+            </Button>
+          </Link>
+
         </div>
 
+
         {/* 전역으로 저장된 search param을 통해 검색 요청 */}
-        <Button
-          size="lg"
-          color="primary"
-          additionalClass="w-36 flex-grow-0"
-          onClick={handleClick}>
-          <p className="font-bold flex-shrink-0">검색</p>
-        </Button>
+        <Link href='/room' prefetch={true}>
+          <Button
+            size="lg"
+            color="primary"
+            additionalClass="w-36 flex-grow-0"
+            onClick={handleClick}>
+            <p className="font-bold flex-shrink-0">검색</p>
+          </Button>
+        </Link>
       </div>
     </>
   );

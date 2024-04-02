@@ -8,11 +8,11 @@ import Dropdown from '@mui/joy/Dropdown';
 const SortBox = ({ activeSort, handleSelectSort }) => {
     return (
         <Dropdown>
-            <MenuButton variant="plain" className='bg-white border-none text-base font-bold text-gray-800' startDecorator={<SwapVertIcon />}>
-                {activeSort === null ? '추천순' : activeSort === 'minPrice,asc' ? '가격낮은순' : '가격높은순'}
+            <MenuButton variant="plain" className='bg-white border-none text-lg font-bold text-gray-800' startDecorator={<SwapVertIcon />}>
+                {activeSort === 'rating,desc' ? '평점순' : activeSort === 'minPrice,asc' ? '가격낮은순' : '가격높은순'}
             </MenuButton>
             <Menu variant="plain" className='bg-white'>
-                <MenuItem className={`${activeSort === null ? 'bg-white font-bold text-blue-700' : 'bg-white font-bold text-gray-800'}`} selected={activeSort === null} onClick={() => handleSelectSort(null)}>
+                <MenuItem className={`${activeSort === 'rating,desc' ? 'bg-white font-bold text-blue-700' : 'bg-white font-bold text-gray-800'}`} selected={activeSort === null} onClick={() => handleSelectSort('rating,desc')}>
                     추천순
                 </MenuItem>
                 <MenuItem className={`${activeSort === 'minPrice,asc' ? 'bg-white font-bold text-blue-700' : 'bg-white font-bold text-gray-800'}`} selected={activeSort === 'minPrice,asc'} onClick={() => handleSelectSort('minPrice,asc')}>

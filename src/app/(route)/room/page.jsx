@@ -15,7 +15,6 @@ import { useSearchFilterStore } from '@/store/useSearchFilterStore';
 import useIntersectionObserver from '@/hooks/useIntersectionObserver';
 import { useIsSearchedStore } from '@/store/useIsSearchStore';
 
-
 const Page = () => {
     const queryClient = useQueryClient();
     const { area, people } = useSearchFilterStore()
@@ -25,10 +24,8 @@ const Page = () => {
     const isPageEnd = !!pageRef?.isIntersecting
     const [showScrollButton, setShowScrollButton] = useState(false);
     const [activeCategory, setActiveCategory] = useState('all');
-    const [activeSort, setActiveSort] = useState(null)
+    const [activeSort, setActiveSort] = useState('rating,desc')
     const { setIsSearched } = useIsSearchedStore()
-
-    console.log(area, people)
 
     const fetchRoom = async ({ pageParam }) => {
         const { data } = await axios.get("https://fcbe-mini-project.kro.kr:8080/api/accommodation", {
@@ -99,7 +96,6 @@ const Page = () => {
 
     useEffect(() => {
         setIsSearched()
-        console.log(area, people)
     }, [])
 
     const handleSelectCategory = useCallback((category) => {

@@ -3,8 +3,6 @@
 /* eslint-disable jsx-a11y/alt-text */
 "use client";
 import MainSearchBox from "@/components/MainSearchBox/MainSearchBox";
-import Calendar from "@/components/calendar/Calendar";
-import PopularLocationSlideContainer from "@/components/popularLoactionSlide/PopularLocationSlideContainer";
 import CouponSlideContainer from "@/components/couponSlide/CouponSlideContainer";
 import AccommodationSwiper from "@/components/accommodationSwipers/AccommodationSwiper";
 import PopularSwiper from "@/components/accommodationSwipers/PopularSwiper";

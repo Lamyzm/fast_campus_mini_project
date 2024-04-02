@@ -1,13 +1,41 @@
 'use client'
 import Icons from "@/components/icons/icons";
 import { cn } from "@/utils/cn";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
+import StarIcon from '@mui/icons-material/Star';
+import StarHalfIcon from '@mui/icons-material/StarHalf';
+import StarBorderIcon from '@mui/icons-material/StarBorder';
 
 const RecommendRoom = ({ data: item }) => {
     const router = useRouter();
 
+    const renderRating = (rating) => {
+        const fullStars = Math.floor(rating);
+        const hasHalfStar = rating % 1 !== 0;
+        const starIcons = [];
+
+        // fullStars 개수만큼 별 아이콘 추가
+        for (let i = 0; i < fullStars; i++) {
+            starIcons.push(<StarIcon className="text-base" key={`star-full-${i}`} />);
+        }
+
+        // hasHalfStar가 true이면 반 별 아이콘 추가
+        if (hasHalfStar) {
+            starIcons.push(<StarHalfIcon className="text-base" key="star-half" />);
+        }
+
+        // 남은 별 아이콘 추가 (채워져야 하는 별 아이콘)
+        const remainingStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
+        for (let i = 0; i < remainingStars; i++) {
+            starIcons.push(<StarBorderIcon className="text-base" key={`star-empty-${i}`} />);
+        }
+
+        return starIcons;
+    };
+
     return (
-        <div className= "bg-gray-50 w-full lg:grid lg:grid-cols-1 gap-4" onClick={() => router.push(`/testdetail/${item?.id}`)}>
+        <div className="bg-gray-50 w-full lg:grid lg:grid-cols-1 gap-4" onClick={() => router.push(`/testdetail/${item?.id}`)}>
             <div className="relative">
                 <div
                     key={item?.id}
@@ -25,9 +53,16 @@ const RecommendRoom = ({ data: item }) => {
                 >
                     <div className="my-6 cursor-pointer flex shadow">
                         <div className="w-[150px] h-[150px] mr-3">
-                            <img
+                            {/* <img
                                 src={item?.image}
                                 alt={item?.accommodationName}
+                                className="w-full h-full object-cover rounded-md shadow-inner"
+                            /> */}
+                            <Image
+                                src={item?.image}
+                                alt={item?.accommodationName}
+                                width={150}
+                                height={150}
                                 className="w-full h-full object-cover rounded-md shadow-inner"
                             />
                         </div>
@@ -42,7 +77,11 @@ const RecommendRoom = ({ data: item }) => {
                                 </div>
                             </div>
                             <div className="p-2">
-                                <h1 className="font-bold text-lg mb-1">{item?.accommodationName}</h1>
+                                <div className="flex justify-between items-center ">
+                                    <h1 className="font-bold text-lg mb-1">{item?.accommodationName}</h1>
+                                    <div className="text-yellow-500 text-sm">{renderRating(item?.rating)}</div>
+                                </div>
+
                                 <p className="text-base text-gray-500">{item?.category}</p>
                                 <div className="flex justify-between items-center mt-1">
                                     <div className="flex items-center text-sm text-gray-500">
