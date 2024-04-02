@@ -11,12 +11,15 @@ import MainNav from "@/components/mainNav/MainNav";
 import { useEffect } from "react";
 import { useIsSearchedStore } from "@/store/useIsSearchStore";
 import Image from "next/image";
+import { useSubFilterStore } from "@/store/useSubFilterStore";
 
 export default function Home() {
   const { clearIsSearched } = useIsSearchedStore(); //현재 페이지가 메인페이지인지, 검색결과 페이지인지
+  const { clear } = useSubFilterStore()
 
   useEffect(() => {
     clearIsSearched(); //메인페이지 로드 시 IsSearched false
+    clear()
   }, []);
 
   return (

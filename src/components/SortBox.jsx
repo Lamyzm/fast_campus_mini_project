@@ -4,21 +4,25 @@ import Menu from '@mui/joy/Menu';
 import MenuItem from '@mui/joy/MenuItem';
 import SwapVertIcon from '@mui/icons-material/SwapVert';
 import Dropdown from '@mui/joy/Dropdown';
+import { useSubFilterStore } from '@/store/useSubFilterStore';
 
-const SortBox = ({ activeSort, handleSelectSort }) => {
+const SortBox = () => {
+
+    const { sort, setSort } = useSubFilterStore()
+
     return (
         <Dropdown>
             <MenuButton variant="plain" className='bg-white border-none text-lg font-bold text-gray-800' startDecorator={<SwapVertIcon />}>
-                {activeSort === 'rating,desc' ? '평점순' : activeSort === 'minPrice,asc' ? '가격낮은순' : '가격높은순'}
+                {sort === 'rating,desc' ? '평점순' : sort === 'minPrice,asc' ? '가격낮은순' : '가격높은순'}
             </MenuButton>
             <Menu variant="plain" className='bg-white'>
-                <MenuItem className={`${activeSort === 'rating,desc' ? 'bg-white font-bold text-blue-700' : 'bg-white font-bold text-gray-800'}`} selected={activeSort === null} onClick={() => handleSelectSort('rating,desc')}>
+                <MenuItem className={`${sort === 'rating,desc' ? 'bg-white font-bold text-blue-700' : 'bg-white font-bold text-gray-800'}`} selected={sort === 'rating,desc'} onClick={() => setSort('rating,desc')}>
                     추천순
                 </MenuItem>
-                <MenuItem className={`${activeSort === 'minPrice,asc' ? 'bg-white font-bold text-blue-700' : 'bg-white font-bold text-gray-800'}`} selected={activeSort === 'minPrice,asc'} onClick={() => handleSelectSort('minPrice,asc')}>
+                <MenuItem className={`${sort === 'minPrice,asc' ? 'bg-white font-bold text-blue-700' : 'bg-white font-bold text-gray-800'}`} selected={sort === 'minPrice,asc'} onClick={() => setSort('minPrice,asc')}>
                     가격낮은순
                 </MenuItem>
-                <MenuItem className={`${activeSort === 'minPrice,desc' ? 'bg-white font-bold text-blue-700' : 'bg-white font-bold text-gray-800'}`} selected={activeSort === 'minPrice,desc'} onClick={() => handleSelectSort('minPrice,desc')}>
+                <MenuItem className={`${sort === 'minPrice,desc' ? 'bg-white font-bold text-blue-700' : 'bg-white font-bold text-gray-800'}`} selected={sort === 'minPrice,desc'} onClick={() => setSort('minPrice,desc')}>
                     가격높은순
                 </MenuItem>
             </Menu>

@@ -4,36 +4,10 @@ import Icons from "@/components/icons/icons";
 import { cn } from "@/utils/cn";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import StarIcon from '@mui/icons-material/Star';
-import StarHalfIcon from '@mui/icons-material/StarHalf';
-import StarBorderIcon from '@mui/icons-material/StarBorder';
+import RatingStar from "./RatingStar";
 
 const AccommodationList = ({ data }) => {
   const router = useRouter()
-
-  const renderRating = (rating) => {
-    const fullStars = Math.floor(rating);
-    const hasHalfStar = rating % 1 !== 0;
-    const starIcons = [];
-
-    // fullStars 개수만큼 별 아이콘 추가
-    for (let i = 0; i < fullStars; i++) {
-      starIcons.push(<StarIcon key={`star-full-${i}`} />);
-    }
-
-    // hasHalfStar가 true이면 반 별 아이콘 추가
-    if (hasHalfStar) {
-      starIcons.push(<StarHalfIcon key="star-half" />);
-    }
-
-    // 남은 별 아이콘 추가 (채워져야 하는 별 아이콘)
-    const remainingStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
-    for (let i = 0; i < remainingStars; i++) {
-      starIcons.push(<StarBorderIcon key={`star-empty-${i}`} />);
-    }
-
-    return starIcons;
-  };
 
   return (
     <div className="w-full lg:grid lg:grid-cols-2">
@@ -86,9 +60,8 @@ const AccommodationList = ({ data }) => {
 
               <div className="flex justify-between items-center">
                 <p className="text-lg text-gray-500 " style={{ marginTop: '0' }}>{item?.category}</p>
-                <div className="text-yellow-500">{renderRating(item?.rating)}</div>
+                <RatingStar rating={item?.rating} />
               </div>
-
 
               <div className="text-right">
                 <p className="text-lg">숙박 15:00 ~</p>
