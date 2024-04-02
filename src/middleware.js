@@ -15,6 +15,7 @@ export async function middleware(req, event) {
 
   // cartPage에서 unauthenticated 일시 login으로 리디렉트
   if (pathname.startsWith("/cart") && !session) {
+    console.log("카트로직", session);
     return NextResponse.redirect(new URL("/login", req.url));
   }
 

@@ -69,7 +69,8 @@ const RoomDetail = ({ data }) => {
             key={item.id} // React에서는 map 함수로 생성된 여러 개의 컴포넌트에는 고유한 key prop이 필요합니다.
             title={item.roomName}
             price={item.price}
-            id={item.id}
+            id={data?.id}
+            roomId={item.id}
           />
         ))}
       {activeTap === "outline" && <RoomOutline data={data} />}

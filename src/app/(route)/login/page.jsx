@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import Link from "next/link"; 
+import Link from "next/link";
 import axios from "axios";
 import { Input } from "@/components/input";
 import { Button } from "@/components/buttons/Button";
@@ -20,7 +20,7 @@ export default function Home() {
       redirect: false,
     });
     if (res.status === 200) {
-      router.push("/");
+      router.back();
     }
     if (res.status === 401) {
       setError("이메일이나 비밀번호가 잘못되었습니다");
