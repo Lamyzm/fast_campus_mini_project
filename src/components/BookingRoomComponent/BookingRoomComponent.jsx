@@ -6,7 +6,9 @@ import { useSearch } from "@/context/SearchContext";
 import dayjs from "dayjs";
 import { notifyToastInfo } from "@/service/toast";
 import { useSearchFilterStore } from "@/store/useSearchFilterStore";
-import { Router, useRouter } from "next/router";
+
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 function sumAll(obj) {
   let total = 0;
@@ -18,8 +20,14 @@ function sumAll(obj) {
 
 export default function BookingRoomComponent({ title, price, id, roomId }) {
   const { people, date } = useSearchFilterStore();
-  const notify = notifyToastInfo({ message: "장바구니 추가 완료" });
+  const { data, status } = useSession();
+  const router = useRouter();
+  console.log(data);
   const saveCart = () => {
+    if (!data) {
+      router.push("/login");
+      return;
+    }
     const cartRequestBody = {
       checkIn: date.startDate,
       checkOut: date.endDate,
@@ -30,7 +38,7 @@ export default function BookingRoomComponent({ title, price, id, roomId }) {
       .post(`/cart/${id}/${roomId}`, cartRequestBody)
       .then((response) => {
         console.log(response.data);
-        notify();
+        notifyToastInfo({ message: "장바구니 추가 완료" })();
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
@@ -43,7 +51,6 @@ export default function BookingRoomComponent({ title, price, id, roomId }) {
   // }
   return (
     <>
-      <button onClick={notify}>asd</button>
       <div className="w-full bg-body-color rounded-md p-3 pt-8 mb-8 flex flex-col justify-between">
         <h3 className="text-2xl font-bold mb-10">{title}</h3>
         <div className="bg-white rounded-md flex flex-row justify-between p-7 ">
