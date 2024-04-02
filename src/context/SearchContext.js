@@ -14,7 +14,6 @@ export const SearchProvider = ({ children }) => {
     sessionStorage.setItem('searchData', JSON.stringify(searchData));
   }, [searchData]);
 
-
   useEffect(() => {
     const initialState = () => {
       let savedData = null;

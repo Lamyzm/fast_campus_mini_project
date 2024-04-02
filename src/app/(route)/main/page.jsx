@@ -3,31 +3,35 @@
 /* eslint-disable jsx-a11y/alt-text */
 "use client";
 import MainSearchBox from "@/components/MainSearchBox/MainSearchBox";
+import Calendar from "@/components/calendar/Calendar";
+import PopularLocationSlideContainer from "@/components/popularLoactionSlide/PopularLocationSlideContainer";
 import CouponSlideContainer from "@/components/couponSlide/CouponSlideContainer";
 import AccommodationSwiper from "@/components/accommodationSwipers/AccommodationSwiper";
 import PopularSwiper from "@/components/accommodationSwipers/PopularSwiper";
 import Divider from "@/components/Divider";
 import MainNav from "@/components/mainNav/MainNav";
-import { useCallback, useEffect } from "react";
+import { useEffect } from "react";
 import { useIsSearchedStore } from "@/store/useIsSearchStore";
-import { useSearchFilterStore } from "@/store/useSearchFilterStore";
+import Image from "next/image";
 
 export default function Home() {
-  const { clearIsSearched } = useIsSearchedStore() //현재 페이지가 메인페이지인지, 검색결과 페이지인지
-
+  const { clearIsSearched } = useIsSearchedStore(); //현재 페이지가 메인페이지인지, 검색결과 페이지인지
 
   useEffect(() => {
-    clearIsSearched() //메인페이지 로드 시 IsSearched false
-  }, [])
+    clearIsSearched(); //메인페이지 로드 시 IsSearched false
+  }, []);
 
   return (
     <>
       <MainNav />
       <div className="w-full h-[450px] relative">
-        <img
-          src='/mainsearchbar.png'
-          className="w-full h-[450px] object-cover"
-          style={{ imageRendering: 'pixelated' }}
+        <Image
+          src="/mainsearchbar.png"
+          loading="lazy"
+          layout="fill"
+          objectFit="fill"
+          sizes="100vw"
+          quality={100}
         />
         <div className="w-full h-full absolute top-0  bg-black bg-opacity-10 "></div>
         <div className={"absolute top-[40%]  w-full px-5"}>
