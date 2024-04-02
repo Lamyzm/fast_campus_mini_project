@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "../buttons/Button";
 import { useRouter } from "next/navigation";
 import Icons from "../icons/icons";
@@ -14,7 +14,25 @@ dayjs.locale("ko");
 export default function MainSearchBox() {
 
   const { setIsSearched } = useIsSearchedStore()
-  const { area, date, people } = useSearchFilterStore()
+  // 기존 코드 area, date, people를 가져오는동안 기본값이 표시됨.
+  // const { area, date, people } = useSearchFilterStore()
+
+  //추가
+  const { area: initialArea, date: initialDate, people: initialPeople } = useSearchFilterStore();
+  const [area, setArea] = useState(initialArea);
+  const [date, setDate] = useState(initialDate);
+  const [people, setPeople] = useState(initialPeople);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (initialArea && initialDate && initialPeople) {
+      setArea(initialArea);
+      setDate(initialDate);
+      setPeople(initialPeople);
+      setLoading(false);
+    }
+  }, [initialArea, initialDate, initialPeople]);
+
   const router = useRouter();
   const tailwindClass = "flex flex-row gap-2";
 
@@ -44,6 +62,10 @@ export default function MainSearchBox() {
   const handleClick = () => {
     setIsSearched()
     router.push("/room")
+  }
+
+  if (loading) {
+    return <p>.</p>;
   }
 
   return (

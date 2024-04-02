@@ -2,6 +2,7 @@
 'use client'
 import Icons from "@/components/icons/icons";
 import { cn } from "@/utils/cn";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 const AccommodationList = ({ data }) => {
@@ -22,12 +23,20 @@ const AccommodationList = ({ data }) => {
         >
           <div className="m-6 cursor-pointer">
             <div className="rounded-md h-[200px] bg-gray-100 min-w-[170px] relative z-0">
-              <img
+              <Image
+              src={item?.image}
+              alt={item?.accommodationName}
+              layout="fill"
+              objectFit="fill"
+              quality={100}
+              loading="lazy"
+              />
+              {/* <img
                 src={item?.image}
                 alt={item?.accommodationName
                 }
                 className="w-full h-full object-cover rounded-md shadow-inner"
-              />
+              /> */}
               <div className="rounded-b-lg absolute inset-x-0 bottom-0 h-8 bg-black bg-opacity-50 text-white p-1 pl-3 flex justify-start">
                 <div className="flex text-sm items-center gap-1">
                   <Icons type="LocationOnOutlinedIcon" size="small" color="primary" additionalClass="text-base" />

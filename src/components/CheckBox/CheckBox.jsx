@@ -11,7 +11,6 @@ export default function CheckBox() {
           type="checkbox"
           className="before:content[''] peer relative h-6 w-6 cursor-pointer appearance-none rounded-md border border-gray-900 transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-gray-900 checked:bg-blue-600 checked:before:bg-gray-900  hover:before:opacity-10"
           id={`${id}-check`}
-          checked={true}
         />
         <span className="absolute text-white transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
           <svg

@@ -1,10 +1,54 @@
 "use client";
-
-import Link from "next/link";
 import { Button } from "../buttons/Button";
 import Icons from "../icons/icons";
+import authApi from "@/service/axiosConfig";
+import { useSearch } from "@/context/SearchContext";
+import dayjs from "dayjs";
+import { notifyToastInfo } from "@/service/toast";
+import { useSearchFilterStore } from "@/store/useSearchFilterStore";
 
-export default function BookingRoomComponent({ title, price }) {
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
+
+function sumAll(obj) {
+  let total = 0;
+  for (let key in obj) {
+    total += obj[key];
+  }
+  return total;
+}
+
+export default function BookingRoomComponent({ title, price, id, roomId }) {
+  const { people, date } = useSearchFilterStore();
+  const { data, status } = useSession();
+  const router = useRouter();
+  console.log(data);
+  const saveCart = () => {
+    if (!data) {
+      router.push("/login");
+      return;
+    }
+    const cartRequestBody = {
+      checkIn: date.startDate,
+      checkOut: date.endDate,
+      peoples: sumAll(people),
+    };
+    console.log(cartRequestBody);
+    authApi
+      .post(`/cart/${id}/${roomId}`, cartRequestBody)
+      .then((response) => {
+        console.log(response.data);
+        notifyToastInfo({ message: "장바구니 추가 완료" })();
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  };
+  // {
+  //   "checkIn":"2024-03-15",	//NonNull
+  //   "checkOut":"2024-03-16",//NonNull
+  //   "peoples":4//NonNull
+  // }
   return (
     <>
       <div className="w-full bg-body-color rounded-md p-3 pt-8 mb-8 flex flex-col justify-between">
@@ -33,27 +77,27 @@ export default function BookingRoomComponent({ title, price }) {
               {price.toLocaleString()} 원
             </div>
             <div className="flex flex-row w-fit gap-4">
-              <Link href="#">
-                <Button
-                  size="lg"
-                  color="white"
-                  outline="outlineSemi"
-                  additionalClass="px-2">
-                  <Icons
-                    type="ShoppingCartOutlinedIcon"
-                    size="large"
-                    color="primary"
-                  />
-                </Button>
-              </Link>
-              <Link href="#">
-                <Button
-                  size="lg"
+              <Button
+                size="lg"
+                color="white"
+                outline="outlineSemi"
+                additionalClass="px-2"
+                onClick={() => {
+                  saveCart();
+                }}>
+                <Icons
+                  type="ShoppingCartOutlinedIcon"
+                  size="large"
                   color="primary"
-                  additionalClass="w-full sm:px-12 font-bold text-sm">
-                  예약하기
-                </Button>
-              </Link>
+                />
+              </Button>
+
+              <Button
+                size="lg"
+                color="primary"
+                additionalClass="w-full sm:px-12 font-bold text-sm">
+                예약하기
+              </Button>
             </div>
           </div>
         </div>

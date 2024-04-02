@@ -1,17 +1,38 @@
 "use client";
 import React from "react";
-import CheckBox from "@/components/CheckBox/CheckBox";
-import { faker } from "@faker-js/faker";
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
 import "dayjs/locale/ko";
 import CartCheckBox from "./CartCheckBox";
-import Icons from "../icons/icons";
+import Icons from "@/components/icons/icons";
+import { useMutation, useQueryClient } from "react-query";
+import authApi from "@/service/axiosConfig";
+
 dayjs.extend(utc);
 dayjs.locale("ko");
 const FORMATTER = "MM.DD (ddd)";
 
-export default function CartItem({ data, index }) {
+export default function CartItem({
+  data,
+  index,
+  checkedItems,
+  setCheckedItems,
+  setISCheckAllItems,
+  setIsCheckPass,
+  isCheckPass,
+}) {
+  const deleteFunc = async (id) => {
+    const { data } = await authApi.delete(`/cart/${id}`);
+    return data;
+  };
+
+  const queryClient = useQueryClient();
+  const { mutate: dataDelete } = useMutation((id) => deleteFunc(id), {
+    onSuccess: () => {
+      queryClient.invalidateQueries(["cartItems"]);
+    },
+  });
+
   if (!data) {
     return null;
   }
@@ -24,8 +45,8 @@ export default function CartItem({ data, index }) {
 
   return (
     <>
-      <div className="p-4 w-full bg-white relative">
-        <div className="flex flex-col w-full p-5  divide-solid  divide-y-[1px] divide-subtitle-gray rounded-lg shadow-sm">
+      <div className="p-4 w-full bg-white relative shadow-md  mb-4">
+        <div className="flex flex-col w-full p-5  divide-solid  divide-y-[1px] divide-subtitle-gray rounded-lg ">
           <div className="pb-6">
             <h3 className="block mb-4 font-bold text-3xl">
               {accommodation?.accommodationName}
@@ -37,11 +58,18 @@ export default function CartItem({ data, index }) {
           <div className="pt-9 flex gap-6 flex-col">
             <h3 className="font-bold text-xl">{accommodation.room.roomName}</h3>
             <div className="flex flex-row h-20 items-start gap-4">
-              <CartCheckBox id={`${index}-checkbox`}></CartCheckBox>
+              <CartCheckBox
+                id={index}
+                checkedItems={checkedItems}
+                setCheckedItems={setCheckedItems}
+                setISCheckAllItems={setISCheckAllItems}
+                isCheckPass={isCheckPass}
+                setIsCheckPass={setIsCheckPass}
+              />
               <img
                 alt="상품 상세이미지"
-                src={faker.image.urlPicsumPhotos()}
-                className="h-full block rounded-md bg-cover"
+                src={accommodation?.image}
+                className="h-full w-28 block rounded-md bg-cover"
               />
               <div className=" flex flex-col gap-2">
                 <div className=" flex flex-row gap-3 divide-solid divide-x-[2px] divide-subtitle-gray font-semibold text-sm">
@@ -52,7 +80,7 @@ export default function CartItem({ data, index }) {
                 </div>
                 <div className=" flex flex-row gap-3 divide-solid divide-x-[2px] divide-subtitle-gray">
                   <p className="text-gray-500">체크인 15:00 </p>
-                  <p className=" pl-2 text-gray-500">체크인 15:00 </p>
+                  <p className=" pl-2 text-gray-500">체크아웃 15:00 </p>
                 </div>
 
                 <p className="text-gray-500">{accommodation.peoples}명</p>
@@ -69,7 +97,10 @@ export default function CartItem({ data, index }) {
           </div>
         </div>
         <div className="absolute top-10 right-10 ">
-          <button>
+          <button
+            onClick={() => {
+              dataDelete(index);
+            }}>
             <Icons
               type="CloseIcon"
               size="large"

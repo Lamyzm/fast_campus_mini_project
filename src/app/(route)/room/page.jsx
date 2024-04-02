@@ -27,6 +27,7 @@ const Page = () => {
     const [activeCategory, setActiveCategory] = useState('all');
     const [activeSort, setActiveSort] = useState(null)
     const { setIsSearched } = useIsSearchedStore()
+
     console.log(area, people)
 
     const fetchRoom = async ({ pageParam }) => {
@@ -60,7 +61,7 @@ const Page = () => {
         }
     }, [fetchNextPage]);
 
-    // 페이지 새로고침하면 area, people가 기본값으로 설정돼서 쿼리 요청이 날라가는 문제가 발생
+    // 페이지 새로고침하면 area, people가 기본값으로 설정된상태로 쿼리 요청이 날라가는 문제가 발생
     // area, people가 정상적으로 업데이트가 된 후 fetch를 보장하기 위해 처음 날린 query는 버리고 재 요청
     useEffect(() => {
         if (area && people) {
@@ -68,7 +69,7 @@ const Page = () => {
             fetchNextPage(0);
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [area, people])
+    }, [area, people, fetchNextPage])
 
 
     useEffect(() => {
@@ -98,9 +99,8 @@ const Page = () => {
 
     useEffect(() => {
         setIsSearched()
-
+        console.log(area, people)
     }, [])
-
 
     const handleSelectCategory = useCallback((category) => {
         setActiveCategory(category);

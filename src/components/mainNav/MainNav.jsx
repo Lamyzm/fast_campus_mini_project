@@ -5,11 +5,13 @@ import Icons from "../icons/icons";
 import { useSession } from "next-auth/react";
 import { signOut } from "next-auth/react";
 import { useRouter, usePathname } from "next/navigation";
-import Badge from '@mui/material/Badge';
-import MailIcon from '@mui/icons-material/Mail';
+import Badge from "@mui/material/Badge";
+import ShoppingCartNav from "@/components/shoppingCartNav/ShoppingCartNav";
+import useCartDataQuery from "@/hooks/useCartDataQuery";
 
 const MainNav = () => {
-  const cartItemCount = 5;
+  const { cartDataLength } = useCartDataQuery();
+  const cartItemCount = cartDataLength;
   const { data, status } = useSession();
   const router = useRouter();
   const pathName = usePathname();
@@ -23,6 +25,9 @@ const MainNav = () => {
     }
   };
 
+  if (pathName === "/cart") {
+    return <ShoppingCartNav />;
+  }
   return (
     <>
       <div className="flex justify-between items-center fixed w-[1000px] h-[65px] top-0 shadow-sm bg-white z-[100] relative;">
@@ -32,19 +37,17 @@ const MainNav = () => {
           3조화이팅
         </Link>
         <div className="flex gap-7 items-center px-[18px] py-0 font-semibold">
-
           <Link
             href="/cart"
             className="cursor-pointer hover:text-gray-600 transition duration-100 ease-in-out relative">
-
             <Badge badgeContent={cartItemCount} color="primary">
-            <Icons
+              <Icons
                 className="mb-[2px] text-3xl"
                 type="ShoppingCartOutlinedIcon"
                 size="large"
                 color="primary"
               />
-          </Badge>
+            </Badge>
           </Link>
           <Link
             href="/login"
