@@ -1,8 +1,17 @@
+/* global kakao */
+'use client'
+import { useCurrentRoomStore } from '@/store/useCurrentRoomStore'
+import { useLocationStore } from '@/store/useLocationStore'
+import { useMapStore } from '@/store/useMapStore'
 import React, { useCallback, useEffect, useState } from 'react'
 
-export default function Marker({ map, lat, lng, data, setCurrentRoom }) {
+export default function Marker({ data }) {
 
     const [category, setCategory] = useState(data?.category)
+    const { map, isMap } = useMapStore()
+    const { location } = useLocationStore()
+    const { setNewCurrentRoom } = useCurrentRoomStore()
+
 
     const checkCategory = () => {
         if (category === '호텔') {
@@ -22,7 +31,7 @@ export default function Marker({ map, lat, lng, data, setCurrentRoom }) {
 
 
     const loadKakoMarker = useCallback(() => {
-        if (map && lat && lng) {
+        if (isMap && location.lat && location.lng) {
             var imageSrc = `/markerImages/${category}.png`,
                 imageSize = new window.kakao.maps.Size(40, 40),
                 imageOption = { offset: new window.kakao.maps.Point(27, 69) };
@@ -35,7 +44,7 @@ export default function Marker({ map, lat, lng, data, setCurrentRoom }) {
             );
 
 
-            var markerPosition = new window.kakao.maps.LatLng(lat, lng);
+            var markerPosition = new window.kakao.maps.LatLng(location.lat, location.lng);
 
 
             var marker = new window.kakao.maps.Marker({
@@ -69,7 +78,7 @@ export default function Marker({ map, lat, lng, data, setCurrentRoom }) {
                 customOverlay.setMap(null);
             });
             window.kakao.maps.event.addListener(marker, 'click', function () {
-                setCurrentRoom(data)
+                setNewCurrentRoom(data)
             });
         }
     }, [map, data]);

@@ -12,8 +12,6 @@ export const SearchProvider = ({ children }) => {
   useEffect(() => {
     if (!searchData) return;
     sessionStorage.setItem('searchData', JSON.stringify(searchData));
-    console.log(searchData);
-    console.log(sessionStorage.getItem('searchData'));
   }, [searchData]);
 
   useEffect(() => {

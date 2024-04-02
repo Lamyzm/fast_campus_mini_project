@@ -18,27 +18,27 @@ const regionShowcase = {
     },
     {
       "id": 4,
-      "area": "강원도",
+      "area": "강원",
       "image": "/slideImages/slide_gangwon.jpeg"
     },
     {
       "id": 5,
-      "area": "경상도",
+      "area": "경상",
       "image": "/slideImages/slide_gyungsang.jpg"
     },
     {
       "id": 6,
-      "area": "충정도",
+      "area": "충정",
       "image": "/slideImages/slide_chungchung.jpg"
     },
     {
       "id": 7,
-      "area": "전라도",
+      "area": "전라",
       "image": "/slideImages/slide_jeonra.jpg"
     },
     {
       "id": 8,
-      "area": "경기도",
+      "area": "경기",
       "image": "/slideImages/slide_gyunggi.jpg"
     },
     {

@@ -6,11 +6,10 @@ import Map from "../Map";
 import Marker from "../Marker";
 import RoomBox from "../RoomBox";
 
-const RoomDetail = ({ data, lng, lat }) => {
+const RoomDetail = ({ data }) => {
   const [activeTap, setActiveTap] = useState("room");
-  const [map, setMap] = useState(null);
   const [currentRoom, setCurrentRoom] = useState(null);
-  console.log(data);
+
   return (
     <>
       <div className="flex mb-4">
@@ -70,21 +69,14 @@ const RoomDetail = ({ data, lng, lat }) => {
             key={item.id} // React에서는 map 함수로 생성된 여러 개의 컴포넌트에는 고유한 key prop이 필요합니다.
             title={item.roomName}
             price={item.price}
-            id={data?.id}
-            roomId={item.id}
+            id={item.id}
           />
         ))}
       {activeTap === "outline" && <RoomOutline data={data} />}
       {activeTap === "location" && (
         <>
-          <Map setMap={setMap} lat={lat} lng={lng} />
-          <Marker
-            map={map}
-            lat={lat}
-            lng={lng}
-            data={data}
-            setCurrentRoom={setCurrentRoom}
-          />
+          <Map />
+          <Marker data={data} />
           <RoomBox currentRoom={currentRoom} setCurrentRoom={setCurrentRoom} />
         </>
       )}
