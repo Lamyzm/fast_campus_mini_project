@@ -1,10 +1,15 @@
+import { useRouter } from "next/navigation";
 import React from "react";
 import { ToastContainer } from "react-toastify";
 
 export default function CartToast() {
+  const router = useRouter();
+  const handleClick = () => {
+    router.push("/cart");
+  };
   return (
     <ToastContainer
-      position="top-left"
+      position="bottom-right"
       autoClose={5000}
       hideProgressBar={true}
       newestOnTop={false}
@@ -14,6 +19,7 @@ export default function CartToast() {
       draggable
       pauseOnHover
       theme="light"
+      onClick={handleClick}
     />
   );
 }

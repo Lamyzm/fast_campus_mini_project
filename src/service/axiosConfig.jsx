@@ -11,7 +11,7 @@ const authApi = axios.create({
 authApi.interceptors.request.use(
   async (config) => {
     const session = await getSession();
-    console.log(session);
+    console.log("sestion", session);
 
     if (session?.user?.token) {
       config.headers["JWTTOKEN"] = session?.user?.token;
