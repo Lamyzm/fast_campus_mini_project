@@ -22,7 +22,7 @@ export default function Reservations() {
 
   return (
     <>
-      <ReservationsNav pageTitle={'결제'}/>
+      <ReservationsNav/>
       <CartList data={data} hideCheckbox={true} hideCloseButton={true} />
     </>
    

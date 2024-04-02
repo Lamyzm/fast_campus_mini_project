@@ -75,7 +75,8 @@ export default function BookingRoomComponent({ title, price, id, roomId }) {
               <Button
                 size="lg"
                 color="primary"
-                additionalClass="w-full sm:px-12 font-bold text-sm">
+                additionalClass="w-full sm:px-12 font-bold text-sm"
+                >
                 예약하기
               </Button>
             </div>

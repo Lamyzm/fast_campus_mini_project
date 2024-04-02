@@ -35,7 +35,7 @@ export default function Register() {
   const handleCheckEmail = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://3.35.216.158:8080/api/validate", {
+      const response = await axios.post("https://fcbe-mini-project.kro.kr:8080/api/validate", {
         email: formData.email,
       }, {
         timeout: 10000,
@@ -84,7 +84,7 @@ export default function Register() {
     }
 
     try {
-      const response = await axios.post("http://3.35.216.158:8080/api/register", formData);
+      const response = await axios.post("https://fcbe-mini-project.kro.kr:8080/api/register", formData);
 
       if (response.status === 200) {
         const res = await signIn("credentials", {
