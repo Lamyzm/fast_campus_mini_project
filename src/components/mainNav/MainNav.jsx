@@ -6,11 +6,12 @@ import { useSession } from "next-auth/react";
 import { signOut } from "next-auth/react";
 import { useRouter, usePathname } from "next/navigation";
 import Badge from "@mui/material/Badge";
-import MailIcon from "@mui/icons-material/Mail";
 import ShoppingCartNav from "@/components/shoppingCartNav/ShoppingCartNav";
+import useCartDataQuery from "@/hooks/useCartDataQuery";
 
 const MainNav = () => {
-  const cartItemCount = 5;
+  const { cartDataLength } = useCartDataQuery();
+  const cartItemCount = cartDataLength;
   const { data, status } = useSession();
   const router = useRouter();
   const pathName = usePathname();

@@ -4,21 +4,41 @@ import Icons from "../icons/icons";
 import authApi from "@/service/axiosConfig";
 import { useSearch } from "@/context/SearchContext";
 import dayjs from "dayjs";
+import { notifyToastInfo } from "@/service/toast";
+import { useSearchFilterStore } from "@/store/useSearchFilterStore";
+
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
+
+function sumAll(obj) {
+  let total = 0;
+  for (let key in obj) {
+    total += obj[key];
+  }
+  return total;
+}
 
 export default function BookingRoomComponent({ title, price, id, roomId }) {
-  const { searchData } = useSearch();
-  console.log(searchData);
-  // const notify = notifyToastInfo({ message: "장바구니 추가 완료" });
-  const cartRequestBody = {
-    checkIn: dayjs(searchData.date.startDate).format("YYYY-MM-DD"),
-    checkOut: dayjs(searchData.date.endDat).format("YYYY-MM-DD"),
-    peoples: searchData.headCount,
-  };
+  const { people, date } = useSearchFilterStore();
+  const { data, status } = useSession();
+  const router = useRouter();
+  console.log(data);
   const saveCart = () => {
+    if (!data) {
+      router.push("/login");
+      return;
+    }
+    const cartRequestBody = {
+      checkIn: date.startDate,
+      checkOut: date.endDate,
+      peoples: sumAll(people),
+    };
+    console.log(cartRequestBody);
     authApi
       .post(`/cart/${id}/${roomId}`, cartRequestBody)
       .then((response) => {
         console.log(response.data);
+        notifyToastInfo({ message: "장바구니 추가 완료" })();
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
