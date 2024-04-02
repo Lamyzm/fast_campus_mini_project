@@ -13,9 +13,18 @@ import Icons from "../icons/icons";
 import { Button } from "../buttons/Button";
 import PopularSwiper from "@/components/accommodationSwipers/PopularSwiper";
 import AccommodationSwiper from "@/components/accommodationSwipers/AccommodationSwiper";
+import useCartDataQuery from "@/hooks/useCartDataQuery";
 
 export default function CartList() {
-  const [checkedItems, setCheckedItems] = useState({});
+  const {
+    checkedItems,
+    setCheckedItems,
+    cartData,
+    isLoading,
+    isError,
+    // 기타 필요한 상태나 함수
+  } = useCartDataQuery();
+
   const [cartTotalPrice, setCartTotalPrice] = useState(0);
   const router = useRouter();
   const id = useId();
@@ -47,33 +56,23 @@ export default function CartList() {
     enabled: isCartFetching,
   });
 
-  // 장바구니 아이템 query
-  const fetchCart = async () => {
-    const { data } = await authApi.get("/cart");
-    return data;
-  };
-  const [refetchCartData, setRefetchCartData] = useState(true);
-  const {
-    data: cartData,
-    isLoading,
-    isError,
-    isSuccess,
-    refetch,
-    isFetching,
-  } = useQuery("cartItem", fetchCart, {
-    onSuccess: (data) => {
-      // 데이터 로딩 성공 후, 체크 상태 업데이트
-      const newCheckedItems = data.reduce((acc, item) => {
-        acc[item.id] = true;
-        return acc;
-      }, {});
-      setCheckedItems(newCheckedItems);
-    },
-  });
-
-  useEffect(() => {
-    setRefetchCartData(false);
-  }, []);
+  // const {
+  //   data: cartData,
+  //   isLoading,
+  //   isError,
+  //   isSuccess,
+  //   refetch,
+  //   isFetching,
+  // } = useQuery("cartItem", fetchCart, {
+  //   onSuccess: (data) => {
+  //     // 데이터 로딩 성공 후, 체크 상태 업데이트
+  //     const newCheckedItems = data.reduce((acc, item) => {
+  //       acc[item.id] = true;
+  //       return acc;
+  //     }, {});
+  //     setCheckedItems(newCheckedItems);
+  //   },
+  // });
 
   useEffect(() => {
     // total price
