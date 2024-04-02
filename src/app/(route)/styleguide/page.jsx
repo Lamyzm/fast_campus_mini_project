@@ -89,10 +89,10 @@ export default function styleguide() {
         <SelectedRoomDetailLayout>
           <SelectedRoomMain />
           <RoomOutline />
-          <BookingRoomComponent
+          {/* <BookingRoomComponent
             title="[룸UP& 감자빵세트] 슈페리 골저스파셜오션트윈"
             price={1000450}
-          />
+          /> */}
         </SelectedRoomDetailLayout>
         <AccommodationList />
         <SelectedRoomPay />

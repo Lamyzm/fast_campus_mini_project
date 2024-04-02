@@ -4,6 +4,9 @@ import "./globals.css";
 import "./reset.css"
 import AuthProvider from "@/context/AuthProvider";
 import { SearchContext } from '@/context/SearchContext'; import Script from "next/script";
+import { ToastContainer } from "react-toastify";
+import { CartToast } from '../components/Toast/CartToast';
+import "react-toastify/dist/ReactToastify.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,14 +19,6 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="ko">
-
-
-      <head>
-        <script
-          type="text/javascript"
-          src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d683e5649f857f0f8303b8b30652e395&libraries=services,clusterer"
-        ></script>
-      </head>
       <body className={inter.className}>
         <AuthProvider>
           <GlobalLayout>

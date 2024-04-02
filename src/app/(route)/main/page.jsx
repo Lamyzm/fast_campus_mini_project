@@ -2,7 +2,6 @@
 import axios from "axios";
 import { Button } from "@/components/buttons/Button";
 import MainSearchBox from "@/components/MainSearchBox/MainSearchBox";
-
 import Calendar from "@/components/calendar/Calendar";
 import PopularLocationSlideContainer from "@/components/popularLoactionSlide/PopularLocationSlideContainer";
 import CouponSlideContainer from "@/components/couponSlide/CouponSlideContainer";
@@ -17,9 +16,6 @@ import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
 import dayjs from "dayjs";
 import MainNav from "@/components/mainNav/MainNav";
-// const MainNav = dynamic(() => import("@/components/mainNav/MainNav"), {
-//   ssr: false,
-// });
 
 export default function Home() {
   const { searchData, setSearchData } = useSearch();

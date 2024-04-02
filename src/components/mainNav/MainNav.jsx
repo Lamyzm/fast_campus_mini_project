@@ -5,6 +5,7 @@ import Icons from "../icons/icons";
 import { useSession } from "next-auth/react";
 import { signOut } from "next-auth/react";
 import { useRouter, usePathname } from "next/navigation";
+import ShoppingCartNav from "@/components/shoppingCartNav/ShoppingCartNav";
 
 const MainNav = () => {
   const cartItemCount = 5;
@@ -20,9 +21,9 @@ const MainNav = () => {
       router.push("/login");
     }
   };
-  console.log();
-  if (router === "/testdetail") {
-    console.log("test detail");
+
+  if (pathName === "/cart") {
+    return <ShoppingCartNav />;
   }
   return (
     <>

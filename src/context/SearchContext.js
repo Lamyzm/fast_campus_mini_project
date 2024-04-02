@@ -16,10 +16,6 @@ export const SearchProvider = ({ children }) => {
     console.log(sessionStorage.getItem('searchData'));
   }, [searchData]);
 
-
-
-
-
   useEffect(() => {
     const initialState = () => {
       let savedData = null;

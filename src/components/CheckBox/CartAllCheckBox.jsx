@@ -1,26 +1,18 @@
-"use client";
-export default function CartCheckBox({
-  id,
-  checkedItems,
-  setCheckedItems,
+import { useId } from "react";
+
+export default function CartAllCheckBox({
+  isCheck,
   setISCheckAllItems,
   isCheckPass,
   setIsCheckPass,
 }) {
-  const handleChange = (event) => {
-    console.log(event.target.checked);
-    console.log("checkedItems", checkedItems);
-
-    const itemList = {
-      ...checkedItems,
-      [id]: event.target.checked,
-    };
-    setIsCheckPass(false);
-    if (!event.target.checked) setISCheckAllItems(false);
-    setCheckedItems(itemList);
+  const id = useId();
+  const handleCheckBox = (event) => {
+    setIsCheckPass(true);
+    setISCheckAllItems(event.target.checked);
   };
   return (
-    <div className="inline-flex items-center">
+    <div className="inline-flex items-center relative z-10">
       <label
         className="relative flex items-center rounded-full cursor-pointer"
         htmlFor="check">
@@ -28,8 +20,8 @@ export default function CartCheckBox({
           type="checkbox"
           className="before:content[''] peer relative h-6 w-6 cursor-pointer appearance-none rounded-md border border-gray-900 transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-gray-900 checked:bg-blue-600 checked:before:bg-gray-900  hover:before:opacity-10"
           id={`${id}-check`}
-          checked={checkedItems[id] ?? true}
-          onChange={handleChange}
+          checked={isCheck ?? true}
+          onChange={handleCheckBox}
         />
         <span className="absolute text-white transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
           <svg
