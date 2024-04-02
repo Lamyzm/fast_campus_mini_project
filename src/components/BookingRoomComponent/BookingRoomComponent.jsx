@@ -17,8 +17,6 @@ function sumAll(obj) {
 }
 
 export default function BookingRoomComponent({ title, price, id, roomId }) {
-  const router = useRouter();
-
   const { people, date } = useSearchFilterStore();
   const notify = notifyToastInfo({ message: "장바구니 추가 완료" });
   const saveCart = () => {
@@ -91,10 +89,7 @@ export default function BookingRoomComponent({ title, price, id, roomId }) {
                 size="lg"
                 color="primary"
                 additionalClass="w-full sm:px-12 font-bold text-sm">
-                예약하기 onClick=
-                {() => {
-                  Router.push("/payment" + "?id={4}&roomID={3}");
-                }}
+                예약하기
               </Button>
             </div>
           </div>

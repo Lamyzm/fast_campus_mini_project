@@ -4,7 +4,7 @@ import { ToastContainer } from "react-toastify";
 export default function CartToast() {
   return (
     <ToastContainer
-      position="top-left"
+      position="bottom-right"
       autoClose={5000}
       hideProgressBar={true}
       newestOnTop={false}
