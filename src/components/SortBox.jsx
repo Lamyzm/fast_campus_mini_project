@@ -17,7 +17,7 @@ const SortBox = () => {
             </MenuButton>
             <Menu variant="plain" className='bg-white'>
                 <MenuItem className={`${sort === 'rating,desc' ? 'bg-white font-bold text-blue-700' : 'bg-white font-bold text-gray-800'}`} selected={sort === 'rating,desc'} onClick={() => setSort('rating,desc')}>
-                    추천순
+                    평점순
                 </MenuItem>
                 <MenuItem className={`${sort === 'minPrice,asc' ? 'bg-white font-bold text-blue-700' : 'bg-white font-bold text-gray-800'}`} selected={sort === 'minPrice,asc'} onClick={() => setSort('minPrice,asc')}>
                     가격낮은순
