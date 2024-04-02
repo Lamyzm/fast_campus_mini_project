@@ -7,11 +7,15 @@ export async function middleware(req, event) {
   const session = await getToken({ req, secret, raw: true });
   const { pathname } = req.nextUrl;
 
-  // 로그인/회원가입 접근 제한
   if (pathname.startsWith("/login") || pathname.startsWith("/join")) {
     if (session) {
       return NextResponse.redirect(new URL("/", req.url));
     }
+  }
+
+  // cartPage에서 unauthenticated 일시 login으로 리디렉트
+  if (pathname.startsWith("/cart") && !session) {
+    return NextResponse.redirect(new URL("/login", req.url));
   }
 
   if (pathname === "/") {
@@ -20,5 +24,5 @@ export async function middleware(req, event) {
 }
 
 export const config = {
-  matcher: ["/login", "/join", "/"],
+  matcher: ["/login", "/join", "/", '/main', "/cart"],
 };

@@ -4,6 +4,9 @@ import "./globals.css";
 import "./reset.css"
 import AuthProvider from "@/context/AuthProvider";
 import { SearchContext } from '@/context/SearchContext'; import Script from "next/script";
+import { ToastContainer } from "react-toastify";
+import { CartToast } from '../components/Toast/CartToast';
+import "react-toastify/dist/ReactToastify.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
