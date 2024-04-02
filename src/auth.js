@@ -19,9 +19,6 @@ export default NextAuth({
           });
 
           if (res.status === 200 && res.data) {
-            console.log("header", res.headers.jwttoken);
-            console.log("data", res.data);
-            console.log("status", { ...res.data, token: res.headers.jwttoken });
             return { ...res.data, token: res.headers.jwttoken };
           }
           throw new Error('Authentication failed');
@@ -32,16 +29,14 @@ export default NextAuth({
       }
     })
   ],
-  callbacks: { //  =====> Add Below Callbacks <=====
+  callbacks: {
     jwt: async ({ token, user }) => {
-      console.log("Auth.js called jwttoken", token);
       return { ...token, ...user };
     },
     session: async ({ session, token }) => {
-      console.log("Auth.js called session", session);
+
       session.user = token;
       if (token.exp) {
-        console.log("token입니다", token.token)
         console.log(session)
       }
       return session;
