@@ -6,7 +6,7 @@ import RecommendRoom from './RecommendRoom';
 import { useSearchFilterStore } from '@/store/useSearchFilterStore';
 
 const NoSearchRoom = () => {
-    const {area} = useSearchFilterStore()
+    const { area } = useSearchFilterStore()
 
     const fetchRecommendRoom = async () => {
         const { data } = await axios.get(`https://fcbe-mini-project.kro.kr:8080/api/accommodation?area=${area}&page=0&size=5&sort=rating,desc`)

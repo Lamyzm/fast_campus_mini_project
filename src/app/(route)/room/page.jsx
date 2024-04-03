@@ -15,8 +15,14 @@ import { useSearchFilterStore } from '@/store/useSearchFilterStore';
 import useIntersectionObserver from '@/hooks/useIntersectionObserver';
 import { useIsSearchedStore } from '@/store/useIsSearchStore';
 import { useSubFilterStore } from '@/store/useSubFilterStore';
+import { useSearchParams } from 'next/navigation';
 
 const Page = () => {
+
+    //국내 인기 여행지에서 여행지 눌렀을 때 areaPrams가져오기
+    const searchParams = useSearchParams()
+    const areaPrams = searchParams.get('area')
+
     const queryClient = useQueryClient();
     const { area, people } = useSearchFilterStore()
     const [isEnd, setIsEnd] = useState(false)
