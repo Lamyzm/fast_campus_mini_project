@@ -41,7 +41,7 @@ body {
 
 .my-swiper {
   width: 100%;
-  height: 350px;
+  height: 100% !important;
 }
 
 .my-swiper-slide {
@@ -71,7 +71,6 @@ body {
 }
 
 @media (max-width: 1300px) {
-
   .swiper-button-prev_v,
   .swiper-button-next_v {
     display: none;
