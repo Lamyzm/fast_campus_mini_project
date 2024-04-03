@@ -5,6 +5,7 @@ import axios from "axios";
 import SwiperSlideComponent from "./SwiperComponent";
 import { Button } from "@/components/buttons/Button";
 import regionShowcase from "@/assets/json/regionShowcaseData";
+
 export default function PopularSwiper({ title, isButton }) {
   const [data, setData] = useState("");
   const [buttonState, setButtonState] = useState("전체");

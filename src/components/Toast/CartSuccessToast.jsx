@@ -2,7 +2,7 @@ import { useRouter } from "next/navigation";
 import React from "react";
 import { ToastContainer } from "react-toastify";
 
-export default function CartToast() {
+export default function CartSuccessToast() {
   const router = useRouter();
   const handleClick = () => {
     router.push("/cart");

@@ -4,11 +4,11 @@ import Icons from "../icons/icons";
 import authApi from "@/service/axiosConfig";
 import { useSearch } from "@/context/SearchContext";
 import dayjs from "dayjs";
-import { notifyToastInfo } from "@/service/toast";
+import { notifyToast, notifyToastInfo } from "@/service/toast";
 import { useSearchFilterStore } from "@/store/useSearchFilterStore";
-
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { notifyToastWrong } from "../../service/toast";
 
 function sumAll(obj) {
   let total = 0;
@@ -22,7 +22,7 @@ export default function BookingRoomComponent({ title, price, id, roomId }) {
   const { people, date } = useSearchFilterStore();
   const { data, status } = useSession();
   const router = useRouter();
-  console.log(data);
+
   const saveCart = () => {
     if (!data) {
       router.push("/login");
@@ -38,9 +38,10 @@ export default function BookingRoomComponent({ title, price, id, roomId }) {
       .post(`/cart/${id}/${roomId}`, cartRequestBody)
       .then((response) => {
         console.log(response.data);
-        notifyToastInfo({ message: "장바구니 추가 완료" })();
+        notifyToastInfo({ message: "장바구니 추가 완료" });
       })
       .catch((error) => {
+        notifyToastWrong({ message: "장바구니에 추가하지 못했습니다." });
         console.error("Error fetching data:", error);
       });
   };
