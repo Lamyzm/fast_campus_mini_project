@@ -1,7 +1,8 @@
 "use client";
-import React, { useId } from "react";
+import React, { useId, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css/navigation";
+import "swiper/css";
 import { Navigation } from "swiper/modules";
 import Icons from "../icons/icons";
 import Link from "next/link";
@@ -10,6 +11,7 @@ export default function SwiperSlideComponent({ content }) {
   const id = useId();
   const navigationPrevRef = React.useRef(null);
   const navigationNextRef = React.useRef(null);
+  const [swiper, setSwiper] = useState(null);
   let isLocale = false;
   if (!content[0]?.productName) {
     isLocale = true;
@@ -27,12 +29,18 @@ export default function SwiperSlideComponent({ content }) {
       prevEl: navigationPrevRef.current,
       nextEl: navigationNextRef.current,
     },
+    onBeforeInit: (swiper) => {
+      swiper.params.navigation.prevEl = navigationPrevRef.current;
+      swiper.params.navigation.nextEl = navigationNextRef.current;
+      swiper.navigation.update();
+    },
     modules: [Navigation],
   };
+  console.log("swiper", content);
   return (
     <>
       <div className={`w-full relative ${isLocale ? "h-[230px]" : ""}`}>
-        <Swiper {...swiperConfig} className="my-swiper">
+        <Swiper {...swiperConfig} className="my-swiper" ref={setSwiper}>
           {content ? (
             content.map((item, index) => {
               return (
