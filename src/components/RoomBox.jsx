@@ -57,7 +57,7 @@ const RoomBox = () => {
                                 />
                                 <div>
                                     <div className="font-semibold">{currentRoom?.accommodationName}</div>
-                                    <div className="text-sm">{currentRoom?.detail}</div>
+                                    <div className="text-sm">{currentRoom?.address.split(' ')[1]}에 위치한 {currentRoom?.category}입니다. 좋은 여행되세요</div>
                                 </div>
                             </div>
                             <button type="button" onClick={() => setNewCurrentRoom(null)}>

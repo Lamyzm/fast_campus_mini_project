@@ -31,7 +31,7 @@ export default function CartItem({
   const queryClient = useQueryClient();
   const { mutate: dataDelete } = useMutation((id) => deleteFunc(id), {
     onSuccess: () => {
-      queryClient.invalidateQueries(["cartItem"]);
+      queryClient.invalidateQueries(["cartItems"]);
     },
   });
 

@@ -54,7 +54,7 @@ const ZustandLocationCategory = () => {
 
     // areaName이 현재 active된 이름과 같으면 active style 처리
     const getBackgroundColor = (areaName) => {
-        return areaName === active ? "border-4 border-blue-500 bg-gray-100" : "border-2 border-solid border-gray-300";
+        return areaName === active ? "border-4 border-blue-500 bg-blue-200" : "border-2 border-solid border-gray-300";
     };
 
     return (
@@ -63,7 +63,7 @@ const ZustandLocationCategory = () => {
                 {areaData.map((area) => (
                     <div
                         key={area.name}
-                        className={`w-full h-[162px] flex flex-col items-center justify-center border-2 border-solid border-gray-300 cursor-pointer hover:bg-gray-100 transition duration-300 ease-in-out ${getBackgroundColor(
+                        className={`w-full h-[162px] flex flex-col items-center justify-center border-2 border-solid border-gray-300 cursor-pointer hover:bg-gray-100 transition duration-100 ease-in-out ${getBackgroundColor(
                             area.name
                         )}`}
                         onClick={() => handleClick(area.name)}

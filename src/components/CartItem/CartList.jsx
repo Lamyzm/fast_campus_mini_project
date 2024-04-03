@@ -1,3 +1,4 @@
+"use client";
 import React, { useState, useEffect, useId } from "react";
 import authApi from "@/service/axiosConfig";
 import { useQuery } from "react-query";
@@ -13,9 +14,12 @@ import Icons from "../icons/icons";
 import { Button } from "../buttons/Button";
 import PopularSwiper from "@/components/accommodationSwipers/PopularSwiper";
 import AccommodationSwiper from "@/components/accommodationSwipers/AccommodationSwiper";
+import useCartDataQuery from "@/hooks/useCartDataQuery";
 
-export default function CartList({hideCheckbox, hideCloseButton}) {
-  const [checkedItems, setCheckedItems] = useState({});
+export default function CartList() {
+  const { checkedItems, setCheckedItems, cartData, isLoading, isError } =
+    useCartDataQuery();
+
   const [cartTotalPrice, setCartTotalPrice] = useState(0);
   const router = useRouter();
   // const id = useId();
@@ -46,34 +50,6 @@ export default function CartList({hideCheckbox, hideCloseButton}) {
     queryFn: fetchRoom,
     enabled: isCartFetching,
   });
-
-  // 장바구니 아이템 query
-  const fetchCart = async () => {
-    const { data } = await authApi.get("/cart");
-    return data;
-  };
-  const [refetchCartData, setRefetchCartData] = useState(true);
-  const {
-    data: cartData,
-    isLoading,
-    isError,
-    isSuccess,
-    refetch,
-    isFetching,
-  } = useQuery("cartItem", fetchCart, {
-    onSuccess: (data) => {
-      // 데이터 로딩 성공 후, 체크 상태 업데이트
-      const newCheckedItems = data.reduce((acc, item) => {
-        acc[item.id] = true;
-        return acc;
-      }, {});
-      setCheckedItems(newCheckedItems);
-    },
-  });
-
-  useEffect(() => {
-    setRefetchCartData(false);
-  }, []);
 
   useEffect(() => {
     // total price
@@ -114,13 +90,8 @@ export default function CartList({hideCheckbox, hideCloseButton}) {
       </>
     );
   }
-  // if (isError) {
-  //   alert("장바구니를 가져오는중 오류가 발생했습니다");
-  //   router.push("/");
-  // }
-  console.log(typeof cartData);
+
   if (cartData.length === 0) {
-    console.log("No cart data");
     return (
       <>
         <div className="h-[80vh] w-full p-12 flex flex-col justify-center items-center gap-7">
@@ -144,9 +115,8 @@ export default function CartList({hideCheckbox, hideCloseButton}) {
             </Button>
           </div>
         </div>
-        <div className="w-full">
-          <AccommodationSwiper title="인기여행"></AccommodationSwiper>
-        </div>
+
+        <AccommodationSwiper title="인기여행" />
       </>
     );
   }

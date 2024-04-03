@@ -1,15 +1,21 @@
 "use client";
-import React, { useId } from "react";
+import React, { useId, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css/navigation";
+import "swiper/css";
 import { Navigation } from "swiper/modules";
 import Icons from "../icons/icons";
 import Link from "next/link";
+import { useSearchFilterStore } from "@/store/useSearchFilterStore";
+import { useRouter } from "next/navigation";
 
 export default function SwiperSlideComponent({ content }) {
+  const { setArea } = useSearchFilterStore();
   const id = useId();
   const navigationPrevRef = React.useRef(null);
   const navigationNextRef = React.useRef(null);
+  const [swiper, setSwiper] = useState(null);
+  const router = useRouter();
   let isLocale = false;
   if (!content[0]?.productName) {
     isLocale = true;
@@ -27,12 +33,25 @@ export default function SwiperSlideComponent({ content }) {
       prevEl: navigationPrevRef.current,
       nextEl: navigationNextRef.current,
     },
+    onBeforeInit: (swiper) => {
+      swiper.params.navigation.prevEl = navigationPrevRef.current;
+      swiper.params.navigation.nextEl = navigationNextRef.current;
+      swiper.navigation.update();
+    },
     modules: [Navigation],
+  };
+  const navigation = (e, item) => {
+    e.preventDefault();
+    console.log(item);
+    if (isLocale) {
+      setArea(item?.area);
+    }
+    router.push("/room");
   };
   return (
     <>
       <div className={`w-full relative ${isLocale ? "h-[230px]" : ""}`}>
-        <Swiper {...swiperConfig} className="my-swiper">
+        <Swiper {...swiperConfig} className="my-swiper" ref={setSwiper}>
           {content ? (
             content.map((item, index) => {
               return (
@@ -41,7 +60,9 @@ export default function SwiperSlideComponent({ content }) {
                     isLocale ? "my-swiper-slide-locale" : "my-swiper-slide"
                   }
                   key={`${id}${index}`}>
-                  <Link href="/main">
+                  <Link
+                    href={isLocale ? `/room?area=${item?.area}` : "/#"}
+                    onClick={(e) => navigation(e, item)}>
                     <div className="w-full h-full  text-black  flex-col justify-center justify-items-center ">
                       <div className=" overflow-hidden relative rounded-xl">
                         <img
