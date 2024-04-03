@@ -5,12 +5,23 @@ import { getToken } from 'next-auth/jwt';
 import { middleware } from '../middleware';
 import dayjs from 'dayjs';
 import { decodedJWT } from '@/utils/decodeJWT';
+import Router from 'next/router';
+import { usePathname, useSearchParams } from 'next/navigation';
 
 const AuthUserSateCheckContext = createContext();
 
 export default function AuthUserSateCheckProvider({ children }) {
   const { data, status } = useSession();
   const [isSigningOut, setIsSigningOut] = useState(false);
+  // const [isLoading, setIsLoading] = useState(true);
+
+  const pathname = usePathname()
+  const searchParams = useSearchParams()
+  // useEffect(() => {
+
+  //   setIsLoading(false);
+  // }, [pathname, searchParams]);
+
 
   useEffect(() => {
     const expire = data?.user?.exp;
@@ -24,7 +35,9 @@ export default function AuthUserSateCheckProvider({ children }) {
     }
   }, [data, status]);
 
-
+  // if (isLoading) {
+  //   return <div>로딩 중...</div>; // 로딩 상태 시 보여줄 화면
+  // }
   return (
     <AuthUserSateCheckContext.Provider value={""} >
       {children}
