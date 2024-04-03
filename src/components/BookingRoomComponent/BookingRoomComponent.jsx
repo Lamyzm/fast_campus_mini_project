@@ -19,7 +19,6 @@ function sumAll(obj) {
 }
 
 const BookingRoomComponent = ({ title, price, id, roomId })=>{
-  const router = useRouter();
   const { people, date } = useSearchFilterStore();
   const { data, status } = useSession();
   const router = useRouter();
