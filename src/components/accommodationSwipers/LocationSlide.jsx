@@ -7,8 +7,10 @@ import { Navigation } from "swiper/modules";
 import Icons from "../icons/icons";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { useSearchFilterStore } from "@/store/useSearchFilterStore";
 
 export default function LocationSlide({ content }) {
+    const { setPopularArea } = useSearchFilterStore()
 
     //필요
     const id = useId();
@@ -39,10 +41,9 @@ export default function LocationSlide({ content }) {
         modules: [Navigation],
     };
 
-
-    const handleClick = (e,item) => {
-        console.log(item?.area);
-        router.push(`/room?area=${item.area}`)
+    const handleClick = (e, item) => {
+        setPopularArea(item.area)
+        router.push(`/room`)
     };
     return (
         <>
@@ -55,7 +56,9 @@ export default function LocationSlide({ content }) {
                                 style={{ height: '220px' }}
                                 key={`${id}${index}`}>
                                 <div
-                                    onClick={(e) => handleClick(e,item)}>
+                                    onClick={(e) => handleClick(e, item)}
+                                    className="cursor-pointer"
+                                >
                                     <div className="w-full h-full  text-black  flex-col justify-center justify-items-center ">
                                         <div className=" overflow-hidden relative rounded-xl">
                                             <Image

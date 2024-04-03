@@ -34,7 +34,6 @@ export default function Home() {
           sizes="100vw"
           quality={100}
         />
-        <div className="w-full h-full absolute top-0  bg-black bg-opacity-10 "></div>
         <div className={"absolute top-[40%]  w-full px-5"}>
           <MainSearchBox />
         </div>
