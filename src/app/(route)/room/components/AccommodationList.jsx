@@ -4,12 +4,14 @@ import Icons from "@/components/icons/icons";
 import { cn } from "@/utils/cn";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import RatingStar from "./RatingStar";
 
 const AccommodationList = ({ data }) => {
   const router = useRouter()
 
   return (
     <div className="w-full lg:grid lg:grid-cols-2">
+
       {data.map((item, index) => (
         <div
           key={item?.id}
@@ -22,14 +24,16 @@ const AccommodationList = ({ data }) => {
           onClick={() => router.push(`/room/${item?.id}`)}
         >
           <div className="m-6 cursor-pointer">
+
             <div className="rounded-md h-[200px] bg-gray-100 min-w-[170px] relative z-0">
               <Image
-              src={item?.image}
-              alt={item?.accommodationName}
-              layout="fill"
-              objectFit="fill"
-              quality={100}
-              loading="lazy"
+                src={item?.image}
+                alt={item?.accommodationName}
+                layout="fill"
+                objectFit="fill"
+                quality={100}
+                loading="lazy"
+                className="w-full h-full object-cover rounded-md shadow-inner"
               />
               {/* <img
                 src={item?.image}
@@ -46,9 +50,19 @@ const AccommodationList = ({ data }) => {
               </div>
             </div>
             <div className="flex-col p-3 mt-1 flex space-y-3 justify-between w-full">
-              <h1 className="font-bold text-xl mb-2">{item?.accommodationName
-              }</h1>
-              <p className="text-lg text-gray-500 " style={{marginTop:'0'}}>{item?.category}</p>
+              {item?.accommodationName.length < 33 ? (
+                <h1 className="font-bold text-xl mb-2">{item?.accommodationName}</h1>
+              ) : item?.accommodationName.length < 50 ? (
+                <h1 className="font-bold text-base mb-2">{item?.accommodationName}</h1>
+              ) : (
+                <h1 className="font-bold text-sm mb-2">{item?.accommodationName}</h1>
+              )}
+
+              <div className="flex justify-between items-center">
+                <p className="text-lg text-gray-500 " style={{ marginTop: '0' }}>{item?.category}</p>
+                <RatingStar rating={item?.rating} />
+              </div>
+
               <div className="text-right">
                 <p className="text-lg">숙박 15:00 ~</p>
                 <div className="flex justify-between items-center">

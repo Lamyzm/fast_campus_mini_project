@@ -9,7 +9,7 @@ const NoSearchRoom = () => {
     const {area} = useSearchFilterStore()
 
     const fetchRecommendRoom = async () => {
-        const { data } = await axios.get(`https://fcbe-mini-project.kro.kr:8080/api/accommodation?area=${area}&page=0&size=5`)
+        const { data } = await axios.get(`https://fcbe-mini-project.kro.kr:8080/api/accommodation?area=${area}&page=0&size=5&sort=rating,desc`)
         return data
     }
 

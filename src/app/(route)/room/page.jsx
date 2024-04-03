@@ -14,7 +14,7 @@ import NoSearchRoom from './components/NoSearchRoom';
 import { useSearchFilterStore } from '@/store/useSearchFilterStore';
 import useIntersectionObserver from '@/hooks/useIntersectionObserver';
 import { useIsSearchedStore } from '@/store/useIsSearchStore';
-
+import { useSubFilterStore } from '@/store/useSubFilterStore';
 
 const Page = () => {
     const queryClient = useQueryClient();
@@ -24,11 +24,8 @@ const Page = () => {
     const pageRef = useIntersectionObserver(ref, {})
     const isPageEnd = !!pageRef?.isIntersecting
     const [showScrollButton, setShowScrollButton] = useState(false);
-    const [activeCategory, setActiveCategory] = useState('all');
-    const [activeSort, setActiveSort] = useState(null)
+    const { category, sort } = useSubFilterStore()
     const { setIsSearched } = useIsSearchedStore()
-
-    console.log(area, people)
 
     const fetchRoom = async ({ pageParam }) => {
         const { data } = await axios.get("https://fcbe-mini-project.kro.kr:8080/api/accommodation", {
@@ -36,15 +33,15 @@ const Page = () => {
                 page: pageParam,
                 maxPeople: people?.adult + people?.kids + people?.baby,
                 area: area,
-                category: activeCategory,
-                sort: activeSort
+                category: category,
+                sort: sort
             }
         });
         return data;
     }
 
     const { data: room, fetchNextPage, hasNextPage, isLoading } = useInfiniteQuery({
-        queryKey: ['room', activeCategory, activeSort],
+        queryKey: ['room', category, sort],
         queryFn: ({
             pageParam = 0,
         }) => fetchRoom({ pageParam }),
@@ -99,16 +96,7 @@ const Page = () => {
 
     useEffect(() => {
         setIsSearched()
-        console.log(area, people)
     }, [])
-
-    const handleSelectCategory = useCallback((category) => {
-        setActiveCategory(category);
-    }, []);
-
-    const handleSelectSort = useCallback((sort) => {
-        setActiveSort(sort);
-    }, []);
 
     return (
         <>
@@ -122,14 +110,14 @@ const Page = () => {
                     )
                 }
 
-                <SortBox className='mr-4 hover:underline hover:bg-white' activeSort={activeSort} handleSelectSort={handleSelectSort} />
+                <SortBox className='mr-4 hover:underline hover:bg-white' />
             </div>
 
             {/* 현재 검색된 필터 정보  */}
             <SearchButtons />
 
             {/* 숙소 카테고리 설정 컴포넌트 기본값은 all */}
-            <RoomCategory activeCategory={activeCategory} handleSelectCategory={handleSelectCategory} />
+            <RoomCategory />
 
             {/* 응답 데이터에 epmty (검색된 숙소 결과가 없는지)가 true면 NoSearchRoom를 보여준다.  */}
             {room?.pages[0].empty && (<NoSearchRoom />)}
