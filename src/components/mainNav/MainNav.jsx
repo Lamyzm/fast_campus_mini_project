@@ -6,7 +6,6 @@ import { useSession } from "next-auth/react";
 import { signOut } from "next-auth/react";
 import { useRouter, usePathname } from "next/navigation";
 import Badge from "@mui/material/Badge";
-import MailIcon from "@mui/icons-material/Mail";
 import ShoppingCartNav from "@/components/shoppingCartNav/ShoppingCartNav";
 
 const MainNav = () => {
