@@ -12,6 +12,7 @@ export default function AuthUserSateCheckProvider({ children }) {
   const { data, status } = useSession();
   const [isSigningOut, setIsSigningOut] = useState(false);
 
+
   useEffect(() => {
     const expire = data?.user?.exp;
     const currentTime = dayjs().unix();
@@ -23,7 +24,6 @@ export default function AuthUserSateCheckProvider({ children }) {
       signOut();
     }
   }, [data, status]);
-
 
   return (
     <AuthUserSateCheckContext.Provider value={""} >

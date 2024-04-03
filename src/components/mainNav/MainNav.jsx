@@ -24,7 +24,15 @@ const MainNav = () => {
       router.push("/login");
     }
   };
-
+  const cartAction = (e) => {
+    e.preventDefault();
+    if (data) {
+      router.push("/cart");
+    } else {
+      alert("로그인이 필요한 서비스입니다");
+      router.push("/login");
+    }
+  };
   if (pathName === "/cart") {
     return <ShoppingCartNav />;
   }
@@ -39,6 +47,7 @@ const MainNav = () => {
         <div className="flex gap-7 items-center px-[18px] py-0 font-semibold">
           <Link
             href="/cart"
+            onClick={cartAction}
             className="cursor-pointer hover:text-gray-600 transition duration-100 ease-in-out relative">
             <Badge badgeContent={cartItemCount} color="primary">
               <Icons
@@ -54,12 +63,21 @@ const MainNav = () => {
             onClick={handleAuthAction}
             className="cursor-pointer hover:text-gray-600 transition duration-100 ease-in-out">
             <span>
-              <Icons
-                className="mb-[2px] text-3xl"
-                type="LoginIcon"
-                size="large"
-                color="primary"
-              />
+              {data ? (
+                <Icons
+                  className="mb-[2px] text-3xl"
+                  type="LogoutIcon"
+                  size="large"
+                  color="primary"
+                />
+              ) : (
+                <Icons
+                  className="mb-[2px] text-3xl"
+                  type="LoginIcon"
+                  size="large"
+                  color="primary"
+                />
+              )}
             </span>
           </Link>
         </div>

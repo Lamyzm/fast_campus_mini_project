@@ -7,6 +7,7 @@ export async function middleware(req, event) {
   const session = await getToken({ req, secret, raw: true });
   const { pathname } = req.nextUrl;
 
+
   if (pathname.startsWith("/login") || pathname.startsWith("/join")) {
     if (session) {
       return NextResponse.redirect(new URL("/", req.url));

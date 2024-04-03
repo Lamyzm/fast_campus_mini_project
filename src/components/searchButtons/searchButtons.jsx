@@ -3,6 +3,7 @@ import Icons from "../icons/icons";
 import { useSearchFilterStore } from "@/store/useSearchFilterStore";
 import { useRouter } from "next/navigation";
 import RestartAltIcon from '@mui/icons-material/RestartAlt';
+import Link from "next/link";
 
 const { Button } = require("../buttons/Button");
 
@@ -40,48 +41,54 @@ const SearchButtons = () => {
   return (
     <div className="w-full flex justify-start gap-2 py-2 ml-6">
       {/* 날짜 버튼 */}
-      <Button
-        size="sm"
-        color="white"
-        outline="outlineSemi"
-        additionalClass="pr-6 py-2 hover:bg-gray-100"
-        onClick={() => router.replace("/search/date")}
-      >
-        <Icons type="DateRangeIcon" size="large" color="primary" />
+      <Link href='/search/date' prefetch={true}>
+        <Button
+          size="sm"
+          color="white"
+          outline="outlineSemi"
+          additionalClass="pr-6 py-2 hover:bg-gray-100"
 
-        {/* 월/일 몇박 순서로 표시 */}
-        {startDate.format('M/DD')} - {endDate.format('M/DD')}, {diffDay}박
+        >
+          <Icons type="DateRangeIcon" size="large" color="primary" />
 
-      </Button>
+          {/* 월/일 몇박 순서로 표시 */}
+          {startDate.format('M/DD')} - {endDate.format('M/DD')}, {diffDay}박
+
+        </Button>
+      </Link>
 
       {/* 인원버튼 */}
-      <Button
-        size="sm"
-        color="white"
-        outline="outlineSemi"
-        additionalClass="pr-6 py-2 hover:bg-gray-100"
-        onClick={() => router.replace("/search/headcount")}
-      >
-        <Icons type="PermIdentityOutlinedIcon" size="large" color="primary" />
+      <Link href='/search/headcount' prefetch={true}>
+        <Button
+          size="sm"
+          color="white"
+          outline="outlineSemi"
+          additionalClass="pr-6 py-2 hover:bg-gray-100"
 
-        {/* 계산된 총 인원 */}
-        {totalPeople}명
+        >
+          <Icons type="PermIdentityOutlinedIcon" size="large" color="primary" />
 
-      </Button>
+          {/* 계산된 총 인원 */}
+          {totalPeople}명
+
+        </Button>
+      </Link>
 
       {/* 지역버튼 */}
-      <Button
-        size="sm"
-        color="white"
-        outline="outlineSemi"
-        additionalClass="pr-6 py-2 hover:bg-gray-100"
-        onClick={() => router.replace("/search/place")}
-      >
-        <Icons type="LocationOnOutlinedIcon" size="large" color="primary" />
+      <Link href='/search/place' prefetch={true}>
+        <Button
+          size="sm"
+          color="white"
+          outline="outlineSemi"
+          additionalClass="pr-6 py-2 hover:bg-gray-100"
 
-        {/* 현재 선택된 지역 */}
-        {area === 'all' ? '전국' : area}
-      </Button>
+        >
+          <Icons type="LocationOnOutlinedIcon" size="large" color="primary" />
+
+          {/* 현재 선택된 지역 */}
+          {area === 'all' ? '전국' : area}
+        </Button>
+      </Link>
 
       {/* 초기화 버튼 */}
       <Button
