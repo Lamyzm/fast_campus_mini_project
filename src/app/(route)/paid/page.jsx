@@ -4,22 +4,12 @@ import axios from 'axios';
 import ReservationsNav from "@/components/reservationsNav/ReservationsNav"
 import dayjs from 'dayjs';
 import 'dayjs/locale/ko'
+import { useQueryClient } from 'react-query';
 
-export default function Paid() {
-  const [reservations, setReservations] = useState([]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const result = await axios.get("api/reservations");
-        setReservations(result.data);
-      } catch (error) {
-        console.error("데이터 로딩 중 오류 발생:", error);
-      }
-    };
-
-    fetchData();
-  }, []);
+  export default function Paid() {
+      const queryClient = useQueryClient();
+      const reservations = queryClient.getQueryData(["cart"]);
 
   dayjs.locale('ko');
 
@@ -33,9 +23,9 @@ export default function Paid() {
 
   return (
     <>
-      <ReservationsNav />
       <div className="container mx-auto p-8">
-        <h1 className="text-xl font-bold mb-4">예약이 완료되었습니다!</h1>
+        {/* <h1 className="text-xl font-semibold mb-4">예약이 완료되었습니다!</h1> */}
+        <p className="text-xl font-semibold mb-7">상품 정보 {reservations.length}건</p>
         {reservations.map(reservation => (
           <div key={reservation.orderId} className="mb-5 bg-white shadow-md rounded-lg overflow-hidden">
             <div className="flex flex-col md:flex-row">
@@ -48,7 +38,7 @@ export default function Paid() {
               </div>
               <div className="p-6">
                 <h2 className="text-xl font-semibold mb-4">{reservation.accommodation.accommodationName}</h2>
-                <p className="text-gray-400 mb-4">{reservation.accommodation.address}</p>
+                <p className="text-gray-500 mb-4">{reservation.accommodation.address}</p>
                 <div className="flex justify-between items-center">
                   <div>
                     <div className="flex mb-3 text-sm">
@@ -69,9 +59,9 @@ export default function Paid() {
             </div>
           </div>
         ))}
-        <div className="bg-white shadow-md rounded-lg p-6 flex justify-between">
-          <h2 className="text-xl font-semibold mb-2">전체 객실 가격:</h2>
-          <p className="text-lg font-semibold">{totalPrice} 원</p>
+        <div className="bg-white shadow-md rounded-lg p-6 flex justify-end">
+          <h2 className="text-lg text-gray-500 mr-5">총 결제 금액:</h2>
+          <p className="text-xl font-semibold">{totalPrice} 원</p>
         </div>
       </div>
     </>

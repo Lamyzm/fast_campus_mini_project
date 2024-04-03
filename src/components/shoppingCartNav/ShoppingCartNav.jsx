@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 
 const ShoppingCartNav = () => {
   const router = useRouter();
-  return (
+  return ( 
     <>
       <div
         className="top-0 fixed flex justify-between items-center w-[1000px] h-[65px] shadow-sm bg-white"

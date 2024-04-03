@@ -6,7 +6,7 @@ import { useSearch } from "@/context/SearchContext";
 import dayjs from "dayjs";
 import { notifyToastInfo } from "@/service/toast";
 import { useSearchFilterStore } from "@/store/useSearchFilterStore";
-import { Router, useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 function sumAll(obj) {
   let total = 0;
@@ -16,9 +16,8 @@ function sumAll(obj) {
   return total;
 }
 
-export default function BookingRoomComponent({ title, price, id, roomId }) {
+const BookingRoomComponent = ({ title, price, id, roomId })=>{
   const router = useRouter();
-
   const { people, date } = useSearchFilterStore();
   const notify = notifyToastInfo({ message: "장바구니 추가 완료" });
   const saveCart = () => {
@@ -91,6 +90,8 @@ export default function BookingRoomComponent({ title, price, id, roomId }) {
                 size="lg"
                 color="primary"
                 additionalClass="w-full sm:px-12 font-bold text-sm"
+                onClick={() => 
+                  router.push(`/order?id=${id}&roomId=${roomId}`)}
                 >
                 예약하기
               </Button>
@@ -101,3 +102,4 @@ export default function BookingRoomComponent({ title, price, id, roomId }) {
     </>
   );
 }
+export default BookingRoomComponent

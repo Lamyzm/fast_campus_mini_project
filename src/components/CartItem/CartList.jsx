@@ -170,15 +170,13 @@ export default function CartList({hideCheckbox, hideCloseButton}) {
               return (
                 <CartItem
                   data={item}
-                  key={`${index + 1}-${id}`}
+                  key={`${index + 1}-${index}`}
                   index={item.id}
                   checkedItems={checkedItems}
                   setCheckedItems={setCheckedItems}
                   setISCheckAllItems={setISCheckAllItems}
                   isCheckPass={isCheckPass}
                   setIsCheckPass={setIsCheckPass}
-                  hideCheckbox={hideCheckbox} //체크박스 조건부 렌더링
-                  hideCloseButton={hideCloseButton} //삭제 버튼 조건부 렌더링
                 />
               );
             })}
@@ -188,7 +186,7 @@ export default function CartList({hideCheckbox, hideCloseButton}) {
             fetchCartData={fetchCartData}
             price={cartTotalPrice}
             cartQuery={cartQuery}
-            isCartFetching={isCartFetching}
+            isCartFetching={isCartFetching} 
           />
         </>
       ) : null}

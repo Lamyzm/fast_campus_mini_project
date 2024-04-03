@@ -7,6 +7,7 @@ import { signOut } from "next-auth/react";
 import { useRouter, usePathname } from "next/navigation";
 import Badge from "@mui/material/Badge";
 import ShoppingCartNav from "@/components/shoppingCartNav/ShoppingCartNav";
+import ReservationsNav from "../reservationsNav/ReservationsNav";
 
 const MainNav = () => {
   const cartItemCount = 5;
@@ -25,6 +26,12 @@ const MainNav = () => {
 
   if (pathName === "/cart") {
     return <ShoppingCartNav />;
+  }
+  if (pathName === "/paid") {
+    return <ReservationsNav />;
+  }
+  if (pathName === "/order") {
+    return <ReservationsNav />;
   }
   return (
     <>
