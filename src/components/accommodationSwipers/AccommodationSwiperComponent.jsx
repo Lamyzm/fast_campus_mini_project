@@ -61,7 +61,7 @@ export default function AccommodationSwiperComponent({ content }) {
                   <p className="font-bold pt-6">{`${item.minPrice.toLocaleString()} 원`}</p>
                 );
               } else {
-                priceContent = "";
+                priceContent = <p className="font-bold pt-6">정보 없음</p>;
               }
 
               return (

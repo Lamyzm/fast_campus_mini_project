@@ -6,6 +6,9 @@ import AccommodationSwiperComponent from "./AccommodationSwiperComponent";
 import { Api } from "@/service/api";
 import dayjs from "dayjs";
 import useFetchAccommodationRatingData from "@/hooks/useFetchAccommodationData";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
+import "swiper/css";
 
 export default function AccommodationButtonSwiper({
   title,
@@ -25,27 +28,41 @@ export default function AccommodationButtonSwiper({
     fetchData(buttonState, area);
   }, [buttonState]);
 
+  const swiperConfig = {
+    centeredSlides: false,
+    slidesPerView: "auto",
+    loop: false,
+    pagination: {
+      type: "fraction",
+    },
+  };
   return (
     <>
       <article className="w-full flex flex-col gap-1 main-section-padding z-0">
         <h3 className="flex justify-start font-bold text-lg mb-3">{title}</h3>
-        <div className="flex gap-2 flex-row mb-4">
-          {buttons.map((button, index) => {
-            const isActive = buttonState === button;
-            return (
-              <Button
-                key={`${id}${index}`}
-                size="sm"
-                type="rounded"
-                color={isActive ? "primary" : ""}
-                outline={!isActive ? "outlineSemi" : ""}
-                additionalClass="font-bold overflow-ellipsis whitespace-nowrap overflow-hidden"
-                onClick={() => buttonHandler(button)}>
-                {button}
-              </Button>
-            );
-          })}
-        </div>
+        <Swiper {...swiperConfig} className="button-swiper">
+          <div className="flex gap-2 flex-row mb-4 sm:visible invisible ">
+            {buttons.map((button, index) => {
+              const isActive = buttonState === button;
+              return (
+                <SwiperSlide
+                  key={`${id}${index}`}
+                  className="button-swiper-silde">
+                  <Button
+                    key={`${id}${index}`}
+                    size="sm"
+                    type="rounded"
+                    color={isActive ? "primary" : ""}
+                    outline={!isActive ? "outlineSemi" : ""}
+                    additionalClass="font-bold overflow-ellipsis whitespace-nowrap overflow-hidden min-w-10"
+                    onClick={() => buttonHandler(button)}>
+                    {button}
+                  </Button>
+                </SwiperSlide>
+              );
+            })}
+          </div>
+        </Swiper>
         <AccommodationSwiperComponent content={data} />
       </article>
     </>

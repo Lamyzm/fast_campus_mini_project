@@ -8,11 +8,8 @@ import CartItem from "./CartItem";
 import CartAllCheckBox from "../CheckBox/CartAllCheckBox";
 import CartLoadingDetail from "../Loading/CartLoadingDetail";
 import { useRouter } from "next/navigation";
-import { notifyToastInfo } from "@/service/toast";
-import { ToastContainer } from "react-toastify";
 import Icons from "../icons/icons";
 import { Button } from "../buttons/Button";
-import PopularSwiper from "@/components/accommodationSwipers/PopularSwiper";
 import AccommodationSwiper from "@/components/accommodationSwipers/AccommodationSwiper";
 import useCartDataQuery from "@/hooks/useCartDataQuery";
 
@@ -92,7 +89,7 @@ export default function CartList() {
     );
   }
 
-  if (cartData.length === 0) {
+  if (cartData?.length === 0) {
     return (
       <>
         <div className="h-[80vh] w-full p-12 flex flex-col justify-center items-center gap-7">

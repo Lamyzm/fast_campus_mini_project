@@ -71,6 +71,8 @@ const RoomDetail = ({ data }) => {
             price={item.price}
             id={data?.id}
             roomId={item.id}
+            roomData={item}
+            totalRoomData={data}
           />
         ))}
       {activeTap === "outline" && <RoomOutline data={data} />}
