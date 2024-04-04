@@ -6,13 +6,10 @@ import { usePathname, useRouter } from "next/navigation";
 const SelectNav = () => {
   const router = useRouter();
   const pathName = usePathname();
-  const [pageName, setPageName] = useState(null); 
+  const [pageName, setPageName] = useState(null);
 
   //페이지 path에 맞게 알아서 변경하기
   const matchPageName = (pathName) => {
-    if (pathName === "/styleguide") {
-      setPageName("스타일가이드");
-    }
     if (pathName === "/search/place") {
       setPageName("지역선택");
     }
@@ -30,7 +27,7 @@ const SelectNav = () => {
 
   return (
     <>
-      <div className="flex justify-between items-center w-[1000px] h-[65px] shadow-sm bg-white z-[100] top-0 fixed">
+      <div className="flex justify-between items-center w-[1000px] h-[65px] bg-white z-[100] top-0 fixed">
         <div className="hover:text-gray-600 transition duration-100 flex items-center py-0 text-lg cursor-pointer font-semibold px-[18px]">
           <Icons
             className="text-3xl"

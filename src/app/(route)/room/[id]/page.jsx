@@ -50,8 +50,18 @@ const Page = ({ params }) => {
   const { data: room, isFetching, isError, isSuccess, isLoading } = useQuery({
     queryKey: ['room', id],
     queryFn: fetchRoom,
-    onSuccess: (data) => fetchLocation(data.address) 
+    onSuccess: (data) => fetchLocation(data.address)
   })
+
+  //기존 코드
+  // const { data: room, isFetching, isError, isSuccess, isLoading } = useQuery({
+  //   queryKey: ['room', id],
+  //   queryFn: fetchRoom,
+  //   onSuccess: (data) => {
+  //     fetchLocation(data.address)
+  //     fetchComments(data.id)
+  //   } 
+  // })
 
   const roomId = room?.id
 

@@ -13,7 +13,8 @@
 body {
   font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
   font-size: 14px;
-  background-color: #eaeaea;
+  background-color: white;
+  overflow-x: hidden;
 }
 
 .main-section-padding {
@@ -73,13 +74,16 @@ body {
 .button-swiper {
   width: 100% !important;
 }
+
 .button-swiper-silde {
   width: -moz-fit-content;
   width: fit-content !important;
   margin-right: 30px;
   margin-bottom: 10px;
 }
+
 @media (max-width: 1080px) {
+
   .swiper-button-prev_v,
   .swiper-button-next_v {
     display: none;
@@ -102,4 +106,8 @@ body {
   background-color: transparent !important;
   text-decoration: underline;
   color: rgb(79, 79, 79) !important;
+}
+
+.outline-text {
+  text-shadow: -0.7px -0.7px 0 #252525, 0.7px -0.7px 0 #252525, -0.7px 0.7px 0 #252525, 0.7px 0.7px 0 #252525;
 }

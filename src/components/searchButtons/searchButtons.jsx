@@ -1,15 +1,16 @@
 import dayjs from "dayjs";
-import Icons from "../icons/icons";
 import { useSearchFilterStore } from "@/store/useSearchFilterStore";
-import { useRouter } from "next/navigation";
 import RestartAltIcon from '@mui/icons-material/RestartAlt';
 import Link from "next/link";
+import DateRangeIcon from "@mui/icons-material/DateRange";
+import { blue } from '@mui/material/colors';
+import PermIdentityOutlinedIcon from "@mui/icons-material/PermIdentityOutlined";
+import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 
 const { Button } = require("../buttons/Button");
 
 const SearchButtons = () => {
   const { area, people, date, clearAll } = useSearchFilterStore()
-  const router = useRouter()
 
   // 날짜 계산
   let startDate = date.startDate;
@@ -39,7 +40,7 @@ const SearchButtons = () => {
   }
 
   return (
-    <div className="w-full flex justify-start gap-2 py-2 ml-6">
+    <div className="w-full flex justify-start gap-2 py-2 ml-6" >
       {/* 날짜 버튼 */}
       <Link href='/search/date' prefetch={true}>
         <Button
@@ -49,10 +50,10 @@ const SearchButtons = () => {
           additionalClass="pr-6 py-2 hover:bg-gray-100"
 
         >
-          <Icons type="DateRangeIcon" size="large" color="primary" />
+          <DateRangeIcon />
 
           {/* 월/일 몇박 순서로 표시 */}
-          {startDate.format('M/DD')} - {endDate.format('M/DD')}, {diffDay}박
+          <span className="text-gray-700">{startDate.format('M/DD')} - {endDate.format('M/DD')}, {diffDay}박</span>
 
         </Button>
       </Link>
@@ -66,10 +67,10 @@ const SearchButtons = () => {
           additionalClass="pr-6 py-2 hover:bg-gray-100"
 
         >
-          <Icons type="PermIdentityOutlinedIcon" size="large" color="primary" />
+          <PermIdentityOutlinedIcon />
 
           {/* 계산된 총 인원 */}
-          {totalPeople}명
+          <span className="text-gray-700">{totalPeople}명</span>
 
         </Button>
       </Link>
@@ -83,10 +84,10 @@ const SearchButtons = () => {
           additionalClass="pr-6 py-2 hover:bg-gray-100"
 
         >
-          <Icons type="LocationOnOutlinedIcon" size="large" color="primary" />
+          <LocationOnOutlinedIcon />
 
           {/* 현재 선택된 지역 */}
-          {area === 'all' ? '전국' : area}
+          <span className="text-gray-700">{area === 'all' ? '전국' : area}</span>
         </Button>
       </Link>
 
@@ -98,7 +99,7 @@ const SearchButtons = () => {
         additionalClass="pr-4 py-2 hover:bg-gray-100"
         onClick={handleReset}
       >
-        <RestartAltIcon />
+        <RestartAltIcon/>
       </Button>
 
     </div>

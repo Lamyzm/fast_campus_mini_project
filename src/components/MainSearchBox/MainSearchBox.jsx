@@ -74,7 +74,7 @@ export default function MainSearchBox() {
   return (
     <>
       <div
-        className={`bg-white w-full  py-9 px-3 rounded-lg  items-center ${tailwindClass} flex-col lg:flex-row`}>
+        className={`bg-white w-full py-12 px-3 rounded-lg  items-center ${tailwindClass} flex-col lg:flex-row`}>
         <div
           className={`flex-col w-full ${tailwindClass} flex-grow lg:flex-row `}>
           {/* 지역 표시 */}

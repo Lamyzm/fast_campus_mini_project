@@ -9,7 +9,7 @@ export default function PopularSwiper({ title }) {
   return (
     <>
       <article className="w-full flex flex-col gap-1 main-section-padding z-0" style={{height:'250px'}}>
-        <h3 className="flex justify-start font-bold text-lg ">{title}</h3>
+        <h3 className="flex justify-start font-bold text-lg mb-3">{title}</h3>
         <LocationSlide content={regionShowcase?.content} />
       </article>
     </>

@@ -6,13 +6,14 @@ import { Autoplay, Mousewheel, Pagination } from 'swiper/modules';
 import FormatQuoteIcon from '@mui/icons-material/FormatQuote';
 import RatingStar from './RatingStar';
 import PersonPinIcon from '@mui/icons-material/PersonPin';
+import commentsData from '@/assets/json/commentsData';
+
 
 export default function CommentSlide({ comments }) {
 
 
-    const extendedComments = Array.from({ length: 10 }, (_, index) => comments[0]);
-
     return (
+        <>
         <Swiper
             direction={'vertical'}
             slidesPerView={1}
@@ -20,19 +21,19 @@ export default function CommentSlide({ comments }) {
             loop={true}
             mousewheel={true}
             autoplay={{
-                delay: 2500,
+                delay: 3000,
                 disableOnInteraction: false,
             }}
             modules={[Autoplay, Mousewheel, Pagination]}
-            className="mySwiper w-[300px] h-[100px]"
+            className="mySwiper w-[300px] h-[120px]"
         >
-            {extendedComments?.map((comment) => (
-                <SwiperSlide key={comment?.key} >
-                    <div className='bg-white flex items-center justify-between p-4 border border-gray-200 rounded-lg'>
+            {commentsData?.Data.map((comment) => (
+                <SwiperSlide key={comment.key} >
+                    <div className=' flex items-center justify-between p-4 border border-gray-200 rounded-lg'>
                         <div className="flex flex-col">
-                            <div className="text-lg font-semibold">
-                                {comment?.comment}
-                                <RatingStar rating={comment?.score} />
+                            <div className="text- font-semibold">
+                                {comment.comment}
+                                <div className='text-sm mt-2'><RatingStar rating={comment.score} /></div>
                             </div>
                             <div className="flex items-center mt-2">
                                 <PersonPinIcon color="action" />
@@ -46,5 +47,6 @@ export default function CommentSlide({ comments }) {
                 </SwiperSlide>
             ))}
         </Swiper>
+        </>
     );
 }
