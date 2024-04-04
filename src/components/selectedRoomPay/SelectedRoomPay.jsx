@@ -19,7 +19,6 @@ const SelectedRoomPay = ({
   const router = useRouter();
   console.log("cartQuery", cartQuery);
   const handleOnClick = () => {
-    console.log("price", price);
     if (price < 0) return;
     fetchCartData(true);
     setShowLoadingIndicator(true);
