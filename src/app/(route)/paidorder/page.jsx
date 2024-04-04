@@ -1,38 +1,15 @@
 'use client'
 import { useEffect, useState } from 'react';
 import dayjs from 'dayjs';
-import 'dayjs/locale/ko'
 import { useQuery, useQueryClient } from 'react-query';
 import { useRouter, useSearchParams} from "next/navigation";
+import 'dayjs/locale/ko'
 
-export default function PaidCart() {
-    // const queryClient = useQueryClient();
-    // const router = useRouter();
-    // const [queryKey, setQueryKey] = useState("");
-    // const params = useSearchParams();
-    // useEffect(() => {
-        
-    //     if (params.get("cart") === "cart") {
-    //         setQueryKey('cart');
-    //     } else if (params.get("order") === "paid") {
-    //         setQueryKey('paid');
-    //     }
-    // }, [router.asPath]);
-
-    // const reservations = queryClient.getQueryData([queryKey]);
-    // console.log("querykey:", queryKey);
+export default function PaidOrder() {
+  
     const queryClient = useQueryClient();
-    const reservationsQuery = useQuery(["cart"]);
-    const reservations = reservationsQuery.data;
-
-    const calculateDaysLeft = (checkIn) => {
-      const today = dayjs();
-      const daysLeft = dayjs(checkIn).diff(today, 'day');
-      return daysLeft >= 1 ? `D-${daysLeft}` : '';
-    };
-
-    const totalPrice = reservations ? reservations.reduce((acc, reservation) => acc + reservation.accommodation.room.price, 0) : 0;
-
+    const { data: reservation, isLoading, isError, error } = useQuery(["order"]);
+    console.log(reservation);
 
     dayjs.locale('ko');
 
@@ -40,8 +17,19 @@ export default function PaidCart() {
         return dayjs(checkOut).diff(checkIn, 'day');
     };
 
+    const calculateDaysLeft = (checkIn) => {
+      const today = dayjs();
+      const daysLeft = dayjs(checkIn).diff(today, 'day');
+      return daysLeft >= 1 ? `D-${daysLeft}` : '';
+    };
 
-    if (!reservations || reservations.length === 0) {
+    const totalPrice = reservation?.accommodation?.room.price;
+
+    const copyAddressToClipboard = () => {
+      navigator.clipboard.writeText(reservation.accommodation.address);
+    };
+
+    if (!reservation || reservation.length === 0) {
         return (
             <div className="container mx-auto p-8">
                 <p className="text-2xl font-semibold mb-7">상품 정보 0건</p>
@@ -51,12 +39,10 @@ export default function PaidCart() {
     }
 
     return (
-        <div className="container mx-auto p-8">
-            <p className="text-2xl font-semibold my-5">상품 정보 {reservations?.length}건</p>
-            {reservations?.map(reservation => (
-                <div key={reservation.orderId} className="mb-3 bg-white shadow-md rounded-xl overflow-hidden">
-                    <div className="flex flex-col md:flex-row">
-                <div className="h-[260px]">
+      <div className="container mx-auto p-8 mt-3">
+        <div className="mb-5 bg-white shadow-md rounded-xl overflow-hidden">
+            <div className="flex flex-col md:flex-row">
+                <div className="h-[280px]">
                     <img
                         src={reservation.accommodation?.image}
                         alt="Room"
@@ -90,26 +76,25 @@ export default function PaidCart() {
                     </div>
                 </div>
             </div>
-                </div>
-            ))}
-            <div className="bg-white shadow-md mt-7 p-6 rounded-xl">
-              <div>
-                <p className="font-bold text-2xl mb-6">결제 정보</p>
-              </div>
-              <div className="flex mb-3 justify-between text-lg text-stone-400">
-                <p>상품 금액</p>
-                <p>{totalPrice}원</p>
-              </div>
-              <div className="flex mb-3 justify-between text-lg text-stone-400">
-                <p>할인 금액</p>
-                <p>0</p>
-              </div>
-              <hr className="my-6" />
-              <div className="flex justify-between text-lg text-stone-700">
-                <p>총 결제 금액</p>
-                <p>{totalPrice}원</p>
-              </div>
-            </div>
         </div>
-    );
+        <div className="bg-white shadow-md mt-7 p-6 rounded-xl">
+          <div>
+            <p className="font-bold text-2xl mb-6">결제 정보</p>
+          </div>
+          <div className="flex mb-3 justify-between text-lg text-stone-400">
+            <p>상품 금액</p>
+            <p>{totalPrice}원</p>
+          </div>
+          <div className="flex mb-3 justify-between text-lg text-stone-400">
+            <p>할인 금액</p>
+            <p>0</p>
+          </div>
+          <hr className="my-6" />
+          <div className="flex justify-between text-lg text-stone-700">
+            <p>총 결제 금액</p>
+            <p>{totalPrice}원</p>
+          </div>
+        </div>
+      </div>
+  );
 }

@@ -14,7 +14,10 @@ const ReservationsNav = ({pageTitle}) => {
     if (pathName === "/order") {
         setPageName("예약");
     }
-    if (pathName === "/paid") {
+    if (pathName === "/paidcart") {
+        setPageName("예약 완료");
+    }
+    if (pathName === "/paidorder") {
         setPageName("예약 완료");
     }
 };

@@ -38,10 +38,13 @@ const MainNav = () => {
   if (pathName === "/cart") {
     return <ShoppingCartNav />;
   }
-  if (pathName === "/paid") {
+  if (pathName === "/paidcart") {
     return <ReservationsNav />;
   }
-  if (pathName === "/order") {
+  if (pathName === "/paidorder") {
+    return <ReservationsNav />;
+  }
+  if (pathName === "/orders") {
     return <ReservationsNav />;
   }
   return (
