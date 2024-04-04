@@ -76,7 +76,7 @@ export default function LocationSlide({ content }) {
                                                 <h4 className="text-base overflow-ellipsis whitespace-nowrap overflow-hidden block w-[80%] font-bold ">
                                                     {item.productName}
                                                 </h4>
-                                                <p className="text-stone-600 pt-4 text-center">
+                                                <p className="text-gray-600 pt-4 text-center font-bold">
                                                     {item.area}
                                                 </p>
                                             </div>

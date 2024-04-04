@@ -45,7 +45,7 @@ const MainNav = () => {
   }
   return (
     <>
-      <div className="flex justify-between items-center fixed w-[1000px] h-[65px] top-0 shadow-sm bg-white z-[100] relative;">
+      <div className=" flex justify-between items-center fixed w-[100%] h-[75px] top-0 bg-white z-[100] relative;" style={{ borderBottom: '1px solid #d2d2d2' }}>
         <Link
           className="text-blue-800 text-xl font-semibold cursor-pointer px-[18px] py-0"
           href="/main">

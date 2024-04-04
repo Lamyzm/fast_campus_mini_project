@@ -13,7 +13,7 @@ const ButtonVariants = cva(
       outline: {
         default: "",
         outlineBold:
-          "border border-input bg- hover:bg-accent  hover:text-accent-foreground border-gray-500 border-4",
+          "border border-input bg-background hover:bg-accent  hover:text-accent-foreground border-gray-400 border-4",
         outlineSemi:
           "border border-input bg-background hover:bg-accent  hover:text-accent-foreground border-gray-500 border-2",
       },

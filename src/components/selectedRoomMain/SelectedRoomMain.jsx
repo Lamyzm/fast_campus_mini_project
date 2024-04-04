@@ -1,5 +1,4 @@
 'use client'
-import RatingStar from '@/app/(route)/room/components/RatingStar';
 import Icons from '../icons/icons'
 import Image from 'next/image';
 import CommentSlide from '@/app/(route)/room/components/CommentSlide';
@@ -8,7 +7,7 @@ import CommentSlide from '@/app/(route)/room/components/CommentSlide';
 const SelectedRoomMain = ({ data, comments }) => {
 
     return (
-        <div className="w-full mx-auto">
+        <div className="w-full mx-auto ">
             {data && (
                 <div className="bg-gray-50 rounded-lg p-6 mt-4">
                     <div className='py-2 px-2'>
@@ -30,7 +29,6 @@ const SelectedRoomMain = ({ data, comments }) => {
                             <p className="mt-6 flex items-center font-bold text-blue-900 text-base"><Icons type="LocationOnOutlinedIcon" size="large" color="primary" />{data.address.split(' ')[0]} {data.address.split(' ')[1]}</p>
                         </div>
                         <div>
-                            {/* commentSlide */}
                             {comments && (<CommentSlide comments={comments} />)}
                         </div>
                     </div>

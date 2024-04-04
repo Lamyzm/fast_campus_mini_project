@@ -7,8 +7,8 @@ const RoomOutline = ({data}) => {
     const [isOpen, setIsOpen] = useState(false)
     return (
         <>
-            <div>
-                <div className="  py-8 px-4 sm:px-6 lg:px-8 ">
+            <SelectLayoutContainer>
+                <div className=" py-8 px-4 sm:px-6 lg:px-8 bg-gray-50">
                     {/* 숙소 소개 */}
                     <div className="max-w-md mx-auto ">
                         <h1 className=" py-5 text-2xl font-bold text-gray-800 mb-4">숙소 소개</h1>
@@ -156,7 +156,7 @@ const RoomOutline = ({data}) => {
                         </>
                         )}
                 </div>
-            </div>
+            </SelectLayoutContainer>
         </>
     )
 }

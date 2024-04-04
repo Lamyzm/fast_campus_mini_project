@@ -10,7 +10,7 @@ const AccommodationList = ({ data }) => {
   const router = useRouter()
 
   return (
-    <div className="w-full lg:grid lg:grid-cols-2">
+    <div className="w-full lg:grid lg:grid-cols-2 mt-2">
 
       {data.map((item, index) => (
         <div
@@ -25,7 +25,7 @@ const AccommodationList = ({ data }) => {
         >
           <div className="m-6 cursor-pointer">
 
-            <div className="rounded-md h-[200px] bg-gray-100 min-w-[170px] relative z-0">
+            <div className="rounded-md h-[220px] bg-gray-100 min-w-[170px] relative z-0">
               <Image
                 src={item?.image}
                 alt={item?.accommodationName}

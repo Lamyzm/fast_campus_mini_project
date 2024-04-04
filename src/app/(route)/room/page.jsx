@@ -100,6 +100,7 @@ const Page = () => {
 
     return (
         <>
+
             {/* 숙소 검색 결과 몇개인지, sort 컴포넌트 */}
             <div className="text-2xl font-bold text-gray-800 pt-8 mb-2 w-full flex justify-between" >
                 {room?.pages[0].totalElements ? (
@@ -110,7 +111,7 @@ const Page = () => {
                     )
                 }
 
-                <SortBox className='mr-4 hover:underline hover:bg-white' />
+                <SortBox className='mr-4 hover:underline hover:bg-white'/>
             </div>
 
             {/* 현재 검색된 필터 정보  */}
