@@ -12,10 +12,8 @@ export default function AccommodationButtonSwiper({
   area = "전체",
   category = "전체",
 }) {
-  console.log("call category", category);
   const [buttonState, setButtonState] = useState(category);
   const { data, fetchData } = useFetchAccommodationRatingData();
-  console.log("data", data);
   const id = useId();
   const buttons = ["전체", "모텔", "펜션", "게스트하우스", "콘도"];
 

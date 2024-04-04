@@ -8,9 +8,6 @@ export default function CartCheckBox({
   setIsCheckPass,
 }) {
   const handleChange = (event) => {
-    console.log(event.target.checked);
-    console.log("checkedItems", checkedItems);
-
     const itemList = {
       ...checkedItems,
       [id]: event.target.checked,

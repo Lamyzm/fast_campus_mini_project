@@ -33,11 +33,9 @@ export default function BookingRoomComponent({ title, price, id, roomId }) {
       checkOut: date.endDate,
       peoples: sumAll(people),
     };
-    console.log(cartRequestBody);
     authApi
       .post(`/cart/${id}/${roomId}`, cartRequestBody)
       .then((response) => {
-        console.log(response.data);
         notifyToastInfo({ message: "장바구니 추가 완료" });
       })
       .catch((error) => {

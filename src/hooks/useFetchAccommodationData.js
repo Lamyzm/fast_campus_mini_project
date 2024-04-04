@@ -9,8 +9,6 @@ function useFetchAccommodationRatingData() {
   const fetchData = async (category, area, sort = "rating", discountEndDay = "",) => {
     try {
       const sortOrder = sort === "minPrice" ? "asc" : "desc";
-      console.log("start fetching data");
-      console.log(category, area, discountEndDay, sort);
       const result = await Api.get(
         `/accommodation?size=10&category=${category}&area=${area}&discountEndDay=${formattedDateTime}&sort=${sort},${sortOrder}`
       );

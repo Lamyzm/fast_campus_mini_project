@@ -42,7 +42,6 @@ export default function SwiperSlideComponent({ content }) {
   };
   const navigation = (e, item) => {
     e.preventDefault();
-    console.log(item);
     if (isLocale) {
       setArea(item?.area);
     }

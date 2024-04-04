@@ -8,6 +8,7 @@ import Icons from "../icons/icons";
 import Link from "next/link";
 import Image from "next/image";
 import dayjs from "dayjs";
+import CartLoadingDetails from "../Loading/SwiperLoading";
 
 export default function AccommodationSwiperComponent({ content }) {
   const id = useId();
@@ -69,14 +70,18 @@ export default function AccommodationSwiperComponent({ content }) {
                   key={`${id}${index}`}>
                   <Link href={`/room/${item.id}`}>
                     <div className="w-full h-full  text-black  flex-col justify-center justify-items-center ">
-                      <div className=" overflow-hidden relative rounded-xl h-[150px] w-full">
-                        <Image
+                      <div
+                        className=" overflow-hidden relative rounded-xl h-[150px] w-full bg-cover bg-center"
+                        style={{
+                          backgroundImage: `url(${item.image})`,
+                        }}>
+                        {/* <Image
                           src={item.image}
-                          layout="fill"
+                          width={"300"}
+                          height={"550"}
                           objectFit="cover"
                           alt="숙소 이미지"
-                          sizes="100vw"
-                        />
+                        /> */}
                         <div className="w-full h-full absolute top-0  hover:bg-black hover:bg-opacity-30 transition-colors "></div>
                       </div>
                       <div className="text-start overflow-ellipsis flex gap-y-1 justify-between flex-col w-full h-[35%]">
@@ -114,7 +119,7 @@ export default function AccommodationSwiperComponent({ content }) {
               );
             })
           ) : (
-            <div>컨텐츠 없음</div>
+            <CartLoadingDetails></CartLoadingDetails>
           )}
         </Swiper>
         <div

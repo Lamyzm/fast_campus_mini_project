@@ -41,7 +41,6 @@ export default NextAuth({
       // console.log("Auth.js called session", session);
       session.user = token;
       if (token.exp) {
-        // console.log("token입니다", token.token)
 
         // console.log(session)
       }
