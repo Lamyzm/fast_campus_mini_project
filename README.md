@@ -8,7 +8,7 @@
 - 테스트 비밀번호 : 
 
   
-## 📚프로젝트 소개
+## 💻 프로젝트 소개
 제작기간 : 2024.03.18 ~ 2024.04.05 <br>
 제작인원 : FE_3명, BE_3명
 
@@ -26,5 +26,17 @@
 -  전체 상품 조회 시 ```무한 스크롤```을 사용하여 페이지네이션 없이 유저 경험 개선
 - 특정 상품 ID 데이터 중 숙소 위치 데이터를 ```Kakao Map Api```를 이용하여 좌표로 변환하고, 이를 지도 데이터에 표시
 -  ``` NEXT AUTH ```를 이용하여 ```JWT 토큰```을 클라이언트단이 아닌 서버에서 자체 관리하여 보안성 향상
-- 동적인 meta data 생성으로 SEO 최적화 
+- 동적인```meta data``` 생성으로 ```SEO``` 최적화 
+
+## 🛠️ 개발 스택
+- 빌드 : <img src="https://img.shields.io/badge/Nextjs-000000?style=for-the-badge&logo=nextdotjs&logoColor=white">
+- 호스팅 :     <img src="https://img.shields.io/badge/vercel-000000?style=for-the-badge&logo=vercel&logoColor=white">
+- 패키지매니저 : <img src="https://img.shields.io/badge/npm-CB3837?style=for-the-badge&logo=npm&logoColor=white">
+- 라이브러리
+    - 상태관리 : zustand 
+    - 데이터 패칭 : <img src="https://img.shields.io/badge/reactquery-FF4154?style=for-the-badge&logo=reactquery&logoColor=white">
+    - 라우팅 : <img src="https://img.shields.io/badge/Next App Router-000000?style=for-the-badge&logo=nextdotjs&logoColor=white">
+    - CSS 스타일링 : <img src="https://img.shields.io/badge/tailwindcss-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white">
+    - Autentication: <img src="https://img.shields.io/badge/Next AUTH-000000?style=for-the-badge&logo=nextdotjs&logoColor=white">
+    
 
