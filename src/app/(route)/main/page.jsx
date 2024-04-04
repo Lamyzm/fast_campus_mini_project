@@ -26,15 +26,16 @@ export default function Home() {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.pageYOffset > 700) { // 예시로 1200px 스크롤됐을 때 버튼을 보이게 설정
+      if (window.pageYOffset > 700) {
+        // 예시로 1200px 스크롤됐을 때 버튼을 보이게 설정
         setShowScrollButton(true);
       } else {
         setShowScrollButton(false);
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
@@ -47,15 +48,21 @@ export default function Home() {
           objectFit="fill"
           sizes="100vw"
           quality={100}
-          style={{ width: '100%', height: '100%' }}
+          style={{ width: "100%", height: "100%" }}
         />
-        <div className={"absolute top-[40%] left-[25%] w-[1000px] px-5 "} style={{ left: 'calc(50% - 500px)', top: 'calc(50% - 50px)' }}>
+        <div
+          className={"absolute top-[40%] left-[25%] w-[1000px] px-5 "}
+          style={{ left: "calc(50% - 500px)", top: "calc(50% - 50px)" }}>
           <MainSearchBox />
         </div>
-        <div className="absolute text-white text-4xl font-bold  w-[1000px]" style={{ left: 'calc(52% - 500px)', top: 'calc(20% - 40px)' }}>
+        <div
+          className="absolute text-white text-4xl font-bold  w-[1000px]"
+          style={{ left: "calc(52% - 500px)", top: "calc(20% - 40px)" }}>
           여행 할 땐?
         </div>
-        <div className="absolute text-white text-4xl font-bold  w-[1000px]" style={{ left: 'calc(52% - 500px)', top: 'calc(30% - 40px)' }}>
+        <div
+          className="absolute text-white text-4xl font-bold  w-[1000px]"
+          style={{ left: "calc(52% - 500px)", top: "calc(30% - 40px)" }}>
           팀쓰리!
         </div>
       </div>
