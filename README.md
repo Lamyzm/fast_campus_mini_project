@@ -36,7 +36,7 @@
 - 호스팅 : Vercel
 - 패키지매니저 : npm
 - 라이브러리
-    - 상태관리 : zustand (toolkit)
+    - 상태관리 : zustand 
     - 데이터 패칭 : React-Query
     - 라우팅 : Next-App-Routing
     - CSS 스타일링 : Tailwind CSS
