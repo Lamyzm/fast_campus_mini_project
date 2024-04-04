@@ -9,6 +9,7 @@ import Badge from "@mui/material/Badge";
 import ShoppingCartNav from "@/components/shoppingCartNav/ShoppingCartNav";
 import useCartDataQuery from "@/hooks/useCartDataQuery";
 import ReservationsNav from "../reservationsNav/ReservationsNav";
+import Image from "next/image";
 
 const MainNav = () => {
   const { cartDataLength } = useCartDataQuery();
@@ -47,11 +48,16 @@ const MainNav = () => {
     <>
       <div className=" flex justify-between items-center fixed w-[100%] h-[75px] top-0 bg-white z-[100] relative;" style={{ borderBottom: '1px solid #d2d2d2' }}>
         <Link
-          className="text-blue-800 text-xl font-semibold cursor-pointer px-[18px] py-0"
+          className="text-blue-800 text-xl font-semibold cursor-pointer ml-10 py-0"
           href="/main">
-          3조화이팅
+          <Image
+            src='/logo.png'
+            alt={'logo'}
+            width={170}
+            height={80}
+          />
         </Link>
-        <div className="flex gap-7 items-center px-[18px] py-0 font-semibold">
+        <div className="flex gap-7 items-center px-[18px] py-0 font-semibold mr-4">
           <Link
             href="/cart"
             onClick={cartAction}

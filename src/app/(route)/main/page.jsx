@@ -53,10 +53,10 @@ export default function Home() {
           <MainSearchBox />
         </div>
         <div className="absolute text-white text-4xl font-bold  w-[1000px]" style={{ left: 'calc(52% - 500px)', top: 'calc(20% - 40px)' }}>
-          여행 할 땐?
+          국내 여행 할 땐 ?
         </div>
         <div className="absolute text-white text-4xl font-bold  w-[1000px]" style={{ left: 'calc(52% - 500px)', top: 'calc(30% - 40px)' }}>
-          팀쓰리!
+          휴방 !
         </div>
       </div>
       <Divider />
@@ -77,6 +77,8 @@ export default function Home() {
         category="펜션"
         sort="minPrice"
       />
+      <Divider />
+      <Divider />
       <ScrollToTopButton show={showScrollButton} />
     </>
   );

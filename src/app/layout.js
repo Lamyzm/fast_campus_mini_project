@@ -9,7 +9,7 @@ import Footer from "@/components/Footer";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "팀쓰리",
+  title: "Hyubang | 국내숙소 예약은 역시 휴방",
   description: "숙소 앱",
 };
 
