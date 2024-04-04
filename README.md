@@ -5,7 +5,8 @@
 - 숙소 예약을 위한 여러 기능이 있습니다.
 - 배포링크 : https://fast-campus-mini-project.vercel.app/main
 - 테스트 아이디 : 
-- 테스트 비밀번호 : 
+- 테스트 비밀번호 :
+- 문서화 노션 링크 : https://www.notion.so/3-44d96fead51444be873c7c10a7a5c64d
 
 <br>
 
