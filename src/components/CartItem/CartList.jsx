@@ -88,7 +88,7 @@ export default function CartList() {
     );
   }
 
-  if (cartData.length === 0) {
+  if (cartData?.length === 0) {
     return (
       <>
         <div className="h-[80vh] w-full p-12 flex flex-col justify-center items-center gap-7">
