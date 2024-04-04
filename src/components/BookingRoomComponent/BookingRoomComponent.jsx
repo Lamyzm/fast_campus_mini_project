@@ -85,7 +85,7 @@ export default function BookingRoomComponent({
   if (totalRoomData.discount && !isDiscountExpired) {
     priceContent = (
       <div className="text-end flex flex-col items-end">
-        <div className="w-fit px-1 bg-rose-300 rounded-sm mr-1">
+        <div className="w-fit px-1 bg-rose-100 rounded-sm mr-1">
           <p className="text-red-600 text-xs">
             (~{discountDateFormatted} 특가)
           </p>

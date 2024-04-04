@@ -9,7 +9,7 @@ const ShoppingCartNav = () => {
   return ( 
     <>
       <div
-        className="top-0 fixed flex justify-between items-center w-[1000px] h-[65px] shadow-sm bg-white"
+        className="top-0 fixed flex justify-between items-center w-full h-[75px] shadow-sm bg-white"
         style={{ zIndex: "50" }}>
         <div
           className=" hover:text-gray-600 transition duration-100 text-xl font-semibold cursor-pointer px-[18px] py-0"

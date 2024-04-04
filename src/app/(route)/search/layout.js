@@ -5,7 +5,6 @@ import SelectNav from '@/components/selectNav/SelectNav';
 export default function Layout({ children }) {
   return (
     <>
-      <SelectNav />
       <SelectedRoomDetailLayout>
         {children}
       </SelectedRoomDetailLayout>
