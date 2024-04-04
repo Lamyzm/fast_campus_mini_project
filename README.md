@@ -3,9 +3,10 @@
 - ```Hyubang``` : 국내의 모텔, 호텔, 펜션 등 다양한 형태의 숙소를 한눈에 조회하고 예약까지 할 수 있는 ```플랫폼``` 페이지
 - 숙소 예약 플랫폼
 - 숙소 예약을 위한 여러 기능이 있습니다.
-- 배포링크 : 
+- 배포링크 : https://fast-campus-mini-project.vercel.app/main
 - 테스트 아이디 : 
 - 테스트 비밀번호 : 
+
 
   
 ## 💻 프로젝트 소개
@@ -47,6 +48,22 @@
 | 방호진  |  함지훈   |  김정은   |
 | :------------: | :------------: |:------------: | 
 | [BangHoJin ](https://github.com/banghogu)  |  [HamJiHun](https://github.com/)  |  [KimJungEun](https://github.com/)  |    
-|  <img width="150" src="https://www.techm.kr/news/photo/202107/86116_89523_1948.png"/> |  <img width ="150" src="https://github.com/subinsad/KDT7_FE_Toy1_team4/assets/92204014/c9791652-c9cd-49f6-922f-7d271acdb678" >  | <img width="150" src="https://github.com/subinsad/KDT7_FE_Toy1_team4/assets/92204014/e0a4d495-b9f2-462a-8c42-58dd29917650"> |
-| **전체 숙소 조회, 개별 숙소조회**  |  여기에 추가 | 여기에 추가  |
+|  <img width="150" src="https://www.techm.kr/news/photo/202107/86116_89523_1948.png"/> |  <img width ="150" src="https://www.techm.kr/news/photo/202107/86116_89523_1948.png" >  | <img width="150" src="https://www.techm.kr/news/photo/202107/86116_89523_1948.png"> |
+| **전체 숙소 조회 페이지,<br> 개별 숙소 조회 페이지 <br> 숙소타입 필터링 <br>스타일가이드 **  |  여기에 추가 | 여기에 추가  |
+
+## 🎁 디자인 및 컴포넌트 구성
+
+[피그마 링크](https://www.figma.com/file/Z7J7lU8tbDEEldcyiGIGZa?embed_host=notion&kind=file&node-id=0%3A1&type=whiteboard&viewer=1)
+
+![](https://velog.velcdn.com/images/banghogu/post/727f6d7a-e2d3-4490-bbc5-74289cc25a12/image.png)
+
+| 페이지               | 컴포넌트            | 설명                                         |
+|---------------------|---------------------|---------------------------------------------|
+| 로그인 페이지       | 버튼, 입력, 아이콘, 로고 | 로그인 및 관련 요소                           |
+| 회원가입 페이지     | 버튼, 입력, 아이콘 | 회원가입 및 관련 요소                         |
+| 메인 페이지         | 네비게이션 바, 메인 컨테이너, 검색, 쿠폰, 숙소 타입 | 메인 화면 요소                                |
+| 메인 페이지 - 서브  | 지역, 날짜, 인원 | 메인 서브 페이지 요소                         |
+| 검색 결과 페이지    | 네비게이션 바, 검색 필드, 숙소 리스트 | 검색 결과 페이지 요소                          |
+| 숙소 상세 페이지    | 네비게이션 바, 이미지, 타이틀, 주소, 객실 타입, 숙소 소개 | 숙소 상세 페이지 요소                        |
+| 장바구니 페이지    | 네비게이션 바, 장바구니 리스트, 총액, 예약 버튼 | 장바구니 페이지 요소                          |
 
