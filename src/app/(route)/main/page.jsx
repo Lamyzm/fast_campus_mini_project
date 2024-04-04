@@ -12,15 +12,20 @@ import { useEffect } from "react";
 import { useIsSearchedStore } from "@/store/useIsSearchStore";
 import Image from "next/image";
 import { useSubFilterStore } from "@/store/useSubFilterStore";
+import AccommodationButtonSwiper from "@/components/accommodationSwipers/AccommodationButtonSwiper";
+import dayjs from "dayjs";
 
 export default function Home() {
   const { clearIsSearched } = useIsSearchedStore(); //현재 페이지가 메인페이지인지, 검색결과 페이지인지
-  const { clear } = useSubFilterStore()
+  const { clear } = useSubFilterStore();
 
   useEffect(() => {
     clearIsSearched(); //메인페이지 로드 시 IsSearched false
-    clear()
+    clear();
   }, []);
+
+  const currentDateTime = dayjs();
+  const formattedDateTime = currentDateTime.format("YYYY-MM-DDTHH:mm");
 
   return (
     <>
@@ -41,13 +46,21 @@ export default function Home() {
       <Divider />
       <PopularSwiper title="국내 인기 여행지" />
       <Divider />
-
       <CouponSlideContainer />
       <Divider />
-
-      <AccommodationSwiper title="강릉 풀펜션" isButton={true} />
+      <AccommodationButtonSwiper title="인기 추천 숙소" />
       <Divider />
-      <AccommodationSwiper title="인기여행" />
+      <AccommodationSwiper
+        title="제주 인기 호텔, 이번 주 HOT 픽!"
+        area="제주"
+        category="호텔"
+      />
+      <Divider />
+      <AccommodationSwiper
+        title="펜션 최저가"
+        category="펜션"
+        sort="minPrice"
+      />
     </>
   );
 }

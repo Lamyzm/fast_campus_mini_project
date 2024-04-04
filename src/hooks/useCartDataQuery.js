@@ -30,7 +30,6 @@ function useCartDataQuery() {
   });
   useEffect(() => {
     setCartDataLength(cartData?.length);
-    console.log("CartDataLength: ", cartData?.length);
   }, [cartData])
   return { checkedItems, setCheckedItems, cartData, isLoading, isError, isSuccess, refetch, isFetching, cartDataLength };
 }

@@ -70,7 +70,7 @@ body {
   justify-self: center;
 }
 
-@media (max-width: 1300px) {
+@media (max-width: 1080px) {
   .swiper-button-prev_v,
   .swiper-button-next_v {
     display: none;
