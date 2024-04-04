@@ -58,6 +58,7 @@
 
 [피그마 링크](https://www.figma.com/file/Z7J7lU8tbDEEldcyiGIGZa?embed_host=notion&kind=file&node-id=0%3A1&type=whiteboard&viewer=1)
 
+Main 페이지 예시
 ![](https://velog.velcdn.com/images/banghogu/post/727f6d7a-e2d3-4490-bbc5-74289cc25a12/image.png)
 
 | 페이지               | 컴포넌트            | 설명                                         |
@@ -67,14 +68,15 @@
 | 메인 페이지         | 네비게이션 바, 메인 컨테이너, 검색, 쿠폰, 숙소 타입 | 메인 화면 요소                                |
 | 메인 페이지 - 서브  | 지역, 날짜, 인원 | 메인 서브 페이지 요소                         |
 | 검색 결과 페이지    | 네비게이션 바, 검색 필드, 숙소 리스트 | 검색 결과 페이지 요소                          |
+| 숙소 상세 페이지    | 네비게이션 바, 이미지, 타이틀, 주소, 객실 타입, 숙소 소개 | 숙소 상세 페이지 요소                        |
+| 장바구니 페이지    | 네비게이션 바, 장바구니 리스트, 총액, 예약 버튼 | 장바구니 페이지 요소                          |
+
 
 <br>
 
 ## 📨 api 명세서
 
 ![](https://velog.velcdn.com/images/banghogu/post/717fbb02-8f7a-4a14-9f8b-a904f641381d/image.png)
-| 숙소 상세 페이지    | 네비게이션 바, 이미지, 타이틀, 주소, 객실 타입, 숙소 소개 | 숙소 상세 페이지 요소                        |
-| 장바구니 페이지    | 네비게이션 바, 장바구니 리스트, 총액, 예약 버튼 | 장바구니 페이지 요소                          |
 
 <br>
 
