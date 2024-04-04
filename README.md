@@ -50,7 +50,7 @@
 | :------------: | :------------: |:------------: | 
 | [BangHoJin ](https://github.com/banghogu)  |  [HamJiHun](https://github.com/)  |  [KimJungEun](https://github.com/)  |    
 |  <img width="150" src="https://www.techm.kr/news/photo/202107/86116_89523_1948.png"/> |  <img width ="150" src="https://www.techm.kr/news/photo/202107/86116_89523_1948.png" >  | <img width="150" src="https://www.techm.kr/news/photo/202107/86116_89523_1948.png"> |
-| **전체 숙소 조회 페이지,<br> 개별 숙소 조회 페이지 <br> 숙소타입 필터링 <br>스타일가이드 **  |  여기에 추가 | 여기에 추가  |
+| 전체 숙소 조회 페이지,<br> 개별 숙소 조회 페이지 <br> 숙소타입 필터링 <br>스타일가이드   |  여기에 추가 | 여기에 추가  |
 
 <br>
 
