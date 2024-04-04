@@ -45,6 +45,20 @@ const BookingRoomComponent = ({ title, price, id, roomId })=>{
         console.error("Error fetching data:", error);
       });
   };
+
+  // const saveOrder =() => {
+  //   const cartRequestBody = {
+  //     checkIn: date.startDate,
+  //     checkOut: date.endDate,
+  //     peoples: sumAll(people),
+  //   };
+  //   console.log(cartRequestBody);
+  //   authApi
+  //     .post(`/orders/${id}/${roomId}`, cartRequestBody)
+  //     .then((response) => {
+  //       console.log(response.data);
+  //     })
+  // };
   // {
   //   "checkIn":"2024-03-15",	//NonNull
   //   "checkOut":"2024-03-16",//NonNull
@@ -98,7 +112,7 @@ const BookingRoomComponent = ({ title, price, id, roomId })=>{
                 color="primary"
                 additionalClass="w-full sm:px-12 font-bold text-sm"
                 onClick={() => 
-                  router.push(`/order?id=${id}&roomId=${roomId}`)}
+                  {router.push(`/orders?id=${id}&roomId=${roomId}`)}}
                 >
                 예약하기
               </Button>

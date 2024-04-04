@@ -50,6 +50,7 @@ export default function CartList() {
     queryFn: fetchRoom,
     enabled: isCartFetching,
   });
+  console.log(cartQuery.data)
 
   useEffect(() => {
     // total price

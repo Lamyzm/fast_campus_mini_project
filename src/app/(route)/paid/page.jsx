@@ -1,16 +1,27 @@
 'use client'
 import { useEffect, useState } from 'react';
-import axios from 'axios';
-import ReservationsNav from "@/components/reservationsNav/ReservationsNav"
 import dayjs from 'dayjs';
-import 'dayjs/locale/ko'
 import { useQueryClient } from 'react-query';
-
+import { Router } from 'next/navigation';
 
   export default function Paid() {
       const queryClient = useQueryClient();
-      const reservations = queryClient.getQueryData(["cart"]);
+      const [queryKey, setQueryKey] = useState(""); // 쿼리 키 상태 추가
 
+      const reservations = queryClient.getQueryData(["cart"]);
+  // 페이지 로드 시 쿼리 키 설정
+// useEffect(()=>{
+// if (getParams ("cart") === "cart") {
+// setQueryKey ('cart')}
+// else if (getParams("order") === s"paid")
+// setQueryKey (
+// "paid"
+// )}, []);
+// const reservations = queryClient.getQueryData([queryKey])
+  
+  // console.log("querykey:" ,queryKey)
+
+  console.log(reservations)
   dayjs.locale('ko');
 
   //몇박인지 계산
@@ -18,25 +29,34 @@ import { useQueryClient } from 'react-query';
     return dayjs(checkOut).diff(checkIn, 'day');
   };
 
+  
   // 전체 객실 가격 계산
-  const totalPrice = reservations.reduce((acc, reservation) => acc + reservation.accommodation.room.price, 0);
+  const totalPrice = reservations?.reduce((acc, reservation) => acc + reservation.accommodation.room.price, 0);
+
+  if (reservations?.length === 0) {
+    return (
+        <div className="container mx-auto p-8">
+            <p className="text-2xl font-semibold mb-7">상품 정보 0건</p>
+            <p>예약된 상품이 없습니다.</p>
+        </div>
+    );
+  }
 
   return (
     <>
       <div className="container mx-auto p-8">
-        {/* <h1 className="text-xl font-semibold mb-4">예약이 완료되었습니다!</h1> */}
-        <p className="text-xl font-semibold mb-7">상품 정보 {reservations.length}건</p>
-        {reservations.map(reservation => (
-          <div key={reservation.orderId} className="mb-5 bg-white shadow-md rounded-lg overflow-hidden">
+        <p className="text-2xl font-semibold mb-7">상품 정보 {reservations?.length}건</p>
+        {reservations?.map(reservation => (
+          <div key={reservation.orderId} className="mb-5 bg-white shadow-md rounded-xl overflow-hidden">
             <div className="flex flex-col md:flex-row">
-              <div className="m-6">
+              <div className="h-full">
                 <img
                     src={reservation.accommodation.image}
                     alt="Room"
-                    className="w-full h-auto rounded-lg md:w-[210px] md:h-[180px] md:object-contain md:rounded-lg"
+                    className="w-full h-full object-cover md:w-[250px] md:h-[220px]"
                 />
               </div>
-              <div className="p-6">
+              <div className="p-6 ml-4 flex-column items-center">
                 <h2 className="text-xl font-semibold mb-4">{reservation.accommodation.accommodationName}</h2>
                 <p className="text-gray-500 mb-4">{reservation.accommodation.address}</p>
                 <div className="flex justify-between items-center">
@@ -66,4 +86,4 @@ import { useQueryClient } from 'react-query';
       </div>
     </>
   );
-}
+        }

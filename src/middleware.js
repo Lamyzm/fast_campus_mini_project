@@ -8,7 +8,7 @@ export async function middleware(req, event) {
   const { pathname } = req.nextUrl;
 
 
-  if (pathname.startsWith("/login") || pathname.startsWith("/join")) {
+  if (pathname.startsWith("/login") || pathname.startsWith("/join"))  {
     if (session) {
       return NextResponse.redirect(new URL("/", req.url));
     }
@@ -19,6 +19,14 @@ export async function middleware(req, event) {
     console.log("카트로직", session);
     return NextResponse.redirect(new URL("/login", req.url));
   }
+  if (pathname.startsWith("/paid") && !session) {
+    console.log("결제로직", session);
+    return NextResponse.redirect(new URL("/login", req.url));
+  }
+  if (pathname.startsWith("/orders") && !session) {
+    console.log("바로예약", session);
+    return NextResponse.redirect(new URL("/login", req.url));
+  }
 
   if (pathname === "/") {
     return NextResponse.redirect(new URL("/main", req.url));
@@ -26,5 +34,5 @@ export async function middleware(req, event) {
 }
 
 export const config = {
-  matcher: ["/login", "/join", "/", '/main', "/cart"],
+  matcher: ["/login", "/join", "/", '/main', "/cart", "/paid", "/orders"],
 };
