@@ -29,14 +29,24 @@
 - 동적인```meta data``` 생성으로 ```SEO``` 최적화 
 
 ## 🛠️ 개발 스택
-- 빌드  <br> <img src="https://img.shields.io/badge/Nextjs-ffffff?style=for-the-badge&logo=nextdotjs&logoColor=black">
-- 호스팅 <br> <img src="https://img.shields.io/badge/vercel-ffffff?style=for-the-badge&logo=vercel&logoColor=black">
-- 패키지매니저 <br> <img src="https://img.shields.io/badge/npm-CB3837?style=for-the-badge&logo=npm&logoColor=white">
+
+- 빌드 : Next.js
+- 호스팅 : Vercel
+- 패키지매니저 : npm
 - 라이브러리
-    - 상태관리 <br> zustand 
-    - 데이터 패칭 <br> <img src="https://img.shields.io/badge/reactquery-FF4154?style=for-the-badge&logo=reactquery&logoColor=white">
-    - 라우팅 <br> <img src="https://img.shields.io/badge/Next App Router-ffffff?style=for-the-badge&logo=nextdotjs&logoColor=black">
-    - CSS 스타일링 <br> <img src="https://img.shields.io/badge/tailwindcss-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white">
-    - Autentication <br> <img src="https://img.shields.io/badge/Next AUTH-ffffff?style=for-the-badge&logo=nextdotjs&logoColor=black">
+    - 상태관리 : zustand (toolkit)
+    - 데이터 패칭 : React-Query
+    - 라우팅 : Next-App-Routing
+    - CSS 스타일링 : Tailwind CSS
+    - Autentication : Next-Auth
     
+     
+     
+## 👩‍💻 팀원 소개
+
+| 방호진  |  함지훈   |  김정은   |
+| :------------: | :------------: |:------------: | 
+| [BangHoJin ](https://github.com/banghogu)  |  [HamJiHun](https://github.com/)  |  [KimJungEun](https://github.com/)  |    
+|  <img width="150" src="https://www.techm.kr/news/photo/202107/86116_89523_1948.png"/> |  <img width ="150" src="https://github.com/subinsad/KDT7_FE_Toy1_team4/assets/92204014/c9791652-c9cd-49f6-922f-7d271acdb678" >  | <img width="150" src="https://github.com/subinsad/KDT7_FE_Toy1_team4/assets/92204014/e0a4d495-b9f2-462a-8c42-58dd29917650"> |
+| **전체 숙소 조회, 개별 숙소조회**  |  여기에 추가 | 여기에 추가  |
 
