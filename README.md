@@ -29,14 +29,14 @@
 - 동적인```meta data``` 생성으로 ```SEO``` 최적화 
 
 ## 🛠️ 개발 스택
-- 빌드 : <img src="https://img.shields.io/badge/Nextjs-000000?style=for-the-badge&logo=nextdotjs&logoColor=white">
-- 호스팅 :     <img src="https://img.shields.io/badge/vercel-000000?style=for-the-badge&logo=vercel&logoColor=white">
-- 패키지매니저 : <img src="https://img.shields.io/badge/npm-CB3837?style=for-the-badge&logo=npm&logoColor=white">
+- 빌드  <br> <img src="https://img.shields.io/badge/Nextjs-ffffff?style=for-the-badge&logo=nextdotjs&logoColor=black">
+- 호스팅 <br> <img src="https://img.shields.io/badge/vercel-ffffff?style=for-the-badge&logo=vercel&logoColor=black">
+- 패키지매니저 <br> <img src="https://img.shields.io/badge/npm-CB3837?style=for-the-badge&logo=npm&logoColor=white">
 - 라이브러리
-    - 상태관리 : zustand 
-    - 데이터 패칭 : <img src="https://img.shields.io/badge/reactquery-FF4154?style=for-the-badge&logo=reactquery&logoColor=white">
-    - 라우팅 : <img src="https://img.shields.io/badge/Next App Router-000000?style=for-the-badge&logo=nextdotjs&logoColor=white">
-    - CSS 스타일링 : <img src="https://img.shields.io/badge/tailwindcss-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white">
-    - Autentication: <img src="https://img.shields.io/badge/Next AUTH-000000?style=for-the-badge&logo=nextdotjs&logoColor=white">
+    - 상태관리 <br> zustand 
+    - 데이터 패칭 <br> <img src="https://img.shields.io/badge/reactquery-FF4154?style=for-the-badge&logo=reactquery&logoColor=white">
+    - 라우팅 <br> <img src="https://img.shields.io/badge/Next App Router-ffffff?style=for-the-badge&logo=nextdotjs&logoColor=black">
+    - CSS 스타일링 <br> <img src="https://img.shields.io/badge/tailwindcss-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white">
+    - Autentication <br> <img src="https://img.shields.io/badge/Next AUTH-ffffff?style=for-the-badge&logo=nextdotjs&logoColor=black">
     
 
