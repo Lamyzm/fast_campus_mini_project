@@ -50,7 +50,7 @@ const Page = ({ params }) => {
   const { data: room, isFetching, isError, isSuccess, isLoading } = useQuery({
     queryKey: ['room', id],
     queryFn: fetchRoom,
-    onSuccess: (data) => fetchLocation(data.address)
+    onSuccess: (data) => fetchLocation(data.address) 
   })
 
   const roomId = room?.id

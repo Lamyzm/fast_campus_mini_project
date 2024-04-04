@@ -19,7 +19,7 @@ export default function CartList() {
 
   const [cartTotalPrice, setCartTotalPrice] = useState(0);
   const router = useRouter();
-  const id = useId();
+  // const id = useId();
 
   const convertCheckedItemsToArray = () => {
     const resultArray = [];
@@ -47,6 +47,7 @@ export default function CartList() {
     queryFn: fetchRoom,
     enabled: isCartFetching,
   });
+  console.log(cartQuery)
 
   useEffect(() => {
     // total price
@@ -137,7 +138,7 @@ export default function CartList() {
               return (
                 <CartItem
                   data={item}
-                  key={`${index + 1}-${id}`}
+                  key={`${index + 1}-${index}`}
                   index={item.id}
                   checkedItems={checkedItems}
                   setCheckedItems={setCheckedItems}
@@ -153,7 +154,7 @@ export default function CartList() {
             fetchCartData={fetchCartData}
             price={cartTotalPrice}
             cartQuery={cartQuery}
-            isCartFetching={isCartFetching}
+            isCartFetching={isCartFetching} 
           />
         </>
       ) : null}

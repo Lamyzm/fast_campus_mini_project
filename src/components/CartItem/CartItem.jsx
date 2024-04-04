@@ -20,6 +20,8 @@ export default function CartItem({
   setISCheckAllItems,
   setIsCheckPass,
   isCheckPass,
+  hideCheckbox, 
+  hideCloseButton
 }) {
   const deleteFunc = async (id) => {
     const { data } = await authApi.delete(`/cart/${id}`);
@@ -58,6 +60,8 @@ export default function CartItem({
           <div className="pt-9 flex gap-6 flex-col">
             <h3 className="font-bold text-xl">{accommodation.room.roomName}</h3>
             <div className="flex flex-row h-20 items-start gap-4">
+            {/* 체크박스 조건부 렌더링 */}
+            {!hideCheckbox && ( 
               <CartCheckBox
                 id={index}
                 checkedItems={checkedItems}
@@ -66,6 +70,7 @@ export default function CartItem({
                 isCheckPass={isCheckPass}
                 setIsCheckPass={setIsCheckPass}
               />
+              )}
               <img
                 alt="상품 상세이미지"
                 src={accommodation?.image}
@@ -96,19 +101,22 @@ export default function CartItem({
             </div>
           </div>
         </div>
-        <div className="absolute top-10 right-10 ">
-          <button
+        {/* 삭제 버튼 조건부 렌더링 */}
+        {!hideCloseButton && (
+          <div className="absolute top-10 right-10 ">
+            <button
             onClick={() => {
               dataDelete(index);
             }}>
-            <Icons
-              type="CloseIcon"
-              size="large"
-              color="primary"
-              additionalClass={"text-3xl"}
-            />
-          </button>
-        </div>
+              <Icons
+                type="CloseIcon"
+                size="large"
+                color="primary"
+                additionalClass={"text-3xl"}
+              />
+            </button>
+          </div>
+        )}
       </div>
     </>
   );

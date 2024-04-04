@@ -6,7 +6,7 @@ import { usePathname, useRouter } from "next/navigation";
 const SelectNav = () => {
   const router = useRouter();
   const pathName = usePathname();
-  const [pageName, setPageName] = useState(null);
+  const [pageName, setPageName] = useState(null); 
 
   //페이지 path에 맞게 알아서 변경하기
   const matchPageName = (pathName) => {

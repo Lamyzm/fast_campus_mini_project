@@ -8,6 +8,7 @@ import { useRouter, usePathname } from "next/navigation";
 import Badge from "@mui/material/Badge";
 import ShoppingCartNav from "@/components/shoppingCartNav/ShoppingCartNav";
 import useCartDataQuery from "@/hooks/useCartDataQuery";
+import ReservationsNav from "../reservationsNav/ReservationsNav";
 
 const MainNav = () => {
   const { cartDataLength } = useCartDataQuery();
@@ -35,6 +36,12 @@ const MainNav = () => {
   };
   if (pathName === "/cart") {
     return <ShoppingCartNav />;
+  }
+  if (pathName === "/paid") {
+    return <ReservationsNav />;
+  }
+  if (pathName === "/order") {
+    return <ReservationsNav />;
   }
   return (
     <>
