@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Button } from "../buttons/Button";
 import { useQuery } from "react-query";
 import LoadingButton from "@/components/buttons/LoadingButton";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 const LOADING_TIME = 4000;
 
@@ -17,7 +17,8 @@ const SelectedRoomPay = ({
   const [showLoadingIndicator, setShowLoadingIndicator] = useState(false);
   const [isMoved, setIsMoved] = useState(false);
   const router = useRouter();
-  console.log("cartQuery", cartQuery);
+  const pathname = usePathname();
+
   const handleOnClick = () => {
     if (price < 0) return;
     fetchCartData(true);
@@ -38,7 +39,7 @@ const SelectedRoomPay = ({
       !cartQuery?.isError,
       isMoved)
     ) {
-      router.push("/paid");
+      router.push(`/paid?order=${pathname}`);
     }
   }, [cartQuery?.isSuccess, cartQuery?.isLoading, showLoadingIndicator]);
 

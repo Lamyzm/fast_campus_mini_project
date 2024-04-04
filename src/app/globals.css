@@ -76,7 +76,7 @@ body {
 .button-swiper-silde {
   width: -moz-fit-content;
   width: fit-content !important;
-  margin-right: 30px;
+  margin-right: 10px;
   margin-bottom: 10px;
 }
 @media (max-width: 1080px) {
