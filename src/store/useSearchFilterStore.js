@@ -52,13 +52,25 @@ let searchFilterStore =
         clearAll: (payload) => set((state) => ({
             area: 'all',
             date: {
-                startDate: dayjs().format('YYYY-MM-DD'), 
-                endDate: dayjs().add(1, 'day').format('YYYY-MM-DD'), 
+                startDate: dayjs().format('YYYY-MM-DD'),
+                endDate: dayjs().add(1, 'day').format('YYYY-MM-DD'),
             },
             people: {
                 adult: 1,
                 kids: 0,
                 baby: 0
+            },
+        })),
+        setPopularArea: (payload) => set((state) => ({
+            people: {
+                adult: 1,
+                kids: 0,
+                baby: 0
+            },
+            area: payload,
+            date: {
+                startDate: dayjs().format('YYYY-MM-DD'),
+                endDate: dayjs().add(1, 'day').format('YYYY-MM-DD'),
             },
         })),
     })

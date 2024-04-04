@@ -1,22 +1,16 @@
 "use client";
-import React, { useEffect, useId, useState } from "react";
+import React from "react";
 import "swiper/css/navigation";
-import axios from "axios";
-import SwiperSlideComponent from "./SwiperComponent";
-import { Button } from "@/components/buttons/Button";
 import regionShowcase from "@/assets/json/regionShowcaseData";
+import LocationSlide from "./LocationSlide";
 
 export default function PopularSwiper({ title }) {
-  const [data, setData] = useState("");
-  useEffect(() => {
-    setData(regionShowcase.content);
-  }, []);
 
   return (
     <>
-      <article className="w-full flex flex-col gap-1 main-section-padding z-0">
+      <article className="w-full flex flex-col gap-1 main-section-padding z-0" style={{height:'250px'}}>
         <h3 className="flex justify-start font-bold text-lg ">{title}</h3>
-        <SwiperSlideComponent content={data} />
+        <LocationSlide content={regionShowcase?.content} />
       </article>
     </>
   );
