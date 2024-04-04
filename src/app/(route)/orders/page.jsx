@@ -5,6 +5,7 @@ import OrderList from "@/components/orderItem/OrderList";
 export default function OrderPage () {
   return( 
   <>
+    <OrderList />
   </>
   )
 };
