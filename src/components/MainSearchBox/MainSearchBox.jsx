@@ -15,12 +15,16 @@ dayjs.locale("ko");
 export default function MainSearchBox() {
   //router -> Link로 바꾸기
 
-  const { setIsSearched } = useIsSearchedStore()
+  const { setIsSearched } = useIsSearchedStore();
   // 기존 코드 area, date, people를 가져오는동안 기본값이 표시됨.
   // const { area, date, people } = useSearchFilterStore()
 
   //추가
-  const { area: initialArea, date: initialDate, people: initialPeople } = useSearchFilterStore();
+  const {
+    area: initialArea,
+    date: initialDate,
+    people: initialPeople,
+  } = useSearchFilterStore();
   const [area, setArea] = useState(initialArea);
   const [date, setDate] = useState(initialDate);
   const [people, setPeople] = useState(initialPeople);
@@ -60,8 +64,8 @@ export default function MainSearchBox() {
   const totalPeople = people?.adult + people?.kids + people?.baby;
 
   const handleClick = () => {
-    setIsSearched()
-  }
+    setIsSearched();
+  };
 
   if (loading) {
     return <p>.</p>;
@@ -73,14 +77,12 @@ export default function MainSearchBox() {
         className={`bg-white w-full  py-9 px-3 rounded-lg  items-center ${tailwindClass} flex-col lg:flex-row`}>
         <div
           className={`flex-col w-full ${tailwindClass} flex-grow lg:flex-row `}>
-
           {/* 지역 표시 */}
-          <Link href='/search/place' prefetch={true} className="sm:w-full">
+          <Link href="/search/place" prefetch={true} className="sm:w-full">
             <Button
               size="lg"
               color="gray"
-              additionalClass="w-[300px] justify-start item-center overflow-hidden text-ellipsis "
-            >
+              additionalClass="lg:w-[300px] w-full justify-start item-center overflow-hidden text-ellipsis ">
               <div className="flex flex-row item-center text-ellipsis ">
                 <Icons
                   type="LocationOnOutlinedIcon"
@@ -89,7 +91,7 @@ export default function MainSearchBox() {
                   additionalClass="mr-2 fill-gray-400"
                 />
                 {/* area 기본값일시 분기처리 */}
-                {area === 'all' ? (
+                {area === "all" ? (
                   <p className="text-gray-400 overflow-hidden text-nowrap text-ellipsis">
                     여행지나 숙소를 검색해보세요
                   </p>
@@ -103,12 +105,11 @@ export default function MainSearchBox() {
           </Link>
 
           {/* 날짜표시 */}
-          <Link href='/search/date' prefetch={true}>
+          <Link href="/search/date" prefetch={true}>
             <Button
               size="lg"
               color="gray"
-              additionalClass="w-[300px] justify-start item-center h-auto min-h-10  lg:h-10"
-            >
+              additionalClass="lg:w-[300px] w-full justify-start item-center h-auto min-h-10  lg:h-10">
               <div className="flex flex-row item-center ">
                 <Icons
                   type="InsertInvitationIcon"
@@ -117,19 +118,20 @@ export default function MainSearchBox() {
                   additionalClass="mr-2 fill-gray-400"
                 />
                 {
-                  <p className="font-semibold">{`${startDate.format("MM-DD ddd")} - ${endDate.format("MM-DD ddd")} (${diffDay}박)`}</p>
+                  <p className="font-semibold">{`${startDate.format(
+                    "MM-DD ddd"
+                  )} - ${endDate.format("MM-DD ddd")} (${diffDay}박)`}</p>
                 }
               </div>
             </Button>
           </Link>
 
           {/* 인원표시 */}
-          <Link href='/search/headcount' prefetch={true}>
+          <Link href="/search/headcount" prefetch={true}>
             <Button
               size="lg"
               color="gray"
-              additionalClass="w-[160px] justify-start item-center h-auto min-h-10  lg:h-10"
-            >
+              additionalClass="lg:w-[160px] w-full justify-start item-center h-auto min-h-10  lg:h-10">
               <div className="flex flex-row item-center justify-center">
                 <Icons
                   type="PermIdentityOutlinedIcon"
@@ -141,12 +143,10 @@ export default function MainSearchBox() {
               </div>
             </Button>
           </Link>
-
         </div>
 
-
         {/* 전역으로 저장된 search param을 통해 검색 요청 */}
-        <Link href='/room' prefetch={true}>
+        <Link href="/room" prefetch={true}>
           <Button
             size="lg"
             color="primary"

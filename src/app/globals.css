@@ -70,6 +70,15 @@ body {
   justify-self: center;
 }
 
+.button-swiper {
+  width: 100% !important;
+}
+.button-swiper-silde {
+  width: -moz-fit-content;
+  width: fit-content !important;
+  margin-right: 30px;
+  margin-bottom: 10px;
+}
 @media (max-width: 1080px) {
   .swiper-button-prev_v,
   .swiper-button-next_v {
