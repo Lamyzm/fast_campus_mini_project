@@ -24,9 +24,6 @@ export default function Home() {
     clear();
   }, []);
 
-  const currentDateTime = dayjs();
-  const formattedDateTime = currentDateTime.format("YYYY-MM-DDTHH:mm");
-
   return (
     <>
       <MainNav />
