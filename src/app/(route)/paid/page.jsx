@@ -8,9 +8,9 @@ export default function Paid() {
     const queryClient = useQueryClient();
     const router = useRouter();
     const [queryKey, setQueryKey] = useState("");
-
+    const params = useSearchParams();
     useEffect(() => {
-        const params = useSearchParams();
+        
         if (params.get("cart") === "cart") {
             setQueryKey('cart');
         } else if (params.get("order") === "paid") {
