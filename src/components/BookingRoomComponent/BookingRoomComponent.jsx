@@ -19,14 +19,14 @@ function sumAll(obj) {
   return total;
 }
 
-const BookingRoomComponent = ({
+export default function BookingRoomComponent({
   title,
   price,
   id,
   roomId,
   roomData,
   totalRoomData,
-})=>{
+}) {
   const { people, date } = useSearchFilterStore();
   const { data, status } = useSession();
   const router = useRouter();
@@ -67,6 +67,7 @@ const BookingRoomComponent = ({
     }
     mutateCartAdd();
   };
+
   // {
   //   "checkIn":"2024-03-15",	//NonNull
   //   "checkOut":"2024-03-16",//NonNull
@@ -153,10 +154,7 @@ const BookingRoomComponent = ({
               <Button
                 size="lg"
                 color="primary"
-                additionalClass="w-full sm:px-12 font-bold text-sm"
-                onClick={() => 
-                  {router.push(`/orders?id=${id}&roomId=${roomId}`)}}
-                >
+                additionalClass="w-full sm:px-12 font-bold text-sm">
                 예약하기
               </Button>
             </div>
@@ -166,4 +164,3 @@ const BookingRoomComponent = ({
     </>
   );
 }
-export default BookingRoomComponent
