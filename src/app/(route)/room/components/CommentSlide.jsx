@@ -8,6 +8,10 @@ import RatingStar from './RatingStar';
 import PersonPinIcon from '@mui/icons-material/PersonPin';
 
 export default function CommentSlide({ comments }) {
+
+
+    const extendedComments = Array.from({ length: 10 }, (_, index) => comments[0]);
+
     return (
         <Swiper
             direction={'vertical'}
@@ -22,9 +26,9 @@ export default function CommentSlide({ comments }) {
             modules={[Autoplay, Mousewheel, Pagination]}
             className="mySwiper w-[300px] h-[100px]"
         >
-            {comments?.map((comment) => (
+            {extendedComments?.map((comment) => (
                 <SwiperSlide key={comment.key} >
-                    <div className=' flex items-center justify-between p-4 border border-gray-200 rounded-lg'>
+                    <div className='bg-white flex items-center justify-between p-4 border border-gray-200 rounded-lg'>
                         <div className="flex flex-col">
                             <div className="text-lg font-semibold">
                                 {comment.comment}
