@@ -5,21 +5,23 @@ import { useQueryClient } from 'react-query';
 import { useRouter, useSearchParams} from "next/navigation";
 
 export default function Paid() {
-    const queryClient = useQueryClient();
-    const router = useRouter();
-    const [queryKey, setQueryKey] = useState("");
-    const params = useSearchParams();
-    useEffect(() => {
+    // const queryClient = useQueryClient();
+    // const router = useRouter();
+    // const [queryKey, setQueryKey] = useState("");
+    // const params = useSearchParams();
+    // useEffect(() => {
         
-        if (params.get("cart") === "cart") {
-            setQueryKey('cart');
-        } else if (params.get("order") === "paid") {
-            setQueryKey('paid');
-        }
-    }, [router.asPath]);
+    //     if (params.get("cart") === "cart") {
+    //         setQueryKey('cart');
+    //     } else if (params.get("order") === "paid") {
+    //         setQueryKey('paid');
+    //     }
+    // }, [router.asPath]);
 
-    const reservations = queryClient.getQueryData([queryKey]);
-    console.log("querykey:", queryKey);
+    // const reservations = queryClient.getQueryData([queryKey]);
+    // console.log("querykey:", queryKey);
+    const queryClient = useQueryClient();
+    const reservations = queryClient.getQueryData(["cart"]);
     console.log(reservations);
 
     dayjs.locale('ko');
