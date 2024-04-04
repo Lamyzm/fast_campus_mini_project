@@ -154,7 +154,10 @@ export default function BookingRoomComponent({
               <Button
                 size="lg"
                 color="primary"
-                additionalClass="w-full sm:px-12 font-bold text-sm">
+                additionalClass="w-full sm:px-12 font-bold text-sm"
+                onClick={() => 
+                  {router.push(`/orders?id=${id}&roomId=${roomId}`)}}
+                >
                 예약하기
               </Button>
             </div>

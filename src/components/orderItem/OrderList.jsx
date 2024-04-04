@@ -81,7 +81,7 @@ const OrderList = () => {
       </div>
       <OrderPrice price={data?.accommodation.room.price} />
       <SelectedRoomPay
-        fetchCartData={() => setIsCartFetching(true)}
+        fetchCartData={fetchData}
         price={data?.accommodation.room.price}
         cartQuery={orderQuery}
         isCartFetching={isCartFetching}

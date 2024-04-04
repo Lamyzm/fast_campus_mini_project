@@ -27,12 +27,12 @@ export default function CommentSlide({ comments }) {
             className="mySwiper w-[300px] h-[100px]"
         >
             {extendedComments?.map((comment) => (
-                <SwiperSlide key={comment.key} >
+                <SwiperSlide key={comment?.key} >
                     <div className='bg-white flex items-center justify-between p-4 border border-gray-200 rounded-lg'>
                         <div className="flex flex-col">
                             <div className="text-lg font-semibold">
-                                {comment.comment}
-                                <RatingStar rating={comment.score} />
+                                {comment?.comment}
+                                <RatingStar rating={comment?.score} />
                             </div>
                             <div className="flex items-center mt-2">
                                 <PersonPinIcon color="action" />
