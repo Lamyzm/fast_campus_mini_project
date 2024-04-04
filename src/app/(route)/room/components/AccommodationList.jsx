@@ -34,6 +34,7 @@ const AccommodationList = ({ data }) => {
                 quality={100}
                 loading="lazy"
                 className="w-full h-full object-cover rounded-md shadow-inner"
+                fill={true}
               />
               {/* <img
                 src={item?.image}
