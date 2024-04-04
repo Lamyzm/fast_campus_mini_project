@@ -30,8 +30,6 @@ export default function BookingRoomComponent({
   const { people, date } = useSearchFilterStore();
   const { data, status } = useSession();
   const router = useRouter();
-  console.log(roomData);
-  console.log(totalRoomData);
 
   const cartRequestBody = {
     checkIn: date.startDate,
@@ -53,7 +51,6 @@ export default function BookingRoomComponent({
       notifyToastInfo({ message: "장바구니 추가 완료" });
     },
     onError: (error) => {
-      console.log(error.response.data.message);
       if (error.response?.data.message === "중복되는 주문이 존재합니다") {
         notifyToastWrong({ message: "중복되는 주문이 존재합니다." });
       } else {
