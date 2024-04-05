@@ -68,7 +68,7 @@ const OrderList = () => {
 
 
   return (
-    <div className="w-full h-32 flex-row p-9 relative z-10">
+    <div className="w-full h-full flex-row p-9">
       {data && roomId && (
         <div className="min-h-[60vh] w-full flex">
           <OrderItem
@@ -80,9 +80,7 @@ const OrderList = () => {
           />
         </div>
       )}
-      <div className="flex">
-        <OrderPrice price={room?.price} />
-      </div>
+      <OrderPrice price={room?.price} />
       <OrderRoomPay
         price={room?.price}
         fetchOrderData={fetchOrderData}

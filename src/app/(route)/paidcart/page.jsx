@@ -6,24 +6,12 @@ import { useQuery, useQueryClient } from 'react-query';
 import { useRouter, useSearchParams} from "next/navigation";
 
 export default function PaidCart() {
-    // const queryClient = useQueryClient();
-    // const router = useRouter();
-    // const [queryKey, setQueryKey] = useState("");
-    // const params = useSearchParams();
-    // useEffect(() => {
-        
-    //     if (params.get("cart") === "cart") {
-    //         setQueryKey('cart');
-    //     } else if (params.get("order") === "paid") {
-    //         setQueryKey('paid');
-    //     }
-    // }, [router.asPath]);
-
-    // const reservations = queryClient.getQueryData([queryKey]);
-    // console.log("querykey:", queryKey);
     const queryClient = useQueryClient();
     const reservationsQuery = useQuery(["cart"]);
     const reservations = reservationsQuery.data;
+    const formatPriceWithCommas = (price) => {
+      return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  };
 
     const calculateDaysLeft = (checkIn) => {
       const today = dayjs();
@@ -32,7 +20,7 @@ export default function PaidCart() {
     };
 
     const totalPrice = reservations ? reservations.reduce((acc, reservation) => acc + reservation.accommodation.room.price, 0) : 0;
-
+    const totalPriceWithCommas = formatPriceWithCommas(totalPrice);
 
     dayjs.locale('ko');
 
@@ -98,16 +86,16 @@ export default function PaidCart() {
               </div>
               <div className="flex mb-3 justify-between text-lg text-stone-400">
                 <p>상품 금액</p>
-                <p>{totalPrice}원</p>
+                <p>{totalPriceWithCommas}원</p>
               </div>
               <div className="flex mb-3 justify-between text-lg text-stone-400">
                 <p>할인 금액</p>
                 <p>0</p>
               </div>
               <hr className="my-6" />
-              <div className="flex justify-between text-lg text-stone-700">
+              <div className="flex justify-between text-lg font-semibold text-blue-500">
                 <p>총 결제 금액</p>
-                <p>{totalPrice}원</p>
+                <p>{totalPriceWithCommas}원</p>
               </div>
             </div>
         </div>

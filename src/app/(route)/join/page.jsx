@@ -83,7 +83,7 @@ export default function Register() {
       return;
     }
 
-    try {
+    try { 
       const response = await axios.post("https://fcbe-mini-project.kro.kr:8080/api/register", formData);
 
       if (response.status === 200) {
@@ -123,11 +123,12 @@ export default function Register() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center">
-      <div className="w-[450px] h-[600px] bg-white p-8 rounded-lg">
+    <div className="h-full flex items-center justify-center mb-9">
+      <div className="w-[450px] h-full bg-white p-8 rounded-lg ">
         <form onSubmit={handleRegister}>
-          <div className="space-y-16 mt-14 mb-12">
+          <div className="space-y-12 mt-14 mb-12">
             <div>
+              <h2 className="flex justify-center mb-10 font-semibold text-lg">회원가입</h2>
               <label htmlFor="name" className="block text-md font-medium text-gray-700 mb-2">
                 이름
               </label>

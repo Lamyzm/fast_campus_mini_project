@@ -73,18 +73,18 @@ const AccommodationList = ({ data }) => {
                     <p className="mt-[2px]">최대 인원 {item?.maximumPeople}</p>
                   </div>
                   <div className="flex justify-center items-center">
-                    {/* {item.isSoldOut ? ( */}
-                      <button className="bg-red-500 text-white text-sm px-2 py-1 mr-2 rounded-md">
+                    {item.isSoldOut ? (
+                      <button className="bg-red-500 text-white text-md px-8 py-2 rounded-md">
                         품절
                       </button>
-                    {/* ) : ( */}
+                    ) : (
                       <>
-                        <h2 className="font-bold text-2xl mr-1 text-red-500 line-through">
+                        <h2 className="font-bold text-2xl mr-1">
                           {item?.minPrice?.toLocaleString()}원~
                         </h2>
-                        <p className="font-bold text-lg text-red-500 line-through">/박</p>
+                        <p className="font-bold text-lg">/박</p>
                       </>
-                    {/* )} */}
+                    )}
                   </div>
                 </div>
               </div>

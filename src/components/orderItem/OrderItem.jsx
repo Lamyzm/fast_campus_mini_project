@@ -15,7 +15,7 @@ const OrderItem = ({ accommodation, roomId, startDate, endDate, peoples }) => {
   const totalPeople = Object.values(peoples).reduce((acc, count) => acc + count, 0);
   console.log(room)
   return (
-    <div className="w-full">
+    <div className="p-4 w-full bg-white shadow-md  mb-4">
       <div className="flex flex-col w-full p-5 divide-solid divide-y-[1px] divide-subtitle-gray rounded-lg">
         <div className="pb-6">
           <h3 className="block mb-4 font-bold text-3xl">

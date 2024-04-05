@@ -11,8 +11,8 @@ const ReservationsNav = ({pageTitle}) => {
 
       //페이지 path에 맞게 알아서 변경하기
     const matchPageName = (pathName) => {
-    if (pathName === "/order") {
-        setPageName("예약");
+    if (pathName === "/orders") {
+        setPageName("예약하기");
     }
     if (pathName === "/paidcart") {
         setPageName("예약 완료");
@@ -29,7 +29,7 @@ const ReservationsNav = ({pageTitle}) => {
 
     return (
         <>
-            <div className="top-0 fixed flex justify-between items-center w-full h-[75px] shadow-sm bg-white z-[800];">
+            <div className="top-0 fixed flex justify-between items-center w-full h-[75px] shadow-sm bg-white ;">
                 <div className=" hover:text-gray-600 transition duration-100 text-xl font-semibold cursor-pointer px-[18px] py-0" href="/">
                     <Icons className='text-3xl' type="ArrowBackIcon" size="small" color="primary" onClick={() => router.back()} />
                 </div>
