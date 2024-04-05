@@ -11,6 +11,7 @@ import dayjs from "dayjs";
 import CartLoadingDetails from "../Loading/SwiperLoading";
 
 export default function AccommodationSwiperComponent({ content }) {
+  console.log("AccommodationSwiperComponent", content);
   const id = useId();
   const navigationPrevRef = React.useRef(null);
   const navigationNextRef = React.useRef(null);
@@ -47,9 +48,11 @@ export default function AccommodationSwiperComponent({ content }) {
                 item.minPrice - item.minPrice * item.discount;
               const discountDate = dayjs(item.discountDate);
               const isDiscountExpired = discountDate.isBefore(currentDateTime);
-
+              const isSoldOut = item?.soldOut;
               let priceContent = "";
-              if (item.discount && !isDiscountExpired) {
+              if (isSoldOut) {
+                priceContent = <p className="font-bold pt-6">품절</p>;
+              } else if (item.discount && !isDiscountExpired) {
                 priceContent = (
                   <div className="flex flex-row gap-2">
                     <p className="font-bold pt-6">{`${discountPrice.toLocaleString()} 원`}</p>
@@ -75,13 +78,6 @@ export default function AccommodationSwiperComponent({ content }) {
                         style={{
                           backgroundImage: `url(${item.image})`,
                         }}>
-                        {/* <Image
-                          src={item.image}
-                          width={"300"}
-                          height={"550"}
-                          objectFit="cover"
-                          alt="숙소 이미지"
-                        /> */}
                         <div className="w-full h-full absolute top-0  hover:bg-black hover:bg-opacity-30 transition-colors "></div>
                       </div>
                       <div className="text-start overflow-ellipsis flex gap-y-1 justify-between flex-col w-full h-[35%]">
