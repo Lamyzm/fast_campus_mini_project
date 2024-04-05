@@ -10,7 +10,9 @@ import ShoppingCartNav from "@/components/shoppingCartNav/ShoppingCartNav";
 import useCartDataQuery from "@/hooks/useCartDataQuery";
 import ReservationsNav from "../reservationsNav/ReservationsNav";
 import Image from "next/image";
-
+import "react-tooltip/dist/react-tooltip.css";
+import { Tooltip } from "react-tooltip";
+import { Button } from "../buttons/Button";
 const MainNav = () => {
   const { cartDataLength } = useCartDataQuery();
   const cartItemCount = cartDataLength;
@@ -49,16 +51,13 @@ const MainNav = () => {
   }
   return (
     <>
-      <div className=" flex justify-between items-center fixed w-[100%] h-[75px] top-0 bg-white z-[100] relative;" style={{ borderBottom: '1px solid #d2d2d2' }}>
+      <div
+        className="tooltip-container flex justify-between items-center fixed w-[100%] h-[75px] top-0 pr-20 bg-white z-[100] relative;"
+        style={{ borderBottom: "1px solid #d2d2d2" }}>
         <Link
           className="text-blue-800 text-xl font-semibold cursor-pointer ml-10 py-0"
           href="/main">
-          <Image
-            src='/logo.png'
-            alt={'logo'}
-            width={170}
-            height={80}
-          />
+          <Image src="/logo.png" alt={"logo"} width={170} height={80} />
         </Link>
         <div className="flex gap-7 items-center px-[18px] py-0 font-semibold mr-4">
           <Link
@@ -75,7 +74,8 @@ const MainNav = () => {
             </Badge>
           </Link>
           <Link
-            href="/login"
+            id="clickable"
+            href={data ? "/logout" : "/login"}
             onClick={handleAuthAction}
             className="cursor-pointer hover:text-gray-600 transition duration-100 ease-in-out">
             <span>
@@ -96,6 +96,27 @@ const MainNav = () => {
               )}
             </span>
           </Link>
+          {!data ? (
+            <Tooltip
+              anchorSelect="#clickable"
+              place="bottom"
+              clickable
+              className="tooltip ">
+              <Button size="lg" color="primary" additionalClass="w-full px-10 ">
+                <Link href={"/login"}>로그인</Link>
+              </Button>
+            </Tooltip>
+          ) : (
+            <Tooltip
+              anchorSelect="#clickable"
+              place="bottom"
+              clickable
+              className="tooltip ">
+              <Button size="lg" color="primary" additionalClass="w-full px-10 ">
+                <Link href={"/#"}>로그아웃</Link>
+              </Button>
+            </Tooltip>
+          )}
         </div>
       </div>
     </>

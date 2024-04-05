@@ -4,9 +4,9 @@ import { ToastContainer } from "react-toastify";
 
 export default function CartSuccessToast() {
   const router = useRouter();
-  const handleClick = () => {
-    router.push("/cart");
-  };
+  // const handleClick = () => {
+  //   router.push("/cart");
+  // };
   return (
     <ToastContainer
       position="bottom-right"
@@ -19,7 +19,6 @@ export default function CartSuccessToast() {
       draggable
       pauseOnHover
       theme="light"
-      onClick={handleClick}
     />
   );
 }

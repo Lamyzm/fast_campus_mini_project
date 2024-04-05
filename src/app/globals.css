@@ -75,6 +75,13 @@ body {
   width: 100% !important;
 }
 
+.tooltip-container .tooltip {
+  color: #222;
+  background-color: white;
+  padding: 10px 15px;
+  box-shadow: 10px 4px 8px rgba(7, 7, 7, 0.515);
+}
+
 .button-swiper-silde {
   width: -moz-fit-content;
   width: fit-content !important;
@@ -83,7 +90,6 @@ body {
 }
 
 @media (max-width: 1080px) {
-
   .swiper-button-prev_v,
   .swiper-button-next_v {
     display: none;
@@ -109,5 +115,6 @@ body {
 }
 
 .outline-text {
-  text-shadow: -0.7px -0.7px 0 #252525, 0.7px -0.7px 0 #252525, -0.7px 0.7px 0 #252525, 0.7px 0.7px 0 #252525;
+  text-shadow: -0.7px -0.7px 0 #252525, 0.7px -0.7px 0 #252525,
+    -0.7px 0.7px 0 #252525, 0.7px 0.7px 0 #252525;
 }
