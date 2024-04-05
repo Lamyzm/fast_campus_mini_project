@@ -11,7 +11,6 @@ import dayjs from "dayjs";
 import CartLoadingDetails from "../Loading/SwiperLoading";
 
 export default function AccommodationSwiperComponent({ content }) {
-  console.log("AccommodationSwiperComponent", content);
   const id = useId();
   const navigationPrevRef = React.useRef(null);
   const navigationNextRef = React.useRef(null);

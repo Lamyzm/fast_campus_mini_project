@@ -51,7 +51,6 @@ export default function CartList() {
       queryClient.invalidateQueries(["cartItems"]);
     },
   });
-  console.log(cartQuery);
 
   useEffect(() => {
     // total price

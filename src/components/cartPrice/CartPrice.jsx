@@ -14,7 +14,9 @@ const CartPrice = ({ price }) => {
       </div>
       <div className="flex mb-3 justify-between text-lg text-stone-400">
         <p>총 결제 금액</p>
-        <p>{price?.toLocaleString()}원</p>
+        <p className="text-blue-500 font-bold text-lg">
+          {price?.toLocaleString()}원
+        </p>
       </div>
     </div>
   );
