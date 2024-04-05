@@ -33,22 +33,21 @@ export default function Home() {
       <div className="w-[450px] h-[600px] bg-white p-8 rounded-lg">
         <div>
           <h2 className="">
-          <Link
-          className="text-blue-800 text-xl flex justify-center font-semibold cursor-pointer "
-          href="/main">
-          <Image
-            src='/logo.png'
-            alt={'logo'}
-            width={170}
-            height={80}
-          />
-        </Link>
+            <Link
+              className="text-blue-800 text-xl flex justify-center font-semibold cursor-pointer "
+              href="/main">
+              <Image src="/Logo.png" alt={"logo"} width={170} height={80} />
+            </Link>
           </h2>
         </div>
         <form onSubmit={handleLogin}>
           <div className="space-y-10 mt-16 mb-20">
             <div>
-              <label htmlFor="email" className="block text-md font-medium text-gray-700 mb-2">이메일</label>
+              <label
+                htmlFor="email"
+                className="block text-md font-medium text-gray-700 mb-2">
+                이메일
+              </label>
               <Input
                 type="email"
                 name="email"
@@ -59,7 +58,11 @@ export default function Home() {
               />
             </div>
             <div>
-              <label htmlFor="password" className="block text-md font-medium text-gray-700 mb-2">비밀번호</label>
+              <label
+                htmlFor="password"
+                className="block text-md font-medium text-gray-700 mb-2">
+                비밀번호
+              </label>
               <Input
                 type="password"
                 name="password"
