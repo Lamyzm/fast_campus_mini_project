@@ -1,4 +1,4 @@
-"use client";
+
 import React, { useEffect, useState } from "react";
 import { Button } from "../buttons/Button";
 import LoadingButton from "@/components/buttons/LoadingButton";
