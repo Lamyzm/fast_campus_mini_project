@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
 import authApi from '@/service/axiosConfig';
+import { useSession } from 'next-auth/react';
 
 
 const fetchCart = async () => {
@@ -11,6 +12,8 @@ const fetchCart = async () => {
 function useCartDataQuery() {
   const [checkedItems, setCheckedItems] = useState({});
   const [cartDataLength, setCartDataLength] = useState(0);
+  const { data, status } = useSession();
+
   const {
     data: cartData,
     isLoading,
@@ -27,10 +30,11 @@ function useCartDataQuery() {
       }, {});
       setCheckedItems(newCheckedItems);
     },
+    retry: 2,
+    enabled: !!data,
   });
   useEffect(() => {
     setCartDataLength(cartData?.length);
-    console.log("CartDataLength: ", cartData?.length);
   }, [cartData])
   return { checkedItems, setCheckedItems, cartData, isLoading, isError, isSuccess, refetch, isFetching, cartDataLength };
 }

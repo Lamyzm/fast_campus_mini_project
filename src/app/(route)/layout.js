@@ -4,15 +4,18 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from 'react-query/devtools';
 import { SearchProvider } from '@/context/SearchContext';
 import Toasts from '@/components/Toast/Toasts';
+import { usePathname } from 'next/navigation';
+import SelectNav from '@/components/selectNav/SelectNav';
 
 const queryClient = new QueryClient()
 
 export default function Layout({ children }) {
+  const pathName = usePathname();
   return (
     <>
       <QueryClientProvider client={queryClient}>
         <SearchProvider>
-          <MainNav />
+        {pathName.includes("/search") ? <SelectNav /> : <MainNav />}
           <Toasts />
           {children}
         </SearchProvider>

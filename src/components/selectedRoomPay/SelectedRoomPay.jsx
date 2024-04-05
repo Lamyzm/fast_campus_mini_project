@@ -17,9 +17,8 @@ const SelectedRoomPay = ({
   const [showLoadingIndicator, setShowLoadingIndicator] = useState(false);
   const [isMoved, setIsMoved] = useState(false);
   const router = useRouter();
-  console.log(cartQuery);
+  console.log("cartQuery", cartQuery);
   const handleOnClick = () => {
-    console.log("price", price);
     if (price < 0) return;
     fetchCartData(true);
     setShowLoadingIndicator(true);
@@ -39,7 +38,7 @@ const SelectedRoomPay = ({
       !cartQuery?.isError,
       isMoved)
     ) {
-      router.push("/test");
+      router.push("/paidcart");
     }
   }, [cartQuery?.isSuccess, cartQuery?.isLoading, showLoadingIndicator]);
 

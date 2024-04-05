@@ -9,6 +9,7 @@ import { useSearchFilterStore } from "@/store/useSearchFilterStore";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { notifyToastWrong } from "../../service/toast";
+import { useQueryClient, useMutation } from "react-query";
 
 function sumAll(obj) {
   let total = 0;
@@ -18,38 +19,92 @@ function sumAll(obj) {
   return total;
 }
 
-export default function BookingRoomComponent({ title, price, id, roomId }) {
+export default function BookingRoomComponent({
+  title,
+  price,
+  id,
+  roomId,
+  roomData,
+  totalRoomData,
+}) {
   const { people, date } = useSearchFilterStore();
   const { data, status } = useSession();
-  const router = useRouter();
+
+  const cartRequestBody = {
+    checkIn: date.startDate,
+    checkOut: date.endDate,
+    peoples: sumAll(people),
+  };
+
+  const cartAddFetch = async () => {
+    const { data } = await authApi.post(
+      `/cart/${id}/${roomId}`,
+      cartRequestBody
+    );
+    return data;
+  };
+  const queryClient = useQueryClient();
+  const { mutate: mutateCartAdd } = useMutation(() => cartAddFetch(), {
+    onSuccess: () => {
+      queryClient.invalidateQueries(["cartItems"]);
+      notifyToastInfo({ message: "장바구니 추가 완료" });
+    },
+    onError: (error) => {
+      if (error.response?.data.message === "중복되는 주문이 존재합니다") {
+        notifyToastWrong({ message: "중복되는 주문이 존재합니다." });
+      } else {
+        notifyToastWrong({ message: "장바구니에 추가하지 못했습니다." });
+        console.error("Error adding item to cart:", error);
+      }
+    },
+  });
 
   const saveCart = () => {
     if (!data) {
-      router.push("/login");
+      notifyToastWrong({ message: "로그인이 필요한 서비스입니다!" });
       return;
     }
-    const cartRequestBody = {
-      checkIn: date.startDate,
-      checkOut: date.endDate,
-      peoples: sumAll(people),
-    };
-    console.log(cartRequestBody);
-    authApi
-      .post(`/cart/${id}/${roomId}`, cartRequestBody)
-      .then((response) => {
-        console.log(response.data);
-        notifyToastInfo({ message: "장바구니 추가 완료" });
-      })
-      .catch((error) => {
-        notifyToastWrong({ message: "장바구니에 추가하지 못했습니다." });
-        console.error("Error fetching data:", error);
-      });
+    mutateCartAdd();
   };
+
   // {
   //   "checkIn":"2024-03-15",	//NonNull
   //   "checkOut":"2024-03-16",//NonNull
   //   "peoples":4//NonNull
   // }
+  const currentDateTime = dayjs();
+
+  const discountPrice =
+    roomData.price - roomData.price * totalRoomData.discount;
+  const discountDate = dayjs(totalRoomData.discountDate);
+  const discountDateFormatted = discountDate.format("M-DD");
+  const isDiscountExpired = discountDate.isBefore(currentDateTime);
+
+  let priceContent = "";
+  console.log("totalRoomData.roomCount", roomData.roomCount);
+  if (roomData.roomCount < 0) {
+    priceContent = <p className="font-bold pt-6">품절</p>;
+  } else if (totalRoomData.discount && !isDiscountExpired) {
+    priceContent = (
+      <div className="text-end flex flex-col items-end">
+        <div className="w-fit px-1 bg-rose-100 rounded-sm mr-1">
+          <p className="text-red-600 text-xs">
+            (~{discountDateFormatted} 특가)
+          </p>
+        </div>
+        <div className="flex flex-row gap-2 items-center ">
+          <p className="text-gray-500 text-sm line-through">{`${roomData.price.toLocaleString()} 원`}</p>
+          <p className="font-bold ">{`${discountPrice.toLocaleString()} 원`}</p>
+        </div>
+      </div>
+    );
+  } else if (roomData.price) {
+    priceContent = (
+      <p className="font-bold pt-6">{`${roomData.price.toLocaleString()} 원`}</p>
+    );
+  } else {
+    priceContent = <p className="font-bold pt-6">객실정보 없음</p>;
+  }
   return (
     <>
       <div className="w-full bg-body-color rounded-md p-3 pt-8 mb-8 flex flex-col justify-between">
@@ -61,22 +116,25 @@ export default function BookingRoomComponent({ title, price, id, roomId }) {
                 type="ScheduleIcon"
                 size="large"
                 color="primary"
-                additionalClass={
-                  "absolute text-sm -left-4 top-0 fill-subtitle-gray"
-                }
+                additionalClass={"absolute text-sm -left-4 top-0 fill-gray-500"}
               />
-              <p className="text-xs text-subtitle-gray font-semibold">
-                입실 16:00
-              </p>
-              <p className="text-xs text-subtitle-gray font-semibold">
-                퇴실 11:00
-              </p>
+              <div className="mb-2">
+                <p className="text-sm text-gray-500 font-semibold">
+                  입실 16:00
+                </p>
+                <p className="text-sm text-gray-500 font-semibold">
+                  퇴실 11:00
+                </p>
+              </div>
+              <div>
+                <p className="text-sm text-gray-500 font-semibold">
+                  최대{roomData.maximumPeople}인
+                </p>
+              </div>
             </div>
           </div>
           <div className="justify-end items-end flex flex-col gap-10">
-            <div className="font-bold text-2xl">
-              {price.toLocaleString()} 원
-            </div>
+            <div className="font-bold text-2xl">{priceContent}</div>
             <div className="flex flex-row w-fit gap-4">
               <Button
                 size="lg"
@@ -96,7 +154,10 @@ export default function BookingRoomComponent({ title, price, id, roomId }) {
               <Button
                 size="lg"
                 color="primary"
-                additionalClass="w-full sm:px-12 font-bold text-sm">
+                additionalClass="w-full sm:px-12 font-bold text-sm"
+                onClick={() => 
+                  {router.push(`/orders?id=${id}&roomId=${roomId}`)}}
+                >
                 예약하기
               </Button>
             </div>

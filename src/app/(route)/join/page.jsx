@@ -35,7 +35,7 @@ export default function Register() {
   const handleCheckEmail = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://3.35.216.158:8080/api/validate", {
+      const response = await axios.post("https://fcbe-mini-project.kro.kr:8080/api/validate", {
         email: formData.email,
       }, {
         timeout: 10000,
@@ -83,8 +83,8 @@ export default function Register() {
       return;
     }
 
-    try {
-      const response = await axios.post("http://3.35.216.158:8080/api/register", formData);
+    try { 
+      const response = await axios.post("https://fcbe-mini-project.kro.kr:8080/api/register", formData);
 
       if (response.status === 200) {
         const res = await signIn("credentials", {
@@ -123,11 +123,12 @@ export default function Register() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center">
-      <div className="w-[370px] min-h-[600px] bg-white p-8 rounded-lg shadow-md border border-gray-200">
+    <div className="h-full flex items-center justify-center mb-9">
+      <div className="w-[450px] h-full bg-white p-8 rounded-lg ">
         <form onSubmit={handleRegister}>
-          <div className="space-y-10 mt-14 mb-12">
+          <div className="space-y-12 mt-14 mb-12">
             <div>
+              <h2 className="flex justify-center mb-10 font-semibold text-lg">회원가입</h2>
               <label htmlFor="name" className="block text-md font-medium text-gray-700 mb-2">
                 이름
               </label>
@@ -156,11 +157,11 @@ export default function Register() {
                   onChange={handleChange}
                   onFocus={() => setAvailabilityMessage("")}
                   required
-                  additionalClass="w-[210px] text-sm"
+                  additionalClass="w-[280px] text-sm"
                 />
                 <Button
                   type="button"
-                  size="sm"
+                  size="default"
                   color="primary"
                   additionalClass="mt-2 ml-2"
                   onClick={handleCheckEmail}

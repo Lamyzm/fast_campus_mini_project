@@ -51,14 +51,23 @@ const Calendar = () => {
   };
 
   const handleDateClick = (date) => {
-    if (!startDate) {
-      setStartDate(date);
-    } else if (!endDate) {
-      setEndDate(date);
-    } else {
-      setStartDate(date);
-      setEndDate(null);
-    }
+    const today = dayjs(); 
+  if (date.isBefore(today, 'day')) {
+    // 클릭한 날짜가 오늘보다 이전인 경우 클릭을 무시
+    return;
+  }
+  if (!startDate) {
+    setStartDate(date);
+  } else if (!endDate && date.isAfter(startDate, 'day')) {
+    setEndDate(date);
+  } else if (endDate && date.isBefore(startDate, 'day')) {
+    // 종료일을 시작일 이전에 선택한 경우 시작일 재설정
+    setStartDate(date);
+    setEndDate(null);
+  } else {
+    setStartDate(date);
+    setEndDate(null);
+  }
   };
 
   const isDateSelected = (date) => {

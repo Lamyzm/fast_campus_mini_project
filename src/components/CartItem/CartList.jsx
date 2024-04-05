@@ -1,18 +1,15 @@
 "use client";
 import React, { useState, useEffect, useId } from "react";
 import authApi from "@/service/axiosConfig";
-import { useQuery } from "react-query";
+import { useQuery, useQueryClient } from "react-query";
 import SelectedRoomPay from "@/components/selectedRoomPay/SelectedRoomPay";
 import CartPrice from "@/components/cartPrice/CartPrice";
 import CartItem from "./CartItem";
 import CartAllCheckBox from "../CheckBox/CartAllCheckBox";
 import CartLoadingDetail from "../Loading/CartLoadingDetail";
 import { useRouter } from "next/navigation";
-import { notifyToastInfo } from "@/service/toast";
-import { ToastContainer } from "react-toastify";
 import Icons from "../icons/icons";
 import { Button } from "../buttons/Button";
-import PopularSwiper from "@/components/accommodationSwipers/PopularSwiper";
 import AccommodationSwiper from "@/components/accommodationSwipers/AccommodationSwiper";
 import useCartDataQuery from "@/hooks/useCartDataQuery";
 
@@ -22,7 +19,7 @@ export default function CartList() {
 
   const [cartTotalPrice, setCartTotalPrice] = useState(0);
   const router = useRouter();
-  const id = useId();
+  // const id = useId();
 
   const convertCheckedItemsToArray = () => {
     const resultArray = [];
@@ -45,10 +42,14 @@ export default function CartList() {
   };
 
   // 결제로직 query
+  const queryClient = useQueryClient();
   const cartQuery = useQuery({
     queryKey: ["cart"],
     queryFn: fetchRoom,
     enabled: isCartFetching,
+    onSuccess: () => {
+      queryClient.invalidateQueries(["cartItems"]);
+    },
   });
 
   useEffect(() => {
@@ -91,7 +92,7 @@ export default function CartList() {
     );
   }
 
-  if (cartData.length === 0) {
+  if (cartData?.length === 0) {
     return (
       <>
         <div className="h-[80vh] w-full p-12 flex flex-col justify-center items-center gap-7">
@@ -122,32 +123,33 @@ export default function CartList() {
   }
   return (
     <>
-      <div className="w-full h-32 flex flex-row p-9 relative z-10">
+      <div className="w-full h-22 pt-12 pb-5 flex flex-row p-2 relative z-10 border-solid border-b-2 border-gray-300">
         <CartAllCheckBox
           isCheck={isCheckAllItems}
           setISCheckAllItems={setISCheckAllItems}
           isCheckPass={isCheckPass}
           setIsCheckPass={setIsCheckPass}
         />
-        <div className="flex justify-center items-center">
+        <div className="flex justify-center items-center tr-4 ml-5 ">
           <p>전체선택 </p>
         </div>
       </div>
       {cartData ? (
         <>
-          <div className="min-h-[60vh] w-full">
+          <div className="min-h-[60vh] w-full divide-gray-200 mt-5">
             {cartData.map((item, index) => {
               return (
-                <CartItem
-                  data={item}
-                  key={`${index + 1}-${id}`}
-                  index={item.id}
-                  checkedItems={checkedItems}
-                  setCheckedItems={setCheckedItems}
-                  setISCheckAllItems={setISCheckAllItems}
-                  isCheckPass={isCheckPass}
-                  setIsCheckPass={setIsCheckPass}
-                />
+                <div key={`${index + 1}-${index}`}>
+                  <CartItem
+                    data={item}
+                    index={item.id}
+                    checkedItems={checkedItems}
+                    setCheckedItems={setCheckedItems}
+                    setISCheckAllItems={setISCheckAllItems}
+                    isCheckPass={isCheckPass}
+                    setIsCheckPass={setIsCheckPass}
+                  />
+                </div>
               );
             })}
           </div>

@@ -20,6 +20,8 @@ export default function CartItem({
   setISCheckAllItems,
   setIsCheckPass,
   isCheckPass,
+  hideCheckbox,
+  hideCloseButton,
 }) {
   const deleteFunc = async (id) => {
     const { data } = await authApi.delete(`/cart/${id}`);
@@ -45,7 +47,7 @@ export default function CartItem({
 
   return (
     <>
-      <div className="p-4 w-full bg-white relative shadow-md  mb-4">
+      <div className="p-4 pt-9 w-full bg-white relative mb-4">
         <div className="flex flex-col w-full p-5  divide-solid  divide-y-[1px] divide-subtitle-gray rounded-lg ">
           <div className="pb-6">
             <h3 className="block mb-4 font-bold text-3xl">
@@ -58,14 +60,17 @@ export default function CartItem({
           <div className="pt-9 flex gap-6 flex-col">
             <h3 className="font-bold text-xl">{accommodation.room.roomName}</h3>
             <div className="flex flex-row h-20 items-start gap-4">
-              <CartCheckBox
-                id={index}
-                checkedItems={checkedItems}
-                setCheckedItems={setCheckedItems}
-                setISCheckAllItems={setISCheckAllItems}
-                isCheckPass={isCheckPass}
-                setIsCheckPass={setIsCheckPass}
-              />
+              {/* 체크박스 조건부 렌더링 */}
+              {!hideCheckbox && (
+                <CartCheckBox
+                  id={index}
+                  checkedItems={checkedItems}
+                  setCheckedItems={setCheckedItems}
+                  setISCheckAllItems={setISCheckAllItems}
+                  isCheckPass={isCheckPass}
+                  setIsCheckPass={setIsCheckPass}
+                />
+              )}
               <img
                 alt="상품 상세이미지"
                 src={accommodation?.image}
@@ -96,19 +101,22 @@ export default function CartItem({
             </div>
           </div>
         </div>
-        <div className="absolute top-10 right-10 ">
-          <button
-            onClick={() => {
-              dataDelete(index);
-            }}>
-            <Icons
-              type="CloseIcon"
-              size="large"
-              color="primary"
-              additionalClass={"text-3xl"}
-            />
-          </button>
-        </div>
+        {/* 삭제 버튼 조건부 렌더링 */}
+        {!hideCloseButton && (
+          <div className="absolute top-10 right-10 ">
+            <button
+              onClick={() => {
+                dataDelete(index);
+              }}>
+              <Icons
+                type="CloseIcon"
+                size="large"
+                color="primary"
+                additionalClass={"text-3xl"}
+              />
+            </button>
+          </div>
+        )}
       </div>
     </>
   );

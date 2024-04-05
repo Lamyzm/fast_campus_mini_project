@@ -28,7 +28,7 @@ const Map = () => {
                 src={`//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAO_MAP_CLIENT}&autoload=false`}
                 onReady={loadKakaoMap}
             />
-            <div id="map" className='w-[80%] h-screen rounded-xl'>
+            <div id="map" className='w-[80%] h-[500px] shadow-md mb-4'>
 
             </div>
         </>

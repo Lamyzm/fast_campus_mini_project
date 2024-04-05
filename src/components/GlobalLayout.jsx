@@ -4,7 +4,7 @@ const GlobalLayout = ({ children, additionalClass, ...props }) => {
   return (
     <div
       className={cn(
-        "pt-12 overflow-hidden flex flex-col items-center mx-auto max-w-[1000px] bg-white min-h-[100vh]",
+        "pt-14 flex flex-col items-center mx-auto max-w-[1100px] bg-white min-h-[100vh]",
         additionalClass
       )}
       {...props}>

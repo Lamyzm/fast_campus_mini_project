@@ -1,4 +1,3 @@
-
 'use client'
 import axios from 'axios';
 import React from 'react'
@@ -42,10 +41,35 @@ const Page = ({ params }) => {
       });
   }
 
+  const fetchComments = async () => {
+    const { data } = await axios.get(`https://fcbe-mini-project.kro.kr:8080/api/comment/${roomId}`)
+    return data
+
+  }
+
   const { data: room, isFetching, isError, isSuccess, isLoading } = useQuery({
     queryKey: ['room', id],
     queryFn: fetchRoom,
     onSuccess: (data) => fetchLocation(data.address)
+  })
+
+  //기존 코드
+  // const { data: room, isFetching, isError, isSuccess, isLoading } = useQuery({
+  //   queryKey: ['room', id],
+  //   queryFn: fetchRoom,
+  //   onSuccess: (data) => {
+  //     fetchLocation(data.address)
+  //     fetchComments(data.id)
+  //   } 
+  // })
+
+  const roomId = room?.id
+
+  //필요충분 쿼리를 사용해 roomId를 가져오면 comments가져오기
+  const { data: comments } = useQuery({
+    queryKey: ['comments'],
+    queryFn: fetchComments,
+    enabled: !!roomId
   })
 
   if (isError) {
@@ -64,7 +88,7 @@ const Page = ({ params }) => {
       {isLoading && (<LoadingDetail />)}
       <DetailNav />
       <SelectedRoomDetailLayout>
-        <SelectedRoomMain data={room} />
+        <SelectedRoomMain data={room} comments={comments} />
         <RoomDetail data={room} />
       </SelectedRoomDetailLayout>
     </>
