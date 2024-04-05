@@ -24,10 +24,7 @@ export default function PaidOrder() {
     };
 
     const totalPrice = reservation?.accommodation?.room.price;
-    const formatPriceWithCommas = (price) => {
-      return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    };
-    const totalPriceWithCommas = formatPriceWithCommas(totalPrice);
+
 
     const copyAddressToClipboard = () => {
       navigator.clipboard.writeText(reservation.accommodation.address);
@@ -87,7 +84,8 @@ export default function PaidOrder() {
           </div>
           <div className="flex mb-3 justify-between text-lg text-stone-400">
             <p>상품 금액</p>
-            <p>{totalPriceWithCommas}원</p>
+            <p>{Number(totalPrice
+).toLocaleString()}원</p>
           </div>
           <div className="flex mb-3 justify-between text-lg text-stone-400">
             <p>할인 금액</p>
@@ -96,7 +94,8 @@ export default function PaidOrder() {
           <hr className="my-6" />
           <div className="flex justify-between text-lg font-semibold text-blue-500">
             <p>총 결제 금액</p>
-            <p>{totalPriceWithCommas}원</p>
+            <p>{Number(totalPrice
+).toLocaleString()}원</p>
           </div>
         </div>
       </div>
