@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect, useId } from "react";
 import authApi from "@/service/axiosConfig";
-import { useQuery } from "react-query";
+import { useQuery, useQueryClient } from "react-query";
 import SelectedRoomPay from "@/components/selectedRoomPay/SelectedRoomPay";
 import CartPrice from "@/components/cartPrice/CartPrice";
 import CartItem from "./CartItem";
@@ -42,12 +42,16 @@ export default function CartList() {
   };
 
   // 결제로직 query
+  const queryClient = useQueryClient();
   const cartQuery = useQuery({
     queryKey: ["cart"],
     queryFn: fetchRoom,
     enabled: isCartFetching,
+    onSuccess: () => {
+      queryClient.invalidateQueries(["cartItems"]);
+    },
   });
-  console.log(cartQuery)
+  console.log(cartQuery);
 
   useEffect(() => {
     // total price
@@ -120,32 +124,33 @@ export default function CartList() {
   }
   return (
     <>
-      <div className="w-full h-32 flex flex-row p-9 relative z-10">
+      <div className="w-full h-22 pt-12 pb-5 flex flex-row p-2 relative z-10 border-solid border-b-2 border-gray-300">
         <CartAllCheckBox
           isCheck={isCheckAllItems}
           setISCheckAllItems={setISCheckAllItems}
           isCheckPass={isCheckPass}
           setIsCheckPass={setIsCheckPass}
         />
-        <div className="flex justify-center items-center">
+        <div className="flex justify-center items-center tr-4 ml-5 ">
           <p>전체선택 </p>
         </div>
       </div>
       {cartData ? (
         <>
-          <div className="min-h-[60vh] w-full">
+          <div className="min-h-[60vh] w-full divide-gray-200 mt-5">
             {cartData.map((item, index) => {
               return (
-                <CartItem
-                  data={item}
-                  key={`${index + 1}-${index}`}
-                  index={item.id}
-                  checkedItems={checkedItems}
-                  setCheckedItems={setCheckedItems}
-                  setISCheckAllItems={setISCheckAllItems}
-                  isCheckPass={isCheckPass}
-                  setIsCheckPass={setIsCheckPass}
-                />
+                <div key={`${index + 1}-${index}`}>
+                  <CartItem
+                    data={item}
+                    index={item.id}
+                    checkedItems={checkedItems}
+                    setCheckedItems={setCheckedItems}
+                    setISCheckAllItems={setISCheckAllItems}
+                    isCheckPass={isCheckPass}
+                    setIsCheckPass={setIsCheckPass}
+                  />
+                </div>
               );
             })}
           </div>
@@ -154,7 +159,7 @@ export default function CartList() {
             fetchCartData={fetchCartData}
             price={cartTotalPrice}
             cartQuery={cartQuery}
-            isCartFetching={isCartFetching} 
+            isCartFetching={isCartFetching}
           />
         </>
       ) : null}

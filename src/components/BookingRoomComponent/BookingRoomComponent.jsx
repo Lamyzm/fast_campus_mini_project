@@ -29,7 +29,6 @@ export default function BookingRoomComponent({
 }) {
   const { people, date } = useSearchFilterStore();
   const { data, status } = useSession();
-  const router = useRouter();
 
   const cartRequestBody = {
     checkIn: date.startDate,
@@ -62,7 +61,7 @@ export default function BookingRoomComponent({
 
   const saveCart = () => {
     if (!data) {
-      router.push("/login");
+      notifyToastWrong({ message: "로그인이 필요한 서비스입니다!" });
       return;
     }
     mutateCartAdd();
@@ -82,7 +81,10 @@ export default function BookingRoomComponent({
   const isDiscountExpired = discountDate.isBefore(currentDateTime);
 
   let priceContent = "";
-  if (totalRoomData.discount && !isDiscountExpired) {
+  console.log("totalRoomData.roomCount", roomData.roomCount);
+  if (roomData.roomCount < 0) {
+    priceContent = <p className="font-bold pt-6">품절</p>;
+  } else if (totalRoomData.discount && !isDiscountExpired) {
     priceContent = (
       <div className="text-end flex flex-col items-end">
         <div className="w-fit px-1 bg-rose-100 rounded-sm mr-1">
@@ -114,20 +116,18 @@ export default function BookingRoomComponent({
                 type="ScheduleIcon"
                 size="large"
                 color="primary"
-                additionalClass={
-                  "absolute text-sm -left-4 top-0 fill-subtitle-gray"
-                }
+                additionalClass={"absolute text-sm -left-4 top-0 fill-gray-500"}
               />
               <div className="mb-2">
-                <p className="text-xs text-subtitle-gray font-semibold">
+                <p className="text-sm text-gray-500 font-semibold">
                   입실 16:00
                 </p>
-                <p className="text-xs text-subtitle-gray font-semibold">
+                <p className="text-sm text-gray-500 font-semibold">
                   퇴실 11:00
                 </p>
               </div>
               <div>
-                <p className="text-xs text-subtitle-gray font-semibold">
+                <p className="text-sm text-gray-500 font-semibold">
                   최대{roomData.maximumPeople}인
                 </p>
               </div>
