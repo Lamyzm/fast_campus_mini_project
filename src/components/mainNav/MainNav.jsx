@@ -57,7 +57,7 @@ const MainNav = () => {
         <Link
           className="text-blue-800 text-xl font-semibold cursor-pointer ml-10 py-0"
           href="/main">
-          <Image src="Logo.png" alt={"logo"} width={170} height={80} />
+          <Image src="/Logo.png" alt={"logo"} width={170} height={80} />
         </Link>
         <div className="flex gap-7 items-center px-[18px] py-0 font-semibold mr-4">
           <Link
