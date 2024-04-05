@@ -1,20 +1,26 @@
+"use client";
 import React, { useEffect, useState } from "react";
 import { Button } from "../buttons/Button";
-import { useQuery } from "react-query";
 import LoadingButton from "@/components/buttons/LoadingButton";
 import { useRouter } from "next/navigation";
-import { Api } from "@/service/api";
 
 const LOADING_TIME = 4000;
 
-const OrderRoomPay = ({ price }) => {
+const OrderRoomPay = (
+{  price,
+  fetchOrderData,
+  orderQuery,
+  isOrderFetching}
+) => {
   const [isChecked, setIsChecked] = useState(false);
   const [showLoadingIndicator, setShowLoadingIndicator] = useState(false);
   const [isMoved, setIsMoved] = useState(false);
   const router = useRouter();
+  console.log("orderQuery", orderQuery);
 
   const handleOnClick = () => {
-    if (!isChecked || price < 0) return;
+    if (price < 0) return;
+    fetchOrderData(true);
     setShowLoadingIndicator(true);
     setIsMoved(true);
     setTimeout(() => {
@@ -25,38 +31,31 @@ const OrderRoomPay = ({ price }) => {
   useEffect(() => {
     setIsMoved(false);
   }, []);
+  useEffect(() => {
+    if (
+      (orderQuery?.isSuccess,
+      !orderQuery?.isLoading,
+      !showLoadingIndicator,
+      !orderQuery?.isError,
+      isMoved)
+    ) {
+      router.push("/paidorder");
+    }
+  }, [orderQuery?.isSuccess, orderQuery?.isLoading, showLoadingIndicator]);
 
   useEffect(() => {
-    if (!isMoved && showLoadingIndicator) {
-    }
-  }, [showLoadingIndicator]);
-
-
-  useEffect(() => {
-    if (isMoved && !showLoadingIndicator) {
-      router.push("/paid");
-    }
-  }, [showLoadingIndicator]);
-
-  // Example function for placing order
-  const placeOrder = async () => {
-    try {
-      // Perform API call to place order
-      const response = await Api.post("/order", { price });
-      console.log("Order placed successfully:", response.data);
-    } catch (error) {
-      console.error("Error placing order:", error);
+    if (isOrderFetching && orderQuery.isError) {
       alert("결제에 실패했습니다 다시 시도해주세요");
       router.refresh();
     }
-  };
+  }, [orderQuery?.isError]);
 
   return (
     <div className="w-full mx-auto px-6">
       <div className="mb-4 flex">
         <input
           type="checkbox"
-          checked={isChecked}
+          disabled={!(parseInt(price, 10) > 0)}
           onChange={() => setIsChecked((prev) => !prev)}
           className="mr-2 h-5 w-5 cursor-pointer"
         />
@@ -70,25 +69,26 @@ const OrderRoomPay = ({ price }) => {
           에 동의하실 경우 결제하기를 클릭해주세요.
         </div>
         <div>
-          <Button
-            size="lg"
-            color="primary"
-            additionalClass="w-full"
-            onClick={handleOnClick}
-            disabled={!(isChecked && parseInt(price, 10) > 0)}
-          >
-            {showLoadingIndicator ? (
-              <LoadingButton />
-            ) : (
-              <span className="font-bold text-xl tracking-wider">
-                {price?.toLocaleString()}원 결제하기
-              </span>
-            )}
-          </Button>
+          {
+            <Button
+              size="lg"
+              color="primary"
+              additionalClass="w-full"
+              onClick={handleOnClick}
+              disabled={!(isChecked && parseInt(price, 10) > 0)}>
+              {showLoadingIndicator || orderQuery?.isLoading ? (
+                <LoadingButton></LoadingButton>
+              ) : (
+                <span className="font-bold text-xl tracking-wider">
+                  {price?.toLocaleString()}원 결제하기
+                </span>
+              )}
+            </Button>
+          }
         </div>
       </div>
     </div>
   );
-};
+}
 
-export default OrderRoomPay;
+export default OrderRoomPay

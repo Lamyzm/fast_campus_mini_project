@@ -38,7 +38,7 @@ const SelectedRoomPay = ({
       !cartQuery?.isError,
       isMoved)
     ) {
-      router.push("/paid");
+      router.push("/paidcart");
     }
   }, [cartQuery?.isSuccess, cartQuery?.isLoading, showLoadingIndicator]);
 

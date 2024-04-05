@@ -4,7 +4,7 @@ import Icons from '../icons/icons'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation';
 
-const ShoppingCartNav = () => {
+const ShoppingCartNav = () => { 
   const router = useRouter();
   return ( 
     <>

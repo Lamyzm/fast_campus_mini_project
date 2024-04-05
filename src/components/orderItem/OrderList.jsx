@@ -1,16 +1,13 @@
-'use client'
-
-import React, { useState, useEffect } from "react";
-import OrderItem from "@/components/orderItem/OrderItem";
-import { useRouter, useSearchParams } from "next/navigation";
-import authApi from "@/service/axiosConfig";
-
+"use Client"
+import { Api } from "@/service/api";
 import { useSearchFilterStore } from "@/store/useSearchFilterStore";
-import { useQuery } from "react-query";
-import SelectedRoomPay from "../selectedRoomPay/SelectedRoomPay";
+import { useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
+import OrderItem from "./OrderItem";
 import OrderPrice from "../orderPrice/OrderPrice";
-import Icons from "../icons/icons";
-import { Button } from "../buttons/Button";
+import { useQuery } from "react-query";
+import OrderRoomPay from "../orderRoomPay/OrderRoomPay";
+import authApi from "@/service/axiosConfig";
 
 function sumAll(obj) {
   let total = 0;
@@ -21,74 +18,77 @@ function sumAll(obj) {
 }
 
 const OrderList = () => {
+  const params = useSearchParams();
   const [data, setData] = useState(null);
   const { people, date } = useSearchFilterStore();
-  const [isCartFetching, setIsCartFetching] = useState(false);
-  const params = useSearchParams();
-  const router = useRouter();
-
-  const fetchData = async () => {
-    try {
-      setIsCartFetching(true);
-      const orderRequestBody = {
-        checkIn: date.startDate,
-        checkOut: date.endDate,
-        peoples: sumAll(people),
-      };
-      const response = await authApi.post(`/orders/${params.get('id')}/${params.get('roomId')}`, orderRequestBody);
-      console.log("Response:", response.status);
-      console.log("Order created successfully:", response.data);
-      const data = response.data;
-      setData(data);
-    } catch (error) {
-      console.error("Error creating order:", error);
-      // You might want to set an error state here if needed
-    } finally {
-      setIsCartFetching(false);
-    }
+  const roomId = params.get("roomId")
+  console.log(params.get("roomId"))
+  console.log("peoples:", people)
+  const room = data?.roomList.find(room => room.id === parseInt(roomId));
+  const [isOrderFetching, setIsOrderFetching] = useState(false);
+  const fetchOrderData = () => {
+    setIsOrderFetching(true);
   };
 
   useEffect(() => {
-    fetchData();
-  }, [params, date, people]);
+    const fetchData = async () => {
+      try {
+        if (params.get('id')) {
+          const { data } = await Api.get(`/accommodation/${params.get('id')}`);
+          setData(data);
+        }
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
 
+    fetchData();
+  }, [params.get('id')]);
+
+  console.log(data);
+
+  const orderRoom = async () => {
+    const orderRequestBody = {
+      checkIn: date.startDate,
+      checkOut: date.endDate,
+      peoples: sumAll(people),
+    };
+    const { data } = await authApi.post(`/orders/${params.get('id')}/${params.get('roomId')}`, orderRequestBody);
+    return data;
+  };
+  console.log("orderdata", data)
+
+  // 결제로직 query
   const orderQuery = useQuery({
-    queryKey: ["orders"],
-    queryFn: fetchData,
-    enabled: isCartFetching
+    queryKey: ["order"],
+    queryFn: orderRoom,
+    enabled: isOrderFetching, 
   });
   console.log(orderQuery)
-  if (data === null) {
-    return (
-      <>
-        <div>
-          <Button
-            size="lg"
-            color="primary"
-            additionalClass="w-full justify-start item-center overflow-hidden text-ellipsis"
-            onClick={() => router.push("/")}>
-            홈으로 가기
-          </Button>
-        </div>
-      </>
-    );
-  }
+
 
   return (
-    <>
-      <div className="w-full">
-        <OrderItem data={data} />
-      </div>
-      <OrderPrice price={data?.accommodation.room.price} />
-      <SelectedRoomPay
-        fetchCartData={() => setIsCartFetching(true)}
-        price={data?.accommodation.room.price}
-        cartQuery={orderQuery}
-        isCartFetching={isCartFetching}
+    <div className="w-full h-full flex-row p-9">
+      {data && roomId && (
+        <div className="min-h-[60vh] w-full flex">
+          <OrderItem
+            accommodation={data} // Pass the entire data object
+            roomId={roomId} // Pass roomId directly 
+            startDate={date.startDate}
+            endDate={date.endDate}
+            peoples={people}
+          />
+        </div>
+      )}
+      <OrderPrice price={room?.price} />
+      <OrderRoomPay
+        price={room?.price}
+        fetchOrderData={fetchOrderData}
+        orderQuery={orderQuery}
+        isOrderFetching={isOrderFetching} 
       />
-    </>
+    </div>
   );
 };
 
 export default OrderList;
-
