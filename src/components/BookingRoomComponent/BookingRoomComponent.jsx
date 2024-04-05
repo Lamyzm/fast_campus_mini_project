@@ -29,7 +29,8 @@ export default function BookingRoomComponent({
 }) {
   const { people, date } = useSearchFilterStore();
   const { data, status } = useSession();
-
+  const router = useRouter()
+  
   const cartRequestBody = {
     checkIn: date.startDate,
     checkOut: date.endDate,
