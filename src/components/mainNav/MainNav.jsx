@@ -110,7 +110,7 @@ const MainNav = () => {
               clickable
               className="tooltip ">
               <Button size="lg" color="primary" additionalClass="w-full px-10 ">
-                <Link href={"/logout"}>로그아웃</Link>
+                <Link href={"/#"}>로그아웃</Link>
               </Button>
             </Tooltip>
           )}
