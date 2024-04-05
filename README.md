@@ -60,22 +60,26 @@
 
 Main 페이지 예시
 ![](https://velog.velcdn.com/images/banghogu/post/727f6d7a-e2d3-4490-bbc5-74289cc25a12/image.png)
+| 페이지 | 컴포넌트 | 설명 |
+|---------------------|---------------------|---------------------------------------------|
+| 로그인 페이지 | 버튼, 입력, 아이콘, 로고 | 로그인 및 관련 요소 |
+| 회원가입 페이지 | 버튼, 입력, 아이콘 | 회원가입 및 관련 요소 |
+| 메인 페이지 | 네비게이션 바, 메인 컨테이너, 검색, 쿠폰, 숙소 타입 | 메인 화면 요소 |
+| 메인 페이지 - 서브 | 지역, 날짜, 인원 | 메인 서브 페이지 요소 |
+| 검색 결과 페이지 | 네비게이션 바, 검색 필드, 숙소 리스트 | 검색 결과 페이지 요소 |
+| 숙소 상세 페이지 | 네비게이션 바, 이미지, 타이틀, 주소, 객실 타입, 숙소 소개 | 숙소 상세 페이지 요소 |
+| 장바구니 페이지 | 네비게이션 바, 장바구니 리스트, 총액, 예약 버튼 | 장바구니 페이지 요소 |
 
-| 페이지             | 컴포넌트                                                  | 설명                  |
-| ------------------ | --------------------------------------------------------- | --------------------- |
-| 로그인 페이지      | 버튼, 입력, 아이콘, 로고                                  | 로그인 및 관련 요소   |
-| 회원가입 페이지    | 버튼, 입력, 아이콘                                        | 회원가입 및 관련 요소 |
-| 메인 페이지        | 네비게이션 바, 메인 컨테이너, 검색, 쿠폰, 숙소 타입       | 메인 화면 요소        |
-| 메인 페이지 - 서브 | 지역, 날짜, 인원                                          | 메인 서브 페이지 요소 |
-| 검색 결과 페이지   | 네비게이션 바, 검색 필드, 숙소 리스트                     | 검색 결과 페이지 요소 |
-| 숙소 상세 페이지   | 네비게이션 바, 이미지, 타이틀, 주소, 객실 타입, 숙소 소개 | 숙소 상세 페이지 요소 |
-| 장바구니 페이지    | 네비게이션 바, 장바구니 리스트, 총액, 예약 버튼           | 장바구니 페이지 요소  |
+| 바로 예약 페이지 | 네비게이션 바, 예약 상품, 총액, 예약 버튼 | 바로 예약 페이지 요소 |
+| 예약 완료 페이지 | 네비게이션 바, 예약 상품 리스트, 총액 | 예약 완료 페이지 요소 |
 
 ### 스타일 가이드 페이지
 
 ![](https://private-user-images.githubusercontent.com/58257616/319831567-2b05ebe1-d9ed-4bd2-9473-37903b20ce6d.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MTIyODMwNjksIm5iZiI6MTcxMjI4Mjc2OSwicGF0aCI6Ii81ODI1NzYxNi8zMTk4MzE1NjctMmIwNWViZTEtZDllZC00YmQyLTk0NzMtMzc5MDNiMjBjZTZkLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDA0MDUlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQwNDA1VDAyMDYwOVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTY2OTEzMTZjNGUyNDQzMTM2M2RmMzM0NWQ3MWMwNDJmOWVmMjk2NjY2YzIwNzY5ZmMyMWI2MzUwYmNlNzhlNTUmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JmFjdG9yX2lkPTAma2V5X2lkPTAmcmVwb19pZD0wIn0.j0m_lWJiX_9ktZcSTfKVgzjCINQYgdJBdxwEmfad58k)
 
 storybook 대신 씀
+| 바로 예약 페이지 | 네비게이션 바, 예약 상품, 총액, 예약 버튼 | 바로 예약 페이지 요소 |
+| 예약 완료 페이지 | 네비게이션 바, 예약 상품 리스트, 총액 | 예약 완료 페이지 요소 |
 
 <br>
 

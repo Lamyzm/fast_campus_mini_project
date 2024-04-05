@@ -1,4 +1,4 @@
-"use Client"
+
 import { Api } from "@/service/api";
 import { useSearchFilterStore } from "@/store/useSearchFilterStore";
 import { useSearchParams } from "next/navigation";

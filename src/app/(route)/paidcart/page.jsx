@@ -9,9 +9,7 @@ export default function PaidCart() {
     const queryClient = useQueryClient();
     const reservationsQuery = useQuery(["cart"]);
     const reservations = reservationsQuery.data;
-    const formatPriceWithCommas = (price) => {
-      return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-  };
+
 
     const calculateDaysLeft = (checkIn) => {
       const today = dayjs();
@@ -20,7 +18,7 @@ export default function PaidCart() {
     };
 
     const totalPrice = reservations ? reservations.reduce((acc, reservation) => acc + reservation.accommodation.room.price, 0) : 0;
-    const totalPriceWithCommas = formatPriceWithCommas(totalPrice);
+
 
     dayjs.locale('ko');
 
@@ -86,7 +84,8 @@ export default function PaidCart() {
               </div>
               <div className="flex mb-3 justify-between text-lg text-stone-400">
                 <p>상품 금액</p>
-                <p>{totalPriceWithCommas}원</p>
+                <p>{Number(totalPrice
+).toLocaleString()}원</p> 
               </div>
               <div className="flex mb-3 justify-between text-lg text-stone-400">
                 <p>할인 금액</p>
@@ -95,7 +94,8 @@ export default function PaidCart() {
               <hr className="my-6" />
               <div className="flex justify-between text-lg font-semibold text-blue-500">
                 <p>총 결제 금액</p>
-                <p>{totalPriceWithCommas}원</p>
+                <p>{Number(totalPrice
+).toLocaleString()}원</p>
               </div>
             </div>
         </div>
